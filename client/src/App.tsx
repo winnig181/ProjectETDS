@@ -13,6 +13,8 @@ import { apiNotesService } from './services/notes';
 import { thunkNotesLoad } from './redux/slices/notes/createAsyncThunk';
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
+import LkPage from './pages/LkPage';
+import Profile from './components/lk/Profile';
 
 
 function App(): JSX.Element {
@@ -63,6 +65,7 @@ function App(): JSX.Element {
         <NavBar />  
         <Routes>
           <Route path="/" element={<MainPage />} />
+          
           <Route
             element={
               <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
@@ -80,10 +83,12 @@ function App(): JSX.Element {
               />
             }
           >
-            <Route path="/notes" element={<NotesPage />} />
-     
+            <Route path="/notes" element={<NotesPage />} />     
             <Route path="/:noteId" element={<OneNotePage />} />
+
           </Route>
+            <Route path="/lk" element={<LkPage />} />
+            <Route path="/lk/profile" element={<Profile text="ok"/>} />
         </Routes>
       </>
 

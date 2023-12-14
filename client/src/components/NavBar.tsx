@@ -25,6 +25,9 @@ export default function NavBar(): JSX.Element {
             </Typography>
           </Grid>
           <Grid item>
+          <Button color="inherit" component={NavLink} to="/lk">
+              Личный кабинет
+            </Button>
             <Button color="inherit" component={NavLink} to="/">
               Главная
             </Button>

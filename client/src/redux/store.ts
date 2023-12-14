@@ -6,6 +6,8 @@ export const store = configureStore({
   reducer: {
     notesSlice: noteReducer,
     authSlice: authReducer,
+
+    reviewsSlice: reviewReducer,
   },
 });
 
