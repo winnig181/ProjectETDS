@@ -18,6 +18,9 @@ module.exports = {
       password: {
         type: Sequelize.TEXT
       },
+      nickName: {
+        type: Sequelize.TEXT
+      },
       phone: {
         type: Sequelize.TEXT
       },

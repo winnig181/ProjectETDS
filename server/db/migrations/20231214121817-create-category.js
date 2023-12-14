@@ -9,16 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tourism: {
-        type: Sequelize.TEXT
-      },
-      homeFuns: {
-        type: Sequelize.TEXT
-      },
-      tools: {
-        type: Sequelize.TEXT
-      },
-      devices: {
+      categoryName: {
         type: Sequelize.TEXT
       },
       createdAt: {

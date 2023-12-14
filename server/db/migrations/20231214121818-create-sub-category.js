@@ -9,18 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      videogames: {
-        type: Sequelize.TEXT
-      },
-      books: {
-        type: Sequelize.TEXT
-      },
-      music: {
-        type: Sequelize.TEXT
-      },
-      boardgames: {
-        type: Sequelize.TEXT
-      },
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
@@ -29,6 +17,9 @@ module.exports = {
         },
         onDelete: 'CASCADE',
         allowNull: false,
+      },
+      subCategoryName: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
