@@ -21,6 +21,9 @@ module.exports = {
       phone: {
         type: Sequelize.TEXT
       },
+      publicPhone: {
+        type: Sequelize.TEXT
+      },
       avatar: {
         type: Sequelize.TEXT
       },
