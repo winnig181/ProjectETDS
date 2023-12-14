@@ -15,11 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   SubCategory.init({
-    videogames: DataTypes.TEXT,
-    books: DataTypes.TEXT,
-    music: DataTypes.TEXT,
-    boardgames: DataTypes.TEXT,
-    categoryId: DataTypes.INTEGER
+    categoryId: DataTypes.INTEGER,
+    subCategoryName: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'SubCategory',

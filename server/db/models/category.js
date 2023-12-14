@@ -14,10 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Category.init({
-    tourism: DataTypes.TEXT,
-    homeFuns: DataTypes.TEXT,
-    tools: DataTypes.TEXT,
-    devices: DataTypes.TEXT
+    categoryName: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'Category',
