@@ -16,6 +16,7 @@ import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
+import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
 
 
 function App(): JSX.Element {
@@ -26,6 +27,8 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkItemsLoad());
+    void dispatch(thunkReviewsLoad());
+
     // void dispatch(thunkNotesLoad());
   }, []);
 

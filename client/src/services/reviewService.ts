@@ -8,9 +8,14 @@ export const apiReviewsService = axios.create({
 
 class ReviewsService {
   static async getReviews(): Promise<ReviewType[]> {
-    const response = await apiReviewsService.get<ReviewType[]>('/');
-    if (response.status === 200) return response.data;
-    return [];
+    try{
+      const response = await apiReviewsService.get<ReviewType[]>('/');
+      if (response.status === 200) return response.data;
+      return [];
+    } catch (error) {
+      console.log(error)
+      throw new Error('Server error loading Reviews');
+    }
   }
 
   static async addReview(ReviewFormData: AddReviewFormData): Promise<ReviewType> {

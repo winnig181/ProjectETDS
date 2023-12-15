@@ -4,13 +4,14 @@ import Typography from '@mui/material/Typography';
 import { Box, Button, Card, CardMedia, Container, Grid } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hook';
+import type { UserType } from '../../types/auth';
 
 // type PropsLkCard = {
 //   text: string;
 // }
 
 export default function LkProfile(): JSX.Element {
-  const user = useAppSelector((state) => state.authSlice.user);
+  const user:UserType = useAppSelector((state) => state.authSlice.user);
   console.log('user', user);
   const {
     name,
@@ -32,7 +33,7 @@ export default function LkProfile(): JSX.Element {
           <CardMedia
             component="img"
             sx={{ width: 100 }}
-            image="/public/img/vite.svg"
+            image="/img/vite.svg"
             alt="avatar"
           />
           <Button size="small" color="primary">
