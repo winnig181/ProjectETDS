@@ -13,12 +13,13 @@ import { apiNotesService } from './services/notes';
 import { thunkNotesLoad } from './redux/slices/notes/createAsyncThunk';
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
+import ItemCard from "./components/ItemCard";
 
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
-  
+
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -60,7 +61,7 @@ function App(): JSX.Element {
   return (
 
       <>
-        <NavBar />  
+        <NavBar />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route
@@ -81,7 +82,7 @@ function App(): JSX.Element {
             }
           >
             <Route path="/notes" element={<NotesPage />} />
-     
+
             <Route path="/:noteId" element={<OneNotePage />} />
           </Route>
         </Routes>

@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-material-ui-carousel';
-const imagesContext = require.context('./client/public/testPics', false, /\.(png|jpe?g|svg)$/)
+const imagesContext = require.context('./client/src/assets/testPics', false, /\.(png|jpe?g|svg)$/)
 
 // don't forget to install carousel packet
 
