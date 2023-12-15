@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const apiProductsRouter = require('./routes/apiProductsRouter');
 const authRouter = require('./routes/authRouter');
 const tokensRouter = require('./routes/tokensRouter');
+const apiReviewsRouter = require('./routes/apiReviewsRouter');
 require('dotenv').config();
 
 const app = express();
@@ -25,6 +26,9 @@ app.use(express.static('public'));
 app.use('/api/v1/products', apiProductsRouter);
 app.use('/api/v1/tokens', tokensRouter);
 app.use('/api/v1/auth', authRouter);
+
+app.use('/api/v1/reviews', apiReviewsRouter);
+
 
 app.listen(PORT, () =>
   console.log(`Server has started on PORT ${PORT}`),

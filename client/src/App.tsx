@@ -14,7 +14,7 @@ import { thunkNotesLoad } from './redux/slices/notes/createAsyncThunk';
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
 import LkPage from './pages/LkPage';
-import Profile from './components/lk/Profile';
+import Profile from './components/lk/LkProfile';
 
 
 function App(): JSX.Element {
