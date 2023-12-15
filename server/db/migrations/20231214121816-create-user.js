@@ -39,6 +39,12 @@ module.exports = {
       metro: {
         type: Sequelize.TEXT
       },
+      isActivated:{
+        type: Sequelize.BOOLEAN
+      },
+      activationLink: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

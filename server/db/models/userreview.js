@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({User}) {
-      Userreview.belongsTo(User, { foreignKey: 'userId', as: 'reviewerDetails' });
+      Userreview.belongsTo(User, { foreignKey: 'userId' });
     }
   }
   Userreview.init({
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     targetId: DataTypes.BIGINT
   }, {
     sequelize,
-    modelName: 'UserReview',
+    modelName: 'Userreview',
   });
   return Userreview;
 };
