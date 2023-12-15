@@ -17,6 +17,8 @@ module.exports = {
       city: 'San Francisco',
       metro: null,
       publicPhone: '+995 595 *** ***',
+      isActivated: false,
+      activationLink: 'some link should be here',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
