@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Typography from '@mui/material/Typography';
-import { Box, Button, Card, CardActions, CardMedia, Container, Grid } from '@mui/material';
+import { Box, Button, Card, CardMedia, Container, Grid } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hook';
 
@@ -11,6 +11,7 @@ import { useAppSelector } from '../../redux/hook';
 
 export default function LkProfile(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
+  console.log('user', user);
   const {
     name,
     nickName,
