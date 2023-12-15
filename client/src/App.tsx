@@ -16,10 +16,11 @@ import MainPage from './pages/MainPage';
 import Sidebar from './components/SideBar';
 
 
+
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
-  
+
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -83,7 +84,7 @@ function App(): JSX.Element {
             }
           >
             <Route path="/notes" element={<NotesPage />} />
-     
+
             <Route path="/:noteId" element={<OneNotePage />} />
           </Route>
         </Routes>

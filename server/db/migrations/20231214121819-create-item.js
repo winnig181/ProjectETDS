@@ -36,7 +36,7 @@ module.exports = {
       subCategoryId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'SubCategories',
+          model: 'Subсategories',
           key: 'id',
         },
         onDelete: 'CASCADE',
