@@ -1,14 +1,13 @@
 /* eslint-disable consistent-return */
 const express = require("express");
 const bcrypt = require("bcrypt");
-const uuid = require("uuid")
+// const uuid = require("uuid")
 const { User } = require("../../db/models");
 const generateTokens = require("../utils/generateTokens");
 const jwtConfig = require("../config/jwtConfig");
 const cookiesConfig = require("../config/cookiesConfig");
 const verifyRefreshToken = require("../middlewares/verifyRefreshToken");
-const mailService = require("../utils/mail-service");
-
+// const mailService = require("../utils/mail-service");
 const authRouter = express.Router();
 
 authRouter.post("/login", async (req, res) => {
@@ -30,7 +29,7 @@ authRouter.post("/login", async (req, res) => {
       .status(200)
       .json({ accessToken, user: plainUser });
   } catch (error) {
-    console.log(error);
+    console.log('registration error',error);
     res.status(500).json(error);
   }
 });
@@ -41,7 +40,7 @@ authRouter.post("/signup", async (req, res) => {
     const [user, created] = await User.findOrCreate({
       where: { email },
       defaults: { name, hashpass: await bcrypt.hash(password, 10) },
-      activationLink: uuid.v4() // рандомная уникальная строка
+      // activationLink: uuid.v4() // рандомная уникальная строка
     });
 
     // await mailService.sendActivationMail(email, user.activationLink)
@@ -65,9 +64,8 @@ authRouter.post("/signup", async (req, res) => {
 });
 
 
-authRouter.get("activate/:link", (req, res) => {
-
-})
+// authRouter.get("activate/:link", (req, res) => {
+// })
 
 authRouter.get("/logout", (req, res) => {
  

@@ -13,10 +13,12 @@ module.exports = {
         type: Sequelize.TEXT
       },
       email: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        unique: true
       },
-      password: {
-        type: Sequelize.TEXT
+      hashpass: {
+        type: Sequelize.TEXT, 
+        allowNull: false,
       },
       nickName: {
         type: Sequelize.TEXT
