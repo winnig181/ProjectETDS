@@ -16,7 +16,7 @@ import MainPage from './pages/MainPage';
 import Sidebar from './components/SideBar';
 
 import LkPage from './pages/LkPage';
-import Profile from './components/lk/LkProfile';
+import LkProfile from './components/lk/LkProfile';
 
 
 function App(): JSX.Element {
@@ -91,7 +91,7 @@ function App(): JSX.Element {
 
           </Route>
             <Route path="/lk" element={<LkPage />} />
-            <Route path="/lk/profile" element={<Profile text="ok"/>} />
+            <Route path="/lk/profile" element={<LkProfile />} />
         </Routes>
       </>
 
