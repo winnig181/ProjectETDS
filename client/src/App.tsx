@@ -15,6 +15,8 @@ import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyn
 import MainPage from './pages/MainPage';
 import Sidebar from './components/SideBar';
 
+import LkPage from './pages/LkPage';
+import Profile from './components/lk/LkProfile';
 
 
 function App(): JSX.Element {
@@ -66,6 +68,7 @@ function App(): JSX.Element {
         <Sidebar/>
         <Routes>
           <Route path="/" element={<MainPage />} />
+          
           <Route
             element={
               <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
@@ -83,10 +86,12 @@ function App(): JSX.Element {
               />
             }
           >
-            <Route path="/notes" element={<NotesPage />} />
-
+            <Route path="/notes" element={<NotesPage />} />     
             <Route path="/:noteId" element={<OneNotePage />} />
+
           </Route>
+            <Route path="/lk" element={<LkPage />} />
+            <Route path="/lk/profile" element={<Profile text="ok"/>} />
         </Routes>
       </>
 
