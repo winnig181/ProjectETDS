@@ -17,6 +17,14 @@ module.exports = {
       hashpass: {
         type: Sequelize.STRING,
       },
+      isActivated:{
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      activationLink:{
+        type: Sequelize.STRING,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

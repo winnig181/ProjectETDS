@@ -6,6 +6,7 @@ const generateTokens = require("../utils/generateTokens");
 const jwtConfig = require("../config/jwtConfig");
 const cookiesConfig = require("../config/cookiesConfig");
 const verifyRefreshToken = require("../middlewares/verifyRefreshToken");
+const uuid= require('uuid')
 
 const authRouter = express.Router();
 
@@ -38,7 +39,9 @@ authRouter.post("/signup", async (req, res) => {
     const { email, password, name } = req.body;
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { name, hashpass: await bcrypt.hash(password, 10) },
+      defaults: { name, hashpass: await bcrypt.hash(password, 10),
+      avtivationLink: uuid.v4() // рандомная уникальная строка
+      },
     });
     if (!created)
       return res.status(400).json({ message: "Email already exists" });
@@ -62,6 +65,18 @@ authRouter.get("/logout", (req, res) => {
  
   res.clearCookie(jwtConfig.refresh.name, cookiesConfig.refresh).sendStatus(200);
 });
+
+authRouter.get("/activate/:link",(req, res) => {
+try{
+
+} catch (error) {
+  console.log('email activation error:',error);
+}
+
+
+});
+
+
 
 authRouter.get("/check", verifyRefreshToken, (req, res) => {
   res.json({ user: res.locals.user, accessToken: "" });
