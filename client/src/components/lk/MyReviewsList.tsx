@@ -10,12 +10,13 @@ import ReviewCard from './ReviewCard';
 // }
 
 export default function MyReviewsList(): JSX.Element {
+  const user = useAppSelector((state) => state.authSlice.user);
+  // console.log('>>>>auth:', auth);
+  // const { user } = auth;
+  // console.log('>>>>user:', user);
   const reviews = useAppSelector((state) => state.reviewsSlice);
   console.log('reviews',reviews)
-  // const auth = useAppSelector((state) => state.authSlice.user);
-  // const { user } = auth;
-  console.log('>>>>user:', user);
-  // const myReviews = reviews.filter((review) => userId === user.id);
+  const myReviews = reviews.filter((review) => userId === user.id);
   return (
     <Grid container spacing={1}>
       {myReviews.map((review: ReviewType) => (

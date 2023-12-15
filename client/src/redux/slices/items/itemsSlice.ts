@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   thunkItemsLoad,
-  thunkNotesAdd,
-  thunkNotesDelete,
-  thunkNotesEdit,
-  thunkNotesEditIsFav,
+  // thunkNotesAdd,
+  // thunkNotesDelete,
+  // thunkNotesEdit,
+  // thunkNotesEditIsFav,
 } from './createAsyncThunk';
 import type { ItemSliceState } from '../../../types/item/item';
 
