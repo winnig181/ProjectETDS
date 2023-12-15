@@ -17,7 +17,7 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image="/public/img/vite.svg"
           alt="Contemplative Reptile"
         />
         <CardContent>
