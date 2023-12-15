@@ -13,7 +13,7 @@ export default function NavBar(): JSX.Element {
   const dispatch = useAppDispatch();
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'primary.main' }}>
+    <AppBar position="fixed" sx={{ top: 0, backgroundColor: 'primary.main' }}>
       <Toolbar>
         <Grid container justifyContent="space-around">
           <Grid item display="flex" alignItems="center">

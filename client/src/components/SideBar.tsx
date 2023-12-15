@@ -13,7 +13,7 @@ export default function Sidebar(): JSX.Element {
 
   return (
     <Drawer variant="permanent" sx={{ width: 240, flexShrink: 0, zIndex: 0 }}>
-      <Box sx={{ width: 240, marginTop: '64px', transition: 'margin .2s ease-out' }}>
+      <Box sx={{ width: 200, marginTop: '64px', transition: 'margin .2s ease-out' }}>
         <Typography variant="h6" align="center" fontWeight="bold" p={2}>
           {user.status === 'authenticated' ? `Welcome, ${user.name} !` : 'Hello'}
         </Typography>
