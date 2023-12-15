@@ -15,6 +15,10 @@ const theme = createTheme({
       default: '#F0F1B7', // Цвет фона
     },
   },
+  typography: {
+    fontFamily: 'Open Sans, sans-serif', // Добавьте Open Sans как основной шрифт
+    fontWeightBold: 700, 
+  },
 });
 
 export default theme;

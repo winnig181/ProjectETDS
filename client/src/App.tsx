@@ -13,6 +13,7 @@ import { apiNotesService } from './services/notes';
 import { thunkNotesLoad } from './redux/slices/notes/createAsyncThunk';
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
+import Sidebar from './components/SideBar';
 
 
 function App(): JSX.Element {
@@ -61,6 +62,7 @@ function App(): JSX.Element {
 
       <>
         <NavBar />  
+        <Sidebar/>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route
