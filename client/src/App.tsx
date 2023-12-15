@@ -13,6 +13,8 @@ import { apiNotesService } from './services/notes';
 import { thunkNotesLoad } from './redux/slices/notes/createAsyncThunk';
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
+import Sidebar from './components/SideBar';
+
 import LkPage from './pages/LkPage';
 import Profile from './components/lk/LkProfile';
 
@@ -20,7 +22,7 @@ import Profile from './components/lk/LkProfile';
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
-  
+
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -63,6 +65,7 @@ function App(): JSX.Element {
 
       <>
         <NavBar />  
+        <Sidebar/>
         <Routes>
           <Route path="/" element={<MainPage />} />
           

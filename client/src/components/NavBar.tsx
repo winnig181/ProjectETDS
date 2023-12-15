@@ -1,26 +1,26 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Grid, Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import ReactIcon from './Icons/Icon';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunk';
+import UserIcon from './Icons/Icon';
 
 export default function NavBar(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
   console.log('>>>>>>>>>>>>>>>auth', auth);
-  const {user} = auth;
+  const { user } = auth;
 
   const dispatch = useAppDispatch();
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'success.main'}}>
+    <AppBar position="fixed" sx={{ top: 0, backgroundColor: 'primary.main' }}>
       <Toolbar>
         <Grid container justifyContent="space-around">
-          <Grid item display="flex">
+          <Grid item display="flex" alignItems="center">
             <Box sx={{ marginRight: '20px' }}>
-              <ReactIcon />
+              <UserIcon />
             </Box>
-            <Typography variant="h6">
+            <Typography variant="h6" fontWeight="bold">
               {user.status === 'authenticated' ? `Welcome, ${user.name} !` : 'Hello'}
             </Typography>
           </Grid>
@@ -28,30 +28,41 @@ export default function NavBar(): JSX.Element {
           <Button color="inherit" component={NavLink} to="/lk">
               Личный кабинет
             </Button>
-            <Button color="inherit" component={NavLink} to="/">
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
               Главная
             </Button>
-            <Button color="inherit" component={NavLink} to="/notes">
-              Заметки
+          </Grid>
+          <Grid item>
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
+              Главная
             </Button>
-            <Button color="inherit" component={NavLink} to="/fav">
-              Избранное
+          </Grid>
+          <Grid item>
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
+              Главная
             </Button>
-            {user.status !== 'authenticated' ? (
-              <>
-                <Button color="inherit" component={NavLink} to="/login">
+          </Grid>
+          {user.status !== 'authenticated' ? (
+            <>
+              <Grid item>
+                <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/login">
                   Авторизация
                 </Button>
-                <Button color="inherit" component={NavLink} to="/registration">
+              </Grid>
+
+              <Grid item>
+                <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/registration">
                   Регистрация
                 </Button>
-              </>
-            ) : (
-              <Button color="inherit" onClick={() => void dispatch(thunkLogout())}>
+              </Grid>
+            </>
+          ) : (
+            <Grid item>
+              <Button color="inherit" sx={{ fontWeight: 'bold' }} onClick={() => void dispatch(thunkLogout())}>
                 Выйти
               </Button>
-            )}
-          </Grid>
+            </Grid>
+          )}
         </Grid>
       </Toolbar>
     </AppBar>
