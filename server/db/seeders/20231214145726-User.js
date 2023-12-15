@@ -1,4 +1,6 @@
-'use strict';
+
+
+const {hashSync} = require('bcrypt')
 
 const currentDate = new Date()
 const endDateValue = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000)
@@ -9,7 +11,7 @@ module.exports = {
     await queryInterface.bulkInsert('Users', [{
       name: 'John Doe',
       email: '1@1',
-      password: '1',
+      hashpass: hashSync('1', 10),
       nickName: 'milkman',
       phone: '+1 911 112 6969',
       avatar: 'johndoe.jpeg',
@@ -24,7 +26,7 @@ module.exports = {
     },{
       name: 'Пассажир метро',
       email: '2@2',
-      password: '2',
+      hashpass: hashSync('2', 10),
       nickName: 'MetroMan',
       phone: '+7 928 *** 01 91',
       avatar: 'johndoe.jpeg',
