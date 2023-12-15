@@ -4,7 +4,7 @@ import { Container, Typography } from '@mui/material';
 
 import MyReviewsList from '../components/lk/MyReviewsList';
 
-export default function LkPage(): JSX.Element {
+export default function LkReviewsPage(): JSX.Element {
   return (
     <Container sx={{ margin: 'auto' }}>
       <Typography

@@ -17,6 +17,7 @@ import Sidebar from './components/SideBar';
 
 import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
+import LkReviewsPage from './pages/LkReviewsPage';
 
 
 function App(): JSX.Element {
@@ -66,7 +67,35 @@ function App(): JSX.Element {
       <>
         <NavBar />  
         <Sidebar/>
-         
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          
+          <Route
+            element={
+              <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
+            }
+          >
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+          </Route>
+
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={auth.user.status !== 'authenticated'}
+                redirectPath="/login"
+              />
+            }
+          >
+            <Route path="/notes" element={<NotesPage />} />     
+            <Route path="/:noteId" element={<OneNotePage />} />
+
+          </Route>
+            <Route path="/lk" element={<LkPage />} />
+            <Route path="/lk/profile" element={<LkProfile />} />
+            <Route path="/lk/reviews" element={<LkReviewsPage />} />
+            
+        </Routes>
       </>
 
   );
