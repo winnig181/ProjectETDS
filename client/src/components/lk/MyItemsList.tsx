@@ -10,11 +10,11 @@ import ReviewCard from './ReviewCard';
 // }
 
 export default function MyItemsList(): JSX.Element {
-  const items = useAppSelector((state) => state.itemsSlice);
+  const items = useAppSelector((state) => state.itemsSlice.items);
   const auth = useAppSelector((state) => state.authSlice.user);
   const { user } = auth;
   console.log('>>>>user:', user);
-  const myItems = items.filter((item) => userId === user.id);
+  const myItems = items.filter((item) => item.userId === user.id);
   return (
     <Grid container spacing={1}>
       {myItems.map((item: ItemType) => (

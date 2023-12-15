@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { Userreview,User } = require("../../db/models");
+const { Userreview, User } = require("../../db/models");
 // const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
 const apiReviewsRouter = express.Router();
@@ -15,6 +15,7 @@ apiReviewsRouter
       });
       return res.json(reviews);
     } catch (error) {
+      console.log(error);
       return res.status(500).json(error);
     }
   })
