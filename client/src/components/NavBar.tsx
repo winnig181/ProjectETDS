@@ -7,8 +7,8 @@ import UserIcon from './Icons/Icon';
 
 export default function NavBar(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
-  console.log('>>>>>>>>>>>>>>>auth', auth);
   const { user } = auth;
+  console.log('>>>>>>>>>>>>>>>auth', user);
 
   const dispatch = useAppDispatch();
 
@@ -20,9 +20,7 @@ export default function NavBar(): JSX.Element {
             <Box sx={{ marginRight: '20px' }}>
               <UserIcon />
             </Box>
-            <Typography variant="h6" fontWeight="bold">
-              {user.status === 'authenticated' ? `Welcome, ${user.name} !` : 'Hello'}
-            </Typography>
+            
           </Grid>
           <Grid item>
           <Button color="inherit" component={NavLink} to="/lk">
@@ -41,6 +39,9 @@ export default function NavBar(): JSX.Element {
             <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
               Главная
             </Button>
+            <Typography variant="h6" fontWeight="bold">
+              {user.status === 'authenticated' ? `Welcome, ${user.name} !` : 'Hello'}
+            </Typography>
           </Grid>
           {user.status !== 'authenticated' ? (
             <>
