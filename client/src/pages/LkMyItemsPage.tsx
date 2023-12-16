@@ -5,13 +5,13 @@ import MyItemsList from '../components/lk/MyItemsList';
 
 export default function LkPage(): JSX.Element {
   return (
-    <Container sx={{ margin: 'auto', marginTop:'20px' }}>
+    <Container sx={{marginTop:50 }}>
       <Typography
         variant="h5"
         component="div"
         gutterBottom
         // color="textSecondary"
-        style={{ marginTop: '40px' }}
+        style={{ marginTop: '40px',marginBottom: '40px' }}
       >
         Мои предметы
       </Typography>

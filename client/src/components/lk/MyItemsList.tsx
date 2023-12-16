@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { Card, CardActions, Container, Grid } from '@mui/material';
 import { useAppSelector } from '../../redux/hook';
-import type { ReviewType } from '../../types/review/review';
-import ReviewCard from './ReviewCard';
+import type { ItemType } from '../../types/item/item';
+import LkMyItemCard from './LkMyItemCard';
 
 // type PropsLkCard = {
 //   text: string;
@@ -11,17 +11,20 @@ import ReviewCard from './ReviewCard';
 
 export default function MyItemsList(): JSX.Element {
   const items = useAppSelector((state) => state.itemsSlice.items);
-  const auth = useAppSelector((state) => state.authSlice.user);
-  const { user } = auth;
+  const user = useAppSelector((state) => state.authSlice.user);
+
   console.log('>>>>user:', user);
+  console.log('>>>>items:', items);
   const myItems = items.filter((item) => item.userId === user.id);
   return (
-    <Grid container spacing={1}>
+    <Grid container rowSpacing={2} columnSpacing={4} justifyContent="flex-start">
+      {/* <Grid item xs={12} sm={12} md={6}> */}
       {myItems.map((item: ItemType) => (
-        <Grid key={item.id} item xs={2}>
-          <ItemCard item={item} />
+        <Grid key={item.id} item xs={12} sm={12} md={6}>
+          <LkMyItemCard item={item} />
         </Grid>
       ))}
+     {/* </Grid>  */}
     </Grid>
   );
 }
