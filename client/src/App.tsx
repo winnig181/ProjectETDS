@@ -17,6 +17,7 @@ import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
+import MyItemsList from './components/lk/MyItemsList';
 
 
 function App(): JSX.Element {
@@ -67,7 +68,7 @@ function App(): JSX.Element {
 
       <>
         <NavBar />  
-        <Sidebar/>
+        {/* <Sidebar/> */}
         <Routes>
           <Route path="/" element={<MainPage />} />
           
@@ -95,6 +96,8 @@ function App(): JSX.Element {
             <Route path="/lk" element={<LkPage />} />
             <Route path="/lk/profile" element={<LkProfile />} />
             <Route path="/lk/reviews" element={<LkReviewsPage />} />
+            <Route path="/lk/my-items" element={<MyItemsList />} />
+            
             
         </Routes>
       </>

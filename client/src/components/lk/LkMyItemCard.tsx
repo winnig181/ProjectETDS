@@ -17,17 +17,17 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
   const { price, title, description, img1, img2, img3, condition, status, hidden, subCategoryId } =
     item;
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card sx={{ display: 'flex', minWidth: 450,padding:1, justifyContent:"space-between" }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
+        <CardContent>
+          <Typography component="div" variant="h4">
             {title}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             {description}
           </Typography>
-          <Typography component="div" variant="h5">
-            Цена: {price}
+          <Typography component="div" variant="h6">
+            Цена (за день): {price} 
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             Подкатегория: {subCategoryId}
@@ -38,21 +38,26 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
           <Typography variant="subtitle1" color="text.secondary" component="div">
             Статус: {status}
           </Typography>
+          <CardActions>
+            {/* <Stack direction="row" spacing={2}> */}
+            <Button size="medium" variant="outlined">
+              Изменить
+            </Button>
+            <Button size="medium" variant="contained">
+              {hidden ? 'Отобразить' : 'Спрятать'}
+            </Button>
+            <Button variant="outlined" startIcon={<DeleteIcon />}>
+              Удалить
+            </Button>
+          </CardActions>
         </CardContent>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardMedia component="img" sx={{ width: 100 }} image="/public/img/vite.svg" alt="img1" />
+      <Box sx={{ display: 'flex', flexDirection: 'column',alignItems:"center"
+    }}>
+        <CardMedia component="img" sx={{ minWidth: 100 }} image="/public/img/vite.svg" alt="img1" />
         <CardMedia component="img" sx={{ minWidth: 100 }} image="/public/img/vite.svg" alt="img2" />
       </Box>
-      <CardActions>
-        {/* <Stack direction="row" spacing={2}> */}
-        <Button size="small" variant="contained">
-          {hidden ? 'Отобразить' : 'Спрятать от показа'}
-        </Button>
-        <Button variant="outlined" startIcon={<DeleteIcon />}>
-          Удалить с сайта
-        </Button>
-      </CardActions>
+
       {/* <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
         </Box> */}
     </Card>
