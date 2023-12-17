@@ -68,7 +68,7 @@ function App(): JSX.Element {
 
       <>
         <NavBar />  
-        {/* <Sidebar/> */}
+        <Sidebar/>
         <Routes>
           <Route path="/" element={<MainPage />} />
           
