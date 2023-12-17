@@ -1,3 +1,5 @@
+import type { UserType } from "../auth";
+
 export type ReviewType = {
   id: number;
   userId: number;
@@ -8,6 +10,7 @@ export type ReviewType = {
   isFav: boolean;
   createdAt: Date;
   updatedAt: Date;
+  User?:UserType;
 };
 
 export type AddReviewFormData = {

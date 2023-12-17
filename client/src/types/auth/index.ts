@@ -4,6 +4,7 @@ export type UserType = {
   email: string;
   nickName: string;
   phone: string;
+  about:string;
   avatar: string;
   city: string;
   metro: string;
