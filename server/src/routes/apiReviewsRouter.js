@@ -8,9 +8,11 @@ const apiReviewsRouter = express.Router();
 apiReviewsRouter
   .route("/")
   .get(async (req, res) => {
+    // console.log('>>!!!!>',res.locals.user);
     try {
       const reviews = await Userreview.findAll({
         include: User,
+        // where:{userId: res.locals.user},
         order: [["createdAt", "DESC"]],
       });
       return res.json(reviews);

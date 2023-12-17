@@ -24,6 +24,7 @@ authRouter.post("/login", async (req, res) => {
     const { accessToken, refreshToken } = generateTokens({
       user: plainUser,
     });
+    // console.log('>>>>>>>>>>>>>>>>>>>>refreshToken',refreshToken);
     res
       .cookie(jwtConfig.refresh.name, refreshToken, cookiesConfig.refresh)
       .status(200)

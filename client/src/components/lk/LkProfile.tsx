@@ -18,6 +18,7 @@ export default function LkProfile(): JSX.Element {
     nickName,
     email,
     phone,
+    about,
     avatar,
     city,
     metro,
@@ -90,6 +91,9 @@ export default function LkProfile(): JSX.Element {
             </Grid>
             <Grid item xs={2} sm={6} md={6}>
               <p>Email: {email}</p>
+            </Grid>
+            <Grid item xs={2} sm={6} md={6}>
+              <p>:Обо мне: {about}</p>
             </Grid>
             <Grid item xs={2} sm={6} md={6}>
               <p>Тел.: {publicPhone || phone}</p>

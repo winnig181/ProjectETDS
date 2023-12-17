@@ -16,6 +16,7 @@ type PropsReviewCard = {
 export default function ReviewCard({review}: PropsReviewCard):JSX.Element {
   const formattedDate = format(new Date(review.createdAt), 'd MMMM yyyy', { locale: ru });
   console.log(review);
+  const target = review.User;
   
 
   return (
@@ -26,7 +27,7 @@ export default function ReviewCard({review}: PropsReviewCard):JSX.Element {
         Дата отзыва: {formattedDate}
       </Typography>
       <Typography variant="h6" component="div">
-        на кого отзыв: {review.targetId}
+        о пользователе: {target?.name}
       </Typography>
       <Typography variant="body2">
       {review.review}
