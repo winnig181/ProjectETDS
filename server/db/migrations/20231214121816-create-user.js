@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         unique: true
       },
       hashpass: {
@@ -24,36 +24,39 @@ module.exports = {
         type: Sequelize.TEXT
       },
       phone: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       publicPhone: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       avatar: {
         type: Sequelize.TEXT
       },
       about: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       city: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING,
       },
       metro: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       isActivated:{
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       activationLink: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
+
       }
     });
   },

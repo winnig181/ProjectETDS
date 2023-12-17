@@ -10,6 +10,17 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      review: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      rating: {
+        type: Sequelize.INTEGER,
+      },
+      targetId: {
+        type: Sequelize.BIGINT,
         references: {
           model: "Users",
           key: "id",
@@ -17,22 +28,15 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
       },
-      review: {
-        type: Sequelize.TEXT,
-      },
-      rating: {
-        type: Sequelize.INTEGER,
-      },
-      targetId: {
-        type: Sequelize.BIGINT,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
     });
   },
