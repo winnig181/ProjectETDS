@@ -23,10 +23,11 @@ apiItemsRouter
     try {
       const items = await Item.findAll({
         order: [["createdAt", "DESC"]],
-        include: User,
+        // include: User,
       });
       return res.json(items);
     } catch (error) {
+      console.log(error);
       return res.status(500).json(error);
     }
   })

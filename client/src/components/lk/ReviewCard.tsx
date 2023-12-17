@@ -15,8 +15,11 @@ type PropsReviewCard = {
 
 export default function ReviewCard({review}: PropsReviewCard):JSX.Element {
   const formattedDate = format(new Date(review.createdAt), 'd MMMM yyyy', { locale: ru });
+  console.log(review);
+  
+
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{ minWidth: 400, minHeight:200 }}>
     <CardContent>
     <Rating name="read-only" value={review.rating} readOnly />
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -30,7 +33,7 @@ export default function ReviewCard({review}: PropsReviewCard):JSX.Element {
       </Typography>
     </CardContent>
     <CardActions>
-      <Button size="small">Learn More</Button>
+      <Button size="small">Удалить отзыв</Button>
     </CardActions>
   </Card >
   );

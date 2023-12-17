@@ -3,7 +3,7 @@ import type { ItemType, AddItemFormData } from '../types/item/item';
 
 export const apiItemsService = axios.create({
   // baseURL: 'http://localhost:3000/api/v1/products',
-  baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}products`,
+  baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}items`,
 });
 
 class ItemsService {

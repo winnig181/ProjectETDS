@@ -5,12 +5,9 @@ import NavBar from './components/NavBar';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
-import OneNotePage from './pages/OneNotePage';
 import { useAppDispatch, useAppSelector } from './redux/hook';
-import NotesPage from './pages/NotesPage';
-import { apiNotesService } from './services/notes';
 
-import { thunkNotesLoad } from './redux/slices/notes/createAsyncThunk';
+
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
 import Sidebar from './components/SideBar';
@@ -18,6 +15,9 @@ import Sidebar from './components/SideBar';
 import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
+import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
+import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
+import MyItemsList from './components/lk/MyItemsList';
 
 
 function App(): JSX.Element {
@@ -27,46 +27,48 @@ function App(): JSX.Element {
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
-    void dispatch(thunkNotesLoad());
+    void dispatch(thunkItemsLoad());
+    void dispatch(thunkReviewsLoad());
+
+    // void dispatch(thunkNotesLoad());
   }, []);
 
-  useEffect(() => {
-    const requestInterceptor = apiNotesService.interceptors.request.use(
-      (config) => {
-        if (!config.headers.Authorization) {
-          config.headers.Authorization = `Bearer ${auth.accessToken}`;
-        }
-        return config;
-      },
-      (err) => Promise.reject(err),
-    );
-    const responseInterceptor = apiNotesService.interceptors.response.use(
-      (res) => res,
-      async (err: AxiosError & { config: { sent?: boolean } }) => {
-        const prevRequest = err.config;
-        console.log('prevRequest>>>>>>>>>>>:', prevRequest);
-        if (err.response?.status === 403 && !prevRequest.sent) {
-          prevRequest.sent = true;
-          const newAccessToken = await dispatch(thunkAuthRefresh()).unwrap();
-          console.log('----->newAccessToken', newAccessToken);
-          prevRequest.headers.Authorization = `Bearer ${newAccessToken.accessToken}`;
-          return apiNotesService(prevRequest);
-        }
-        return Promise.reject(err);
-      },
-    );
-
-    return () => {
-      apiNotesService.interceptors.request.eject(requestInterceptor);
-      apiNotesService.interceptors.response.eject(responseInterceptor);
-    };
-  }, [auth.accessToken]);
+  // useEffect(() => {
+  //   const requestInterceptor = apiNotesService.interceptors.request.use(
+  //     (config) => {
+  //       if (!config.headers.Authorization) {
+  //         config.headers.Authorization = `Bearer ${auth.accessToken}`;
+  //       }
+  //       return config;
+  //     },
+  //     (err) => Promise.reject(err),
+  //   );
+  //   const responseInterceptor = apiNotesService.interceptors.response.use(
+  //     (res) => res,
+  //     async (err: AxiosError & { config: { sent?: boolean } }) => {
+  //       const prevRequest = err.config;
+  //       console.log('prevRequest>>>>>>>>>>>:', prevRequest);
+  //       if (err.response?.status === 403 && !prevRequest.sent) {
+  //         prevRequest.sent = true;
+  //         const newAccessToken = await dispatch(thunkAuthRefresh()).unwrap();
+  //         console.log('----->newAccessToken', newAccessToken);
+  //         prevRequest.headers.Authorization = `Bearer ${newAccessToken.accessToken}`;
+  //         return apiNotesService(prevRequest);
+  //       }
+  //       return Promise.reject(err);
+  //     },
+  //   );
+  //   return () => {
+  //     apiNotesService.interceptors.request.eject(requestInterceptor);
+  //     apiNotesService.interceptors.response.eject(responseInterceptor);
+  //   };
+  // }, [auth.accessToken]);
 
   return (
 
       <>
         <NavBar />  
-        <Sidebar/>
+        {/* <Sidebar/> */}
         <Routes>
           <Route path="/" element={<MainPage />} />
           
@@ -87,13 +89,15 @@ function App(): JSX.Element {
               />
             }
           >
-            <Route path="/notes" element={<NotesPage />} />     
-            <Route path="/:noteId" element={<OneNotePage />} />
+            {/* <Route path="/notes" element={<NotesPage />} />     
+            <Route path="/:noteId" element={<OneNotePage />} /> */}
 
           </Route>
             <Route path="/lk" element={<LkPage />} />
             <Route path="/lk/profile" element={<LkProfile />} />
             <Route path="/lk/reviews" element={<LkReviewsPage />} />
+            <Route path="/lk/my-items" element={<MyItemsList />} />
+            
             
         </Routes>
       </>

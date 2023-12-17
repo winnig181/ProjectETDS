@@ -12,11 +12,11 @@ export default function LkReviewsPage(): JSX.Element {
         component="div"
         gutterBottom
         // color="textSecondary"
-        style={{ marginTop: '40px' }}
+        style={{ marginTop: '40px',marginBottom: '40px'  }}
       >
         Мои отзывы на других пользователей
       </Typography>
-      <MyReviewsList />
+      <MyReviewsList/>
     </Container>
   );
 }

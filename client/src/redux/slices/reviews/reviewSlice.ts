@@ -69,6 +69,6 @@ export const reviewsSlice = createSlice({
   },
 });
 
-// export const { setCurrentNote, clearCurrentNote } = notesSlice.actions;
+// export const { setCurrentNote, clearCurrentNote } = reviewsSlice.actions;
 
 export default reviewsSlice.reducer;

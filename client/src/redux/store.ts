@@ -6,7 +6,7 @@ import itemReducer from './slices/items/itemsSlice';
 
 export const store = configureStore({
   reducer: {
-    notesSlice: noteReducer,
+    // notesSlice: noteReducer,
     authSlice: authReducer,
 
     itemsSlice: itemReducer,

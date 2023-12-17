@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { UserReview,User } = require("../../db/models");
+const { Userreview, User } = require("../../db/models");
 // const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
 const apiReviewsRouter = express.Router();
@@ -9,12 +9,13 @@ apiReviewsRouter
   .route("/")
   .get(async (req, res) => {
     try {
-      const reviews = await UserReview.findAll({
+      const reviews = await Userreview.findAll({
         include: User,
         order: [["createdAt", "DESC"]],
       });
       return res.json(reviews);
     } catch (error) {
+      console.log(error);
       return res.status(500).json(error);
     }
   })
@@ -29,7 +30,7 @@ apiReviewsRouter
           // при клике на Оставить отзыв в хэндлер нужно передать targetId
         targetId
        } = req.body;
-        const newReview = await UserReview.create({
+        const newReview = await Userreview.create({
           review,
           rating,
           targetId,
@@ -44,15 +45,15 @@ apiReviewsRouter
   );
 
   apiReviewsRouter.delete("/:id", async (req, res) => {
-  await UserReview.destroy({ where: { id: req.params.id } });
+  await Userreview.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
 });
 
 apiReviewsRouter.put("/:id", async (req, res) => {
   try {
-    const review = await UserReview.findByPk(req.params.id);
+    const review = await Userreview.findByPk(req.params.id);
     await review.update(req.body);
-    const newReview = await UserReview.findByPk(review.id);
+    const newReview = await Userreview.findByPk(review.id);
     res.status(200).json(newReview);
   } catch (error) {
     console.log(error);
