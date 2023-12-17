@@ -72,33 +72,19 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<MainPage />} />
           
-          <Route
-            element={
-              <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
-            }
-          >
+          <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" /> } >
             <Route path="/login" element={<LoginPage />} />
             <Route path="/registration" element={<RegistrationPage />} />
           </Route>
 
-          <Route
-            element={
-              <PrivateRouter
-                isAllowed={auth.user.status !== 'authenticated'}
-                redirectPath="/login"
-              />
-            }
-          >
+          <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login"/> } >
             {/* <Route path="/notes" element={<NotesPage />} />     
             <Route path="/:noteId" element={<OneNotePage />} /> */}
-
           </Route>
             <Route path="/lk" element={<LkPage />} />
             <Route path="/lk/profile" element={<LkProfile />} />
             <Route path="/lk/reviews" element={<LkReviewsPage />} />
             <Route path="/lk/my-items" element={<MyItemsList />} />
-            
-            
         </Routes>
       </>
 
