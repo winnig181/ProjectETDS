@@ -18,6 +18,7 @@ import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
 import MyItemsList from './components/lk/MyItemsList';
+import { Container } from '@mui/material';
 
 
 function App(): JSX.Element {
@@ -68,24 +69,27 @@ function App(): JSX.Element {
 
       <>
         <NavBar />  
-        <Sidebar/>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          
-          <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" /> } >
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/registration" element={<RegistrationPage />} />
-          </Route>
+        {/* <Sidebar/> */}
+        <Container style={{ marginTop: '74px' }}>
 
-          <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login"/> } >
-            {/* <Route path="/notes" element={<NotesPage />} />     
-            <Route path="/:noteId" element={<OneNotePage />} /> */}
-          </Route>
-            <Route path="/lk" element={<LkPage />} />
-            <Route path="/lk/profile" element={<LkProfile />} />
-            <Route path="/lk/reviews" element={<LkReviewsPage />} />
-            <Route path="/lk/my-items" element={<MyItemsList />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            
+            <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" /> } >
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/registration" element={<RegistrationPage />} />
+            </Route>
+
+            <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login"/> } >
+              {/* <Route path="/notes" element={<NotesPage />} />     
+              <Route path="/:noteId" element={<OneNotePage />} /> */}
+            </Route>
+              <Route path="/lk" element={<LkPage />} />
+              <Route path="/lk/profile" element={<LkProfile />} />
+              <Route path="/lk/reviews" element={<LkReviewsPage />} />
+              <Route path="/lk/my-items" element={<MyItemsList />} />
+          </Routes>
+        </Container>
       </>
 
   );
