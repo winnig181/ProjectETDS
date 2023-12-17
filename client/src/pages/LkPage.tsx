@@ -10,7 +10,7 @@ export default function LkPage(): JSX.Element {
     <Grid container rowSpacing={2} columnSpacing={4} justifyContent="center">
       <Grid item xs={12} sm={6} md={4}>
         <NavLink to="/lk/profile">
-          <LkCard text="Изменить профиль" />
+          <LkCard text="Личный профиль" />
         </NavLink>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
@@ -19,7 +19,7 @@ export default function LkPage(): JSX.Element {
         </NavLink>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
-        <NavLink to="/lk/deals">
+        <NavLink to="/lk/my-deals">
           <LkCard text="Мои сделки" />
         </NavLink>
       </Grid>

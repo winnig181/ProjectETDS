@@ -23,7 +23,6 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
-        allowNull: false,
       },
       itemId: {
         type: Sequelize.INTEGER,

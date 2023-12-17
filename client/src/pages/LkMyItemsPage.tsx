@@ -3,7 +3,7 @@ import React from 'react';
 import { Container, Typography } from '@mui/material';
 import MyItemsList from '../components/lk/MyItemsList';
 
-export default function LkPage(): JSX.Element {
+export default function LkMyItemsPage(): JSX.Element {
   return (
     <Container sx={{marginTop:50 }}>
       <Typography

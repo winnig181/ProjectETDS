@@ -6,6 +6,7 @@ const authRouter = require('./routes/authRouter');
 const tokensRouter = require('./routes/tokensRouter');
 const apiReviewsRouter = require('./routes/apiReviewsRouter');
 const apiItemsRouter = require('./routes/apiItemsRouter');
+const apiDealsRouter = require('./routes/apiDealsRouter');
 require('dotenv').config();
 
 const app = express();
@@ -28,6 +29,8 @@ app.use('/api/v1/tokens', tokensRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/reviews', apiReviewsRouter);
 app.use('/api/v1/items', apiItemsRouter);
+app.use('/api/v1/deals', apiDealsRouter);
+
 
 
 app.listen(PORT, () =>

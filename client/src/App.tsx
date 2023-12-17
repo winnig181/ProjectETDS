@@ -18,6 +18,9 @@ import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
 import MyItemsList from './components/lk/MyItemsList';
+import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
+import LkMyDealsPage from './pages/LkMyDealsPage';
+import LkMyItemsPage from './pages/LkMyItemsPage';
 
 
 function App(): JSX.Element {
@@ -29,6 +32,7 @@ function App(): JSX.Element {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkItemsLoad());
     void dispatch(thunkReviewsLoad());
+    void dispatch(thunkDealsLoad());
 
     // void dispatch(thunkNotesLoad());
   }, []);
@@ -96,7 +100,8 @@ function App(): JSX.Element {
             <Route path="/lk" element={<LkPage />} />
             <Route path="/lk/profile" element={<LkProfile />} />
             <Route path="/lk/reviews" element={<LkReviewsPage />} />
-            <Route path="/lk/my-items" element={<MyItemsList />} />
+            <Route path="/lk/my-items" element={<LkMyItemsPage />} />
+            <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
             
             
         </Routes>

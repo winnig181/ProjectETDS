@@ -36,7 +36,7 @@ apiItemsRouter
     // verifyAccessToken,
     async (req, res) => {
       try {
-        if (!req.body?.title||!req.body?.title|| !req.body?.description || !req.body?.price || !req.body?.condition || !req.body?.subCategoryId)
+        if (!req.body?.title||!req.body?.description || !req.body?.price || !req.body?.condition || !req.body?.subCategoryId)
           return res.status(500).json({ message: "Empty reqbody" });
         const { price,title, description, img1,img2,img3,condition, status,hidden,subCategoryId} = req.body;
         const newItem = await Item.create({
