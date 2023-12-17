@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { Button, Grid } from '@mui/material';
+import { Avatar, Button, Grid, Tooltip } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunk';
@@ -58,7 +58,7 @@ export default function NavBar(): JSX.Element {
 
   const auth = useAppSelector((store) => store.authSlice);
   const { user } = auth;
-  console.log('>>>>>>>>>>>>>>>auth', user);
+  // console.log('>>>>>>>>>>>>>>>auth', auth);
 
   const dispatch = useAppDispatch();
 
@@ -113,6 +113,11 @@ export default function NavBar(): JSX.Element {
               </Button>
             </Grid>
           )}
+            <Tooltip title="Open settings">
+              <IconButton sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src={user.avatar} />
+              </IconButton>
+            </Tooltip>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

@@ -20,15 +20,16 @@ authRouter.post("/login", async (req, res) => {
     if (!isValid) return res.status(400).json({ message: "Invalid password" });
 
     const plainUser = user.get();
+    console.log('>>>>>>>>>>>>>>>>>>>>юзер на беке',plainUser);
     delete plainUser.hashpass;
     const { accessToken, refreshToken } = generateTokens({
       user: plainUser,
+ 
     });
-    // console.log('>>>>>>>>>>>>>>>>>>>>refreshToken',refreshToken);
     res
       .cookie(jwtConfig.refresh.name, refreshToken, cookiesConfig.refresh)
       .status(200)
-      .json({ accessToken, user: plainUser });
+      .json({ accessToken, user: plainUser});
   } catch (error) {
     console.log('registration error',error);
     res.status(500).json(error);

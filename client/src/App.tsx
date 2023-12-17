@@ -1,23 +1,19 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import type { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import NavBar from './components/NavBar';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import { useAppDispatch, useAppSelector } from './redux/hook';
-
-
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
-import Sidebar from './components/SideBar';
-
 import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
+import MyItemsList from './components/lk/MyItemsList';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
-import MyItemsList from './components/lk/MyItemsList';
 import { Container } from '@mui/material';
 
 
