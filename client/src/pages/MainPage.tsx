@@ -20,7 +20,7 @@ export default function MainPage(): JSX.Element {
   ];
 
   return (
-    <Container sx={{ backgroundColor: 'background.default' , minHeight: '100vh' }}>
+    <Container sx={{ minHeight: '100vh' }}>
       <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
         Выберите категорию:
       </Typography>
