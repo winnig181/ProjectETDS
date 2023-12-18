@@ -3,11 +3,12 @@ import authReducer from './slices/auth/authSlice';
 import reviewReducer from './slices/reviews/reviewSlice';
 import itemReducer from './slices/items/itemsSlice';
 import dealReducer from './slices/deals/dealsSlice';
+import categoriesReducer from './slices/categories/categoriesSlice'
 
 export const store = configureStore({
   reducer: {
     authSlice: authReducer,
-
+    categoriesSlice: categoriesReducer,
     itemsSlice: itemReducer,
     reviewsSlice: reviewReducer,
     dealsSlice: dealReducer,
