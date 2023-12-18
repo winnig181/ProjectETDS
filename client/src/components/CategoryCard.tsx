@@ -4,11 +4,13 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import type { CategoryType } from '../types/category';
 
 type CategoryProps = {
-  category: CategoryType;
-};
+  category: {
+    categoryName: string
+    id: number
+  }
+}
 
 export default function CategoryCard({ category }: CategoryProps): JSX.Element {
   const clickHandler = () => {
@@ -17,7 +19,7 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea onClick={clickHandler}>
+      <CardActionArea style={{ cursor: 'pointer' }} onClick={clickHandler}>
         <CardMedia
           component="img"
           height="140"

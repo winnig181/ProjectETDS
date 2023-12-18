@@ -14,7 +14,7 @@ module.exports = {
       hashpass: hashSync('1', 10),
       nickName: 'milkman',
       phone: '+1 911 112 6969',
-      avatar: 'johndoe.jpeg',
+      avatar: 'https://avatars.mds.yandex.net/i?id=5c55dc82707935b02b01116c65f64c31f8e059e5-4112653-images-thumbs&n=13',
       about: 'driver, bring some milk',
       city: 'San Francisco',
       metro: null,

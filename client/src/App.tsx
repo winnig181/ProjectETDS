@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import type { AxiosError } from 'axios';
 import { apiReviewsService } from "./services/reviewService";
@@ -9,11 +9,14 @@ import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import { useAppDispatch, useAppSelector } from './redux/hook';
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
-import Sidebar from './components/SideBar';
 import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
+import MyItemsList from './components/lk/MyItemsList';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
+import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
+import { Container } from '@mui/material';
+import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
 import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
@@ -36,16 +39,19 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <Loader isLoading={auth.user.status === 'pending'}>
+  
+      <Loader isLoading={auth.user.status === 'pending'}>
       <>
-        <NavBar />
-        {/* <Sidebar/> */}
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/categories/:id" element={<SubCatPage />} />  
+          <NavBar />  
+          {/* <Sidebar/> */}
+        <Container style={{ marginTop: '74px' }}>
+
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+                      <Route path="/categories/:id" element={<SubCatPage />} />  
           {/* <Route path="/subcategories/:id" element={<Размап карточек items одной категории />} />         */}
 
-          <Route
+              <Route
             element={
               <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
             }
@@ -65,9 +71,12 @@ function App(): JSX.Element {
             <Route path="/lk/reviews" element={<LkReviewsPage />} />
             <Route path="/lk/my-items" element={<LkMyItemsPage />} />
             <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
-          </Route>
+              
+              </Route>
         </Routes>
-      </>
+        </Container>
+        </>
+
     </Loader>
   );
 }
