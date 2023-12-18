@@ -2,18 +2,19 @@ const express = require("express");
 
 const { Userreview, User } = require("../../db/models");
 const verifyAccessToken = require("../middlewares/verifyAccessToken");
-// const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
 const apiReviewsRouter = express.Router();
 
 apiReviewsRouter
   .route("/")
-  .get(verifyAccessToken, async (req, res) => {
-    console.log('>>!!!!>',res.locals.user);
+  .get(
+    verifyAccessToken, 
+    async (req, res) => {
+    
     try {
       const reviews = await Userreview.findAll({
         include: User,
-        // where:{userId: res.locals.user},
+        where:{userId: res.locals.user.id},
         order: [["createdAt", "DESC"]],
       });
       return res.json(reviews);

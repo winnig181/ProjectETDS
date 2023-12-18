@@ -55,7 +55,7 @@ module.exports = {
       updatedAt: new Date()
     },
     ])
-    await queryInterface.bulkInsert('Subсategories', [{
+    await queryInterface.bulkInsert('Subcategories', [{
       categoryId: 1,
       subCategoryName: 'Видеоигры',
       createdAt: new Date(),

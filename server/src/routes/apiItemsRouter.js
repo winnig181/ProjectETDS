@@ -1,29 +1,21 @@
 const express = require("express");
-// const multer = require('multer');
-
-// const storage = multer.diskStorage({
-//   destination(req, file, cb) {
-//     cb(null, './public/img');
-//   },
-//   filename(req, file, cb) {
-//     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-//     cb(null, `${file.fieldname}-${uniqueSuffix}`);
-//   },
-// });
-// const upload = multer({ storage });
 
 const { Item, User } = require("../../db/models");
-// const verifyAccessToken = require("../middlewares/verifyAccessToken");
+const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
 const apiItemsRouter = express.Router();
 
 apiItemsRouter
   .route("/")
-  .get(async (req, res) => {
+  .get(
+    verifyAccessToken, 
+    async (req, res) => {
+      
     try {
       const items = await Item.findAll({
         order: [["createdAt", "DESC"]],
-        // include: User,
+        include: { model: User, as: 'ownerDetails' },
+        // where:{userId: res.locals.user.id},
       });
       return res.json(items);
     } catch (error) {
