@@ -20,11 +20,9 @@ import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
 
 
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
-
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -55,7 +53,7 @@ function App(): JSX.Element {
   //         const newAccessToken = await dispatch(thunkAuthRefresh()).unwrap();
   //         console.log('----->newAccessToken', newAccessToken);
   //         prevRequest.headers.Authorization = `Bearer ${newAccessToken.accessToken}`;
-  //         return apiNotesService(prevRequest);
+  //         return  (prevRequest);
   //       }
   //       return Promise.reject(err);
   //     },
@@ -67,7 +65,7 @@ function App(): JSX.Element {
   // }, [auth.accessToken]);
 
   return (
-
+  
       <>
         <NavBar />  
         {/* <Sidebar/> */}
@@ -76,17 +74,28 @@ function App(): JSX.Element {
           <Routes>
             <Route path="/" element={<MainPage />} />
             
-            <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" /> } >
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/registration" element={<RegistrationPage />} />
-            </Route>
-  
-              <Route path="/lk" element={<LkPage />} />
-              <Route path="/lk/profile" element={<LkProfile />} />
-              <Route path="/lk/reviews" element={<LkReviewsPage />} />
-              <Route path="/lk/my-items" element={<LkMyItemsPage />} />
-              {/* <Route path="/lk/my-deals" element={<LkMyDealsPage />} /> */ } 
-              {/* ломает все ^ */}
+            <Route
+          element={
+            <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
+          }
+        >
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
+        </Route>
+
+        <Route
+          element={
+            <PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />
+          }
+        >
+          {/* <Route path="/notes" element={<NotesPage />} />     
+            <Route path="/:noteId" element={<OneNotePage />} /> */}
+        </Route>
+        <Route path="/lk" element={<LkPage />} />
+        <Route path="/lk/profile" element={<LkProfile />} />
+        <Route path="/lk/reviews" element={<LkReviewsPage />} />
+        <Route path="/lk/my-items" element={<LkMyItemsPage />} />
+        <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
               
           </Routes>
         </Container>

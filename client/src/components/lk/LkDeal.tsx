@@ -5,14 +5,14 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
-import { format } from 'date-fns'; 
-import { ru } from 'date-fns/locale'; 
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
 import type { DealType } from '../../types/deal/deal';
 
 // type Props = {};
 
 export default function LkDeal({ deal }: { deal: DealType }): JSX.Element {
-  const {startDate,endDate,tenantApproveDeal,tenantCloseDeal} = deal;
+  const { startDate, endDate, tenantApproveDeal, tenantCloseDeal } = deal;
   const item = deal.Item.title;
   const owner = deal.ownerDetails.nickName;
   const formattedstartDate = format(new Date(startDate), 'd MMM yyyy', { locale: ru });
@@ -32,25 +32,33 @@ export default function LkDeal({ deal }: { deal: DealType }): JSX.Element {
           <Typography variant="body2" color="text.secondary">
             Наименование
           </Typography>
-          <Typography gutterBottom variant="subtitle1">{item}</Typography>
+          <Typography gutterBottom variant="subtitle1">
+            {item}
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography variant="body2" color="text.secondary">
             Владелец
           </Typography>
-          <Typography gutterBottom variant="subtitle1">{owner}</Typography>
+          <Typography gutterBottom variant="subtitle1">
+            {owner}
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography variant="body2" color="text.secondary">
             Начало срока
           </Typography>
-          <Typography gutterBottom variant="subtitle1">{formattedstartDate}</Typography>
+          <Typography gutterBottom variant="subtitle1">
+            {formattedstartDate}
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography variant="body2" color="text.secondary">
             Конец срока
           </Typography>
-          <Typography gutterBottom variant="subtitle1">{formattedendDate}</Typography>
+          <Typography gutterBottom variant="subtitle1">
+            {formattedendDate}
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <Typography variant="body2" color="text.secondary">
@@ -67,12 +75,12 @@ export default function LkDeal({ deal }: { deal: DealType }): JSX.Element {
             Вернул(-а)
           </Typography>
           <Checkbox
-            checked={tenantCloseDeal} 
+            checked={tenantCloseDeal}
             // onChange={handleChange}
             // inputProps={{ 'aria-label': 'controlled' }}
           />
         </Grid>
       </Grid>
-  </Paper>
+    </Paper>
   );
 }

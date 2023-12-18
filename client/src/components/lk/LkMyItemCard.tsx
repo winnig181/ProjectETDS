@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,6 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Box from '@mui/material/Box';
 import type { ItemType } from '../../types/item/item';
 
 type PropsLkMyItemCard = {
@@ -17,7 +17,7 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
   const { price, title, description, img1, img2, img3, condition, status, hidden, subCategoryId } =
     item;
   return (
-    <Card sx={{ display: 'flex', minWidth: 450,padding:1, justifyContent:"space-between" }}>
+    <Card sx={{ display: 'flex', minWidth: 450, padding: 1, justifyContent: 'space-between' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent>
           <Typography component="div" variant="h4">
@@ -27,7 +27,7 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
             {description}
           </Typography>
           <Typography component="div" variant="h6">
-            Цена (за день): {price} 
+            Цена (за день): {price}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             Подкатегория: {subCategoryId}
@@ -52,8 +52,7 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
           </CardActions>
         </CardContent>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column',alignItems:"center"
-    }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <CardMedia component="img" sx={{ minWidth: 100 }} image="/public/img/vite.svg" alt="img1" />
         <CardMedia component="img" sx={{ minWidth: 100 }} image="/public/img/vite.svg" alt="img2" />
       </Box>
