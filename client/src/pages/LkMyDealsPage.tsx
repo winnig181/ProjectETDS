@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Card, CardActions, Container, Grid } from '@mui/material';
 import { useAppSelector } from '../redux/hook';
 import type { DealType } from '../types/deal/deal';
-import LkDeal from '../components/lk/lkDeal';
+import LkDeal from '../components/lk/LkDeal';
 
 
 export default function LkMyDealsPage({}: Props): JSX.Element {
