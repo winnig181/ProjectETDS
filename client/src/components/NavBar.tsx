@@ -67,8 +67,7 @@ export default function NavBar(): JSX.Element {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{ top: 0, backgroundColor: 'primary.main' }}>
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }}
-          >
+          <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
           <Typography
@@ -81,54 +80,50 @@ export default function NavBar(): JSX.Element {
               {user.status === 'authenticated' ? `Welcome, ${user.name} !` : 'Hello'}
             </Typography>
           </Typography>
-          <Grid item>
-          <Button color="inherit" component={NavLink} to="/lk">
+          <Grid item sx={{ ml: 2, mr: 2 }}>
+            <Button color="inherit" component={NavLink} to="/lk">
               Личный кабинет
             </Button>
           </Grid>
-          <Grid item>
+          <Grid item sx={{ ml: 2, mr: 2 }}>
             <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
               Главная
             </Button>
-
           </Grid>
           {user.status !== 'authenticated' ? (
             <>
-              <Grid item>
+              <Grid item sx={{ ml: 2, mr: 2 }}>
                 <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/login">
                   Авторизация
                 </Button>
               </Grid>
-
-              <Grid item>
+              <Grid item sx={{ ml: 2, mr: 2 }}>
                 <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/registration">
                   Регистрация
                 </Button>
               </Grid>
             </>
           ) : (
-            <Grid item>
+            <Grid item sx={{ ml: 2, mr: 2 }}>
               <Button color="inherit" sx={{ fontWeight: 'bold' }} onClick={() => void dispatch(thunkLogout())}>
                 Выйти
               </Button>
             </Grid>
           )}
-            <Tooltip title="Open settings">
-              <IconButton sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={user.avatar} />
-              </IconButton>
-            </Tooltip>
+          <Tooltip title="Open settings">
+            <IconButton sx={{ p: 0, ml: 2, mr: 2 }}>
+              <Avatar alt="Remy Sharp" src={user.avatar} />
+            </IconButton>
+          </Tooltip>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
           </Search>
         </Toolbar>
       </AppBar>
+      {/* Ваш остальной код... */}
     </Box>
   );
 }

@@ -37,5 +37,5 @@ export type ItemsState = {
 
 export type ItemSliceState = {
   items: ItemType[];
-  // currentNote: ItemType | null;
+  // currentItem: ItemType | null;
 };

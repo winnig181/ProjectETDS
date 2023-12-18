@@ -72,7 +72,7 @@ module.exports = {
       updatedAt: new Date()
     },])
     await queryInterface.bulkInsert('Items', [{
-      title: 1,
+      title: 'Playgame',
       description: 'Heroes of Might and Magic 3',
       img1:'aaa',
       img2:'bbb',
@@ -86,7 +86,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      title: 1,
+      title: 'WTF it is',
       description: 'The Binding of Isaac',
       img1:'aaa',
       img2:'bbb',
@@ -100,7 +100,7 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      title: 1,
+      title: 'And this is...',
       description: 'Doom',
       img1:'aaa',
       img2:'bbb',
@@ -113,10 +113,25 @@ module.exports = {
       price: 42,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      title: 'The best home quiz ever',
+      description: 'Gnomy',
+      img1:'aaa',
+      img2:'bbb',
+      img3:'ccc',
+      condition:'as new',
+      status:'available',
+      hidden: false,
+      subCategoryId: 1,
+      userId: 2,
+      price: 50,
+      createdAt: new Date(),
+      updatedAt: new Date()
     },])
     await queryInterface.bulkInsert('Deals', [{
-      owner: 1,
-      tenant: 2,
+      ownerId: 1,
+      tenantId: 2,
       itemId: 1,
       startDate: currentDate,
       endDate: endDateValue,
@@ -127,8 +142,8 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      owner: 1,
-      tenant: 2,
+      ownerId: 1,
+      tenantId: 2,
       itemId: 2,
       startDate: currentDate,
       endDate: endDateValue,
@@ -139,8 +154,20 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      owner: 1,
-      tenant: 2,
+      ownerId: 2,
+      tenantId: 1,
+      itemId: 4,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: true,
+      ownerCloseDeal: false,
+      tenantApproveDeal: true,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      ownerId: 1,
+      tenantId: 2,
       itemId: 3,
       startDate: currentDate,
       endDate: endDateValue,

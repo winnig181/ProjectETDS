@@ -24,7 +24,6 @@ export default function LkProfile(): JSX.Element {
     metro,
     publicPhone,
     isActivated,
-    activationLink,
   } = user;
   return (
     <Container>
@@ -63,17 +62,10 @@ export default function LkProfile(): JSX.Element {
               <p>
                 {isActivated
                   ? 'Email подтвержден'
-                  : `Ссылка для подтверждения имейла:<p>${activationLink}</p>`}
+                  : `Email пока не подтвержден`}
               </p>
             </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Тел.: {phone}</p>
-            </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <NavLink to="#">
-                <p>Изменить пароль </p>
-              </NavLink>
-            </Grid>
+
           </Grid>
 
           <Typography
@@ -93,16 +85,21 @@ export default function LkProfile(): JSX.Element {
               <p>Email: {email}</p>
             </Grid>
             <Grid item xs={2} sm={6} md={6}>
-              <p>:Обо мне: {about}</p>
+              <p>Обо мне: {about}</p>
             </Grid>
             <Grid item xs={2} sm={6} md={6}>
-              <p>Тел.: {publicPhone || phone}</p>
+              <p>Телефон: {phone}</p>
             </Grid>
             <Grid item xs={2} sm={6} md={6}>
               <p>Город: {city}</p>
             </Grid>
             <Grid item xs={2} sm={6} md={6}>
               <p>Станция метро: {metro}</p>
+            </Grid>
+            <Grid item xs={2} sm={6} md={6}>
+              <NavLink to="#">
+                <p>Изменить / дополнить личные данные </p>
+              </NavLink>
             </Grid>
           </Grid>
         </Box>

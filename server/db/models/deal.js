@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({User, Item}) {
       Deal.belongsTo(Item, { foreignKey: 'itemId' });
-      Deal.belongsTo(User, { foreignKey: 'owner', as: 'ownerDetails' });
-      Deal.belongsTo(User, { foreignKey: 'tenant', as: 'tenantDetails' });
+      Deal.belongsTo(User, { foreignKey: 'ownerId', as: 'ownerDetails' });
+      // Deal.belongsTo(User, { foreignKey: 'tenantId', as: 'tenantDetails' });
     }
   }
   Deal.init({
-    owner: DataTypes.INTEGER,
-    tenant: DataTypes.INTEGER,
+    ownerId: DataTypes.INTEGER,
+    tenantId: DataTypes.INTEGER,
     itemId: DataTypes.INTEGER,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
