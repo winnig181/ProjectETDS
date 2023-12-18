@@ -4,15 +4,20 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import type { CategoryType } from '../types/category';
 
 type CategoryProps = {
-  category: CategoryType;
-};
+  category: {
+    categoryName: string
+    id: number
+  }
+}
 
 export default function CategoryCard({ category }: CategoryProps): JSX.Element {
+  const itemsRedirect = () => {
+    window.location.href = `/${category.categoryName}`
+  }
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} style={{ cursor: 'pointer' }} onClick={itemsRedirect}>
       <CardActionArea>
         <CardMedia
           component="img"

@@ -23,6 +23,7 @@ export type AuthState = {
   accessToken: string;
 };
 
+
 export type LoginFormData = {
   email: string;
   password: string;
