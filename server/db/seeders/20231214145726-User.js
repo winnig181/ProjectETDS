@@ -184,8 +184,7 @@ module.exports = {
       rating: 4,
       targetId: 1,
       createdAt: new Date(),
-      updatedAt: new Date()
-    },{
+      updatedAt: new Date()    },{
       userId: 1,
       review: 'Рыба-рыба, рыба-кит',
       rating: 5,

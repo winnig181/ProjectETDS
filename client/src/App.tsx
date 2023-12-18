@@ -18,6 +18,7 @@ import { Container } from '@mui/material';
 import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
+import AddDealPage from './pages/AddDealPage';
 
 
 function App(): JSX.Element {
@@ -69,7 +70,7 @@ function App(): JSX.Element {
       <>
         <NavBar />  
         {/* <Sidebar/> */}
-        <Container style={{ marginTop: '74px' }}>
+        <Container style={{ marginTop: '84px' }}>
 
           <Routes>
             <Route path="/" element={<MainPage />} />
@@ -91,6 +92,7 @@ function App(): JSX.Element {
           {/* <Route path="/notes" element={<NotesPage />} />     
             <Route path="/:noteId" element={<OneNotePage />} /> */}
         </Route>
+        <Route path = "/addDeal" element = {<AddDealPage/>} />
         <Route path="/lk" element={<LkPage />} />
         <Route path="/lk/profile" element={<LkProfile />} />
         <Route path="/lk/reviews" element={<LkReviewsPage />} />

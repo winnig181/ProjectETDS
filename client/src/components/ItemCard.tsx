@@ -14,7 +14,7 @@ export default function ItemCard() {
     const images = imagesContext.keys().map(imagesContext);
     return (
         <Card sx={{ maxWidth: 360 }}>
-            <Carousel>
+            {/* <Carousel>
                 {images.map((image, index) => (
                     <CardMedia
                         key={index}
@@ -23,7 +23,7 @@ export default function ItemCard() {
                         title={`Image ${index + 1}`}
                     />
                 ))}
-            </Carousel>
+            </Carousel> */}
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     ItemItem

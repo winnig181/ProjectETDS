@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { DealType } from '../types/deal/deal';
+import type { AddDealFormData, DealType } from '../types/deal/deal';
 
 export const apiDealsService = axios.create({
   // baseURL: 'http://localhost:3000/api/v1/deals',

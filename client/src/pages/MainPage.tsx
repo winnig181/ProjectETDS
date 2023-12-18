@@ -2,6 +2,7 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import CategoryCard from '../components/CategoryCard';
+import { useAppSelector } from '../redux/hook';
 
 export default function MainPage(): JSX.Element {
   const mockCategories = [
