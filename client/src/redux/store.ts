@@ -4,6 +4,7 @@ import reviewReducer from './slices/reviews/reviewSlice';
 import itemReducer from './slices/items/itemsSlice';
 import dealReducer from './slices/deals/dealsSlice';
 import categoriesReducer from './slices/categories/categoriesSlice'
+import subcatReducer from './slices/subcats/subcatsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     itemsSlice: itemReducer,
     reviewsSlice: reviewReducer,
     dealsSlice: dealReducer,
+    subcatsSlice: subcatReducer,
 
   },
 });

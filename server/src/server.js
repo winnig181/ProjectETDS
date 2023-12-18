@@ -8,6 +8,7 @@ const apiReviewsRouter = require('./routes/apiReviewsRouter');
 const apiItemsRouter = require('./routes/apiItemsRouter');
 const apiDealsRouter = require('./routes/apiDealsRouter');
 const apiCategoriesRouter = require('./routes/apiCategoriesRoute')
+const apiSubcatsRouter = require('./routes/apiSubcatsRouter');
 require('dotenv').config();
 
 const app = express();
@@ -30,7 +31,9 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/reviews', apiReviewsRouter);
 app.use('/api/v1/items', apiItemsRouter);
 app.use('/api/v1/deals', apiDealsRouter);
-app.use('/api/v1/categories', apiCategoriesRouter)
+app.use('/api/v1/categories', apiCategoriesRouter);
+app.use('/api/v1/subcats', apiSubcatsRouter);
+
 
 
 app.listen(PORT, () =>

@@ -5,21 +5,22 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-type CategoryProps = {
-  category: {
-    categoryName: string
-    id: number
-  }
-}
+import type { SubcatType } from '../types/subcategory';
 
-export default function CategoryCard({ category }: CategoryProps): JSX.Element {
-  const clickHandler = () => {
-    window.location = `/categories/${category.id}`;
-  };
+type SubCategorProps = {
+  subcat: SubcatType;
+};
+
+export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Element {
+  // const clickHandler = () => {
+  //   window.location = `/categories/${category.id}`;
+  // };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea style={{ cursor: 'pointer' }} onClick={clickHandler}>
+      <CardActionArea 
+      // onClick={clickHandler}
+      >
         <CardMedia
           component="img"
           height="140"
@@ -28,10 +29,10 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {category.categoryName}
+            {subcat.subCategoryName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            какой-то текст
+            описание
           </Typography>
         </CardContent>
       </CardActionArea>
