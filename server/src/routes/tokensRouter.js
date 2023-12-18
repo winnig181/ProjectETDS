@@ -8,7 +8,7 @@ const tokensRouter = express.Router();
 
 tokensRouter.get('/refresh', verifyRefreshToken, async (req, res) => {
   const { user } = res.locals;
-  console.log('>>>>>>>>>>>>>>>>>>>>user from res.locals',user);
+  // console.log('>>>>>>>>>>>>>>>>>>>>user from res.locals',user);
   const { accessToken, refreshToken } = generateTokens({ user });
   res
     .cookie(jwtConfig.refresh.name, refreshToken, cookiesConfig.refresh)

@@ -41,6 +41,9 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
           <CardActions>
             {/* <Stack direction="row" spacing={2}> */}
             <Button size="medium" variant="outlined">
+              Возвращен ?
+            </Button>
+            <Button size="medium" variant="outlined">
               Изменить
             </Button>
             <Button size="medium" variant="contained">

@@ -22,7 +22,6 @@ export default function useAxiosInterceptors(apiService): void {
       (res) => res,
       async (err: AxiosError & { config: { sent?: boolean } }) => {
         const prevRequest = err.config;
-        console.log('prevRequest>>>>>>>>>>>:', prevRequest);
         if (err.response?.status === 403 && !prevRequest.sent) {
           prevRequest.sent = true;
           const newAccessToken = await dispatch(thunkAuthRefresh()).unwrap();

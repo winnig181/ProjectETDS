@@ -10,7 +10,7 @@ apiCategoriesRouter
             const categories = await Category.findAll({
                 order: [["createdAt", "DESC"]],
             });
-            console.log(categories,'<<<<<------- cat on server')
+           
             return res.json(categories);
         } catch (error) {
             console.log(error);

@@ -13,28 +13,14 @@ export default function MainPage(): JSX.Element {
     useEffect(()=> {
         dispatch(thunkCategoriesLoad())
     }, [])
-    console.log(categories, '<<<------------categotries')
-  // const mockCategories = [
-  //  {categoryName: 'Электроника',
-  //   id:1},
-  //  {categoryName: 'Одежда',
-  //  id:2},
-  //  {categoryName: 'Красота и здоровье',
-  //   id:3},
-  //  {categoryName: 'Спорт и отдых',
-  //  id:4},
-  //  {categoryName:  'Книги',
-  //  id:5},
-  //  {categoryName:  'Дом и сад',
-  //  id:6},
-  // ]
+
   return (
 
     <Container sx={{ backgroundColor: 'background.default' , minHeight: '100vh' }}>
         <Grid style={{height: '68px'}}>
         </Grid>
       <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
-        если хотите хороший сайт, позвоните:
+        КАТЕГОРИИ
       </Typography>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
   {categories.map((category) => (
