@@ -3,33 +3,34 @@ import { Container, TextField, Button, Grid } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 function AddDealForm(): JSX.Element {
-  const [dealText, setDealText] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [formData, setFormData] = useState({
+    dealText: '',
+    startDate: '',
+    endDate: '',
+  });
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDealText(event.target.value);
-  };
+  const user = useAppSelector((store) => store.authSlice.user);
+  const dispatch = useAppDispatch();
 
-  const handleStartDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStartDate(event.target.value);
-  };
-
-  const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEndDate(event.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   const handleAddDeal = () => {
-    // Здесь можно обработать добавление сделки
-    console.log('Добавлена новая сделка:', dealText, startDate, endDate);
+    // Отправка formData
+    console.log('Добавлена новая сделка:', formData);
     // Очистка полей после добавления сделки
-    setDealText('');
-    setStartDate('');
-    setEndDate('');
+    setFormData({
+      dealText: '',
+      startDate: '',
+      endDate: '',
+    });
   };
 
-
-  
   return (
     <Container maxWidth="md">
       <Grid container spacing={2}>
@@ -38,8 +39,9 @@ function AddDealForm(): JSX.Element {
             fullWidth
             label="Текст сделки"
             variant="outlined"
-            value={dealText}
-            onChange={handleTextChange}
+            name="dealText"
+            value={formData.dealText}
+            onChange={handleInputChange}
           />
         </Grid>
         <Grid item xs={12}>
@@ -48,8 +50,9 @@ function AddDealForm(): JSX.Element {
             label="Начало аренды"
             type="date"
             variant="outlined"
-            value={startDate}
-            onChange={handleStartDateChange}
+            name="startDate"
+            value={formData.startDate}
+            onChange={handleInputChange}
             InputLabelProps={{
               shrink: true,
             }}
@@ -61,14 +64,14 @@ function AddDealForm(): JSX.Element {
             label="Окончание аренды"
             type="date"
             variant="outlined"
-            value={endDate}
-            onChange={handleEndDateChange}
+            name="endDate"
+            value={formData.endDate}
+            onChange={handleInputChange}
             InputLabelProps={{
               shrink: true,
             }}
           />
         </Grid>
-        
         <Grid item xs={12}>
           <Button variant="contained" color="primary" onClick={handleAddDeal}>
             Добавить сделку
@@ -77,11 +80,6 @@ function AddDealForm(): JSX.Element {
       </Grid>
     </Container>
   );
-
- 
-
-
 }
 
 export default AddDealForm;
-
