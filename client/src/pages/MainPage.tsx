@@ -29,6 +29,7 @@ export default function MainPage(): JSX.Element {
   //  id:6},
   // ]
   return (
+
     <Container sx={{ backgroundColor: 'background.default' , minHeight: '100vh' }}>
         <Grid style={{height: '68px'}}>
         </Grid>

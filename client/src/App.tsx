@@ -1,25 +1,24 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import type { AxiosError } from 'axios';
+import { AxiosError } from 'axios';
 import NavBar from './components/NavBar';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import { useAppDispatch, useAppSelector } from './redux/hook';
-
 import { thunkAuthRefresh, thunkCheckAuth } from './redux/slices/auth/createAsyncThunk';
 import MainPage from './pages/MainPage';
-import Sidebar from './components/SideBar';
-
 import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
+import MyItemsList from './components/lk/MyItemsList';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
-import MyItemsList from './components/lk/MyItemsList';
+import { Container } from '@mui/material';
 import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -66,13 +65,16 @@ function App(): JSX.Element {
   // }, [auth.accessToken]);
 
   return (
-    <>
-      <NavBar />
-      {/* <Sidebar/> */}
-      <Routes>
-        <Route path="/" element={<MainPage />} />
+  
+      <>
+        <NavBar />  
+        {/* <Sidebar/> */}
+        <Container style={{ marginTop: '74px' }}>
 
-        <Route
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            
+            <Route
           element={
             <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
           }
@@ -94,8 +96,11 @@ function App(): JSX.Element {
         <Route path="/lk/reviews" element={<LkReviewsPage />} />
         <Route path="/lk/my-items" element={<LkMyItemsPage />} />
         <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
-      </Routes>
-    </>
+              
+          </Routes>
+        </Container>
+      </>
+
   );
 }
 
