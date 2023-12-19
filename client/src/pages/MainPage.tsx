@@ -2,9 +2,7 @@
 import React, {useEffect} from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import CategoryCard from '../components/CategoryCard';
-import ItemCard from "../components/ItemCard";
 import {useAppDispatch, useAppSelector} from "../redux/hook";
-import axios from "axios";
 import {thunkCategoriesLoad} from "../redux/slices/categories/createAsyncThunk";
 
 export default function MainPage(): JSX.Element {
@@ -13,21 +11,7 @@ export default function MainPage(): JSX.Element {
     useEffect(()=> {
         dispatch(thunkCategoriesLoad())
     }, [])
-    console.log(categories, '<<<------------categotries')
-  // const mockCategories = [
-  //  {categoryName: 'Электроника',
-  //   id:1},
-  //  {categoryName: 'Одежда',
-  //  id:2},
-  //  {categoryName: 'Красота и здоровье',
-  //   id:3},
-  //  {categoryName: 'Спорт и отдых',
-  //  id:4},
-  //  {categoryName:  'Книги',
-  //  id:5},
-  //  {categoryName:  'Дом и сад',
-  //  id:6},
-  // ]
+
   return (
 
     <Container sx={{ backgroundColor: 'background.default' , minHeight: '100vh' }}>

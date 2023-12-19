@@ -3,8 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { ItemType, AddItemFormData } from '../../../types/item/item';
 import ItemsService from '../../../services/items';
 
-export const thunkItemsLoad = createAsyncThunk('itemsSlice/thunkItemsLoad', async () =>
-  ItemsService.getItems(),
+export const thunkItemsLoad = createAsyncThunk('itemsSlice/thunkItemsLoad', async (id) =>
+  ItemsService.getItems(id),
 );
 
 export const thunkItemsAdd = createAsyncThunk(
