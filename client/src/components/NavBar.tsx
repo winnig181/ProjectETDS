@@ -81,18 +81,18 @@ export default function NavBar(): JSX.Element {
             </Typography>
           </Typography>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" component={NavLink} to="/lk">
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/lk">
               Личный кабинет
             </Button>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" component={NavLink} to="/addDeal">
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/addDeal">
               Аренда
             </Button>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
             <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
-              Главная
+              Категории
             </Button>
           </Grid>
           {user.status !== 'authenticated' ? (
