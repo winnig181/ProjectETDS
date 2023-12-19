@@ -58,6 +58,7 @@ function App(): JSX.Element {
                   </Route>
 
               <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />}> </Route>
+              <Route path = "/addDeal/:id" element = {<AddDealPage/>} />
               <Route path = "/addDeal" element = {<AddDealPage/>} />
               <Route path="/lk" element={<LkPage />} />
               <Route path="/lk/profile" element={<LkProfile />} />

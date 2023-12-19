@@ -30,30 +30,26 @@ apiDealsRouter
 
   .post(
     /* upload.single('img'), */
-    // verifyAccessToken,
+    verifyAccessToken,
     async (req, res) => {
       try {
-        if (!req.body?.title||!req.body?.title|| !req.body?.description || !req.body?.price || !req.body?.condition || !req.body?.subCategoryId)
-          return res.status(500).json({ message: "Empty reqbody" });
-        const { price,title, description, img1,img2,img3,condition, status,hidden,subCategoryId} = req.body;
-        const newItem = await Item.create({
-          title,
-          description,
-          price,
-          img1: req.file?.filename || img1,
-          img2: req.file?.filename || img2,
-          img3: req.file?.filename || img3,
-          condition,
-          status,
-          hidden,
-          subCategoryId,
-          userId: res.locals.user.id,
+        if (!req.body?.startDate || !req.body?.endDate|| !req.body?.ownerId || !req.body?.tenantId || !req.body?.itemId )
+          return res.status(500).json({ message: "ошибка на сервере при добавлении сделки" });
+        const {ownerId, tenantId, itemId, startDate, endDate} = req.body;
+        const newDeal = await Deal.create({
+          ownerId,
+          tenantId,
+          itemId,
+          startDate,
+          endDate,
+          ownerApproveDeal: false,
+          ownerCloseDeal: false,
+          tenantApproveDeal: false,
+          tenantCloseDeal: false
         });
-        const itemWithAuthor = await Item.findByPk(newItem.id, {
-          include: User,
-        });
-        console.log(">>>>>>>>>>itemWithAuthor", itemWithAuthor);
-        return res.status(201).json(itemWithAuthor);
+        
+        console.log("сделка зашла на в базу", newDeal);
+        return res.status(201).json(newDeal);
       } catch (error) {
         return res.status(500).json(error);
       }

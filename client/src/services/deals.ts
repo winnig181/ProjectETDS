@@ -13,6 +13,12 @@ class DealsService {
     return [];
   }
 
+  static async getOneDeals(): Promise<DealType[]> {
+    const response = await apiDealsService.get<DealType[]>('/:id');
+    if (response.status === 200) return response.data;
+    return [];
+  }
+
   static async addDeal(dealFormData: AddDealFormData): Promise<DealType> {
     const response = await apiDealsService.post<DealType>('/', dealFormData);
     if (response.status === 201) return response.data;

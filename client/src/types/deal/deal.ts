@@ -33,9 +33,9 @@ export type AddDealFormData = {
   itemId: number,
   startDate: Date,
   endDate: Date,
-  ownerApproveDeal: boolean,
-  ownerCloseDeal: boolean,
-  tenantApproveDeal: boolean,
-  tenantCloseDeal: boolean,
+  ownerApproveDeal?: boolean,
+  ownerCloseDeal?: boolean,
+  tenantApproveDeal?: boolean,
+  tenantCloseDeal?: boolean,
 
 }

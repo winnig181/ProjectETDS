@@ -3,6 +3,7 @@ import { Container, Grid } from '@mui/material'
 import AddDealForm from '../components/AddDealForm'
 import { useAppDispatch, useAppSelector } from '../redux/hook'
 import ItemCard2 from '../components/ItemCard2'
+import ItemCard3 from '../components/ItemCard2'
 
 
 export default function AddDealPage(): JSX.Element {
