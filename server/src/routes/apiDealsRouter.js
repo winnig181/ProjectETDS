@@ -2,15 +2,19 @@ const express = require("express");
 
 
 const { Deal, User, Item } = require("../../db/models");
-// const verifyAccessToken = require("../middlewares/verifyAccessToken");
+const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
 const apiDealsRouter = express.Router();
 
 apiDealsRouter
   .route("/")
-  .get(async (req, res) => {
+  .get(
+    verifyAccessToken, 
+    async (req, res) => {
+      console.log('>>!!>**>>',res.locals.user);
     try {
       const deals = await Deal.findAll({
+        where:{tenantId: res.locals.user.id},
         order: [["createdAt", "DESC"]],
         include: [
           { model: User, as: 'ownerDetails' },

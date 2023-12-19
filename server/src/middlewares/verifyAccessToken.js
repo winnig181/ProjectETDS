@@ -9,8 +9,8 @@ function verifyAccessToken(req, res, next) {
     next();
   } catch (error) {
     console.log(error);
-    // res.status(403).send('Invalid access token');
-    next();
+    res.status(403).send('Invalid access token');
+    // next();
   }
 }
 

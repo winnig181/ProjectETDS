@@ -16,6 +16,12 @@ export default function MyItemsList(): JSX.Element {
   console.log('>>>>user:', user);
   console.log('>>>>items:', items);
   const myItems = items.filter((item) => item.userId === user.id);
+
+  
+  // React.useEffect(() => {
+  //   void dispatch(thunkDealsLoad());
+  // }, []);
+
   return (
     <Grid container rowSpacing={2} columnSpacing={4} justifyContent="flex-start">
       {/* <Grid item xs={12} sm={12} md={6}> */}
