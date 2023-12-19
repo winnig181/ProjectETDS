@@ -1,104 +1,3 @@
-// import * as React from 'react';
-
-// import Typography from '@mui/material/Typography';
-// import { Box, Button, Card, CardMedia, Container, Grid } from '@mui/material';
-// import { NavLink } from 'react-router-dom';
-// import { useAppSelector } from '../../redux/hook';
-// import type { UserType } from '../../types/auth';
-
-// // type PropsLkCard = {
-// //   text: string;
-// // }
-
-// export default function LkProfile(): JSX.Element {
-//   const user:UserType = useAppSelector((state) => state.authSlice.user);
-//   console.log('user', user);
-//   const {name, nickName, email, phone, about, avatar, city, metro, publicPhone, isActivated} = user;
-//   return (
-//     <Container>
-//       <Card sx={{ display: 'flex' }}>
-//         {/* Надо сделать ширину 30% контейнера на 70% */}
-//         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-//           <CardMedia
-//             component="img"
-//             sx={{ width: 100 }}
-//             image="/img/vite.svg"
-//             alt="avatar"
-//           />
-//           <Button size="small" color="primary">
-//             Загрузить фото
-//           </Button>
-//         </Box>
-
-//         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-//           <Typography
-//             variant="h6"
-//             component="div"
-//             gutterBottom
-//             color="textSecondary"
-//             style={{ marginTop: '40px' }}
-//           >
-//             Учетные данные
-//           </Typography>
-//           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Имя: {name}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Email: {email}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>
-//                 {isActivated
-//                   ? 'Email подтвержден'
-//                   : `Email пока не подтвержден`}
-//               </p>
-//             </Grid>
-
-//           </Grid>
-
-//           <Typography
-//             variant="h6"
-//             component="div"
-//             gutterBottom
-//             color="textSecondary"
-//             style={{ marginTop: '40px' }}
-//           >
-//             Публичные данные
-//           </Typography>
-//           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Ник: {nickName}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Email: {email}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Обо мне: {about}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Телефон: {phone}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Город: {city}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <p>Станция метро: {metro}</p>
-//             </Grid>
-//             <Grid item xs={2} sm={6} md={6}>
-//               <NavLink to="#">
-//                 <p>Изменить / дополнить личные данные </p>
-//               </NavLink>
-//             </Grid>
-//           </Grid>
-//         </Box>
-//       </Card>
-//     </Container>
-//   );
-// }
-
-
-///////////////////////////////////////////////////////////////////////////////
 import * as React from 'react';
 import {
   Box,
@@ -136,13 +35,15 @@ export default function LkProfile(): JSX.Element {
   };
 
   return (
+    
     <Container>
+      <Typography variant='h5'  sx={{ display: 'flex', justifyContent: 'center'}}> Учетные данные</Typography>
       <Card sx={{ display: 'flex' }}>
         {/* Аватар и кнопка для его загрузки */}
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', marginRight: '80px'}}>
           <CardMedia
             component="img"
-            sx={{ width: 100 }}
+            sx={{ width: 150 }}
             image="/img/vite.svg"
             alt="avatar"
           />
@@ -162,6 +63,7 @@ export default function LkProfile(): JSX.Element {
           >
             Учетные данные
           </Typography>
+
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             <Grid item xs={2} sm={6} md={6}>
               {isEditing && editedField === 'name' ? (
@@ -176,21 +78,25 @@ export default function LkProfile(): JSX.Element {
                 </>
               )}
             </Grid>
+
+
             <Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
+              {isEditing && editedField === 'nickName' ? (
                 <TextField
-                  value={editedUser.email}
-                  onChange={(e) => setEditedUser({ ...editedUser, email: e.target.value })}
+                  value={editedUser.nickName}
+                  onChange={(e) => setEditedUser({ ...editedUser, nickName: e.target.value })}
                 />
               ) : (
                 <>
-                  <Typography>Email: {user.email}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
+                  <Typography>Никнейм: {user.nickName}</Typography>
+                  <Button onClick={() => handleEdit('nickName')}>Редактировать</Button>
                 </>
               )}
             </Grid>
+
+
             <Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
+              {isEditing && editedField === 'about' ? (
                 <TextField
                   value={editedUser.about}
                   onChange={(e) => setEditedUser({ ...editedUser, about: e.target.value })}
@@ -198,12 +104,14 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Обо мне: {user.about}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit('about')}>Редактировать</Button>
                 </>
               )}
             </Grid>
+
+
             <Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
+              {isEditing && editedField === 'phone' ? (
                 <TextField
                   value={editedUser.phone}
                   onChange={(e) => setEditedUser({ ...editedUser, phone: e.target.value })}
@@ -211,84 +119,43 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Телефон: {user.phone}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit('phone')}>Редактировать</Button>
                 </>
               )}
             </Grid>
+
+
             <Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
+              {isEditing && editedField === 'city' ? (
                 <TextField
-                  value={editedUser.name}
-                  onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
+                  value={editedUser.city}
+                  onChange={(e) => setEditedUser({ ...editedUser, city: e.target.value })}
                 />
               ) : (
                 <>
-                  <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
+                  <Typography>Город: {user.city}</Typography>
+                  <Button onClick={() => handleEdit('city')}>Редактировать</Button>
                 </>
               )}
             </Grid>
+
+
             <Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
+              {isEditing && editedField === 'metro' ? (
                 <TextField
-                  value={editedUser.name}
-                  onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
+                  value={editedUser.metro}
+                  onChange={(e) => setEditedUser({ ...editedUser, metro: e.target.value })}
                 />
               ) : (
                 <>
-                  <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
-                </>
-              )}
-            </Grid><Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
-                <TextField
-                  value={editedUser.name}
-                  onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                />
-              ) : (
-                <>
-                  <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
-                </>
-              )}
-            </Grid><Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
-                <TextField
-                  value={editedUser.name}
-                  onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                />
-              ) : (
-                <>
-                  <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
-                </>
-              )}
-            </Grid><Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
-                <TextField
-                  value={editedUser.name}
-                  onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                />
-              ) : (
-                <>
-                  <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
-                </>
-              )}
-            </Grid><Grid item xs={2} sm={6} md={6}>
-              {isEditing && editedField === 'name' ? (
-                <TextField
-                  value={editedUser.name}
-                  onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                />
-              ) : (
-                <>
-                  <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
+                  <Typography>Метро: {user.metro}</Typography>
+                  <Button onClick={() => handleEdit('metro')}>Редактировать</Button>
                 </>
               )}
             </Grid>
+            
+
+           
             {/* Повторите этот блок для каждого поля */}
           </Grid>
 
@@ -299,5 +166,6 @@ export default function LkProfile(): JSX.Element {
         </Box>
       </Card>
     </Container>
+    
   );
 }
