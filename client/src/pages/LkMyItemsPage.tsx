@@ -5,7 +5,7 @@ import MyItemsList from '../components/lk/MyItemsList';
 
 export default function LkMyItemsPage(): JSX.Element {
   return (
-    <Container sx={{marginTop:50 }}>
+    <Container >
       <Typography
         variant="h5"
         component="div"

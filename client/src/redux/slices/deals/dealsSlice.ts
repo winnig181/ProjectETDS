@@ -2,6 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import {
+  thunkDealsAdd,
   thunkDealsLoad,
   // thunkDealsAdd,
   // thunkDealsDelete,
@@ -42,10 +43,10 @@ export const dealsSlice = createSlice({
       console.log(action.error);
     });
 
-    // builder.addCase(thunkDealsAdd.fulfilled, (state, action) => {
-    //   // применяем методы, мутирующие исходный массив
-    //   state.deals.unshift(action.payload);
-    // });
+    builder.addCase(thunkDealsAdd.fulfilled, (state, action) => {
+      // применяем методы, мутирующие исходный массив
+      state.deals.unshift(action.payload);
+    });
     // builder.addCase(thunkDealsDelete.fulfilled, (state, action) => {
     //   const itemIndex = state.deals.findIndex((note) => note.id === action.payload);
     //   if (itemIndex !== -1) {
