@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 import { thunkAuthRefresh } from '../redux/slices/auth/createAsyncThunk';
 
-export default function useAxiosInterceptors(apiService): void {
+export default function useAxiosInterceptors(apiService:any): void {
   const auth = useAppSelector((store) => store.authSlice);
   const dispatch = useAppDispatch();
 

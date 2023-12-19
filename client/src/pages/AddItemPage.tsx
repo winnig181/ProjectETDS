@@ -28,20 +28,21 @@ function AddItemPage(): JSX.Element {
           const formData = Object.fromEntries(
             new FormData(e.currentTarget),
           ) as unknown as AddItemFormData;
-          formData.isFav = Boolean(isFav); // Convert to boolean
-          void dispatch(thunkAddNote(formData));
+          formData.status = status; 
+          formData.hidden = Boolen(false);
+          void dispatch(thunkAddItem(formData));
           e.currentTarget.reset();
         }}
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextField name="title" fullWidth label="Название предмета" variant="outlined" />
+            <TextField name="title" fullWidth label="Название предмета*" variant="outlined" />
           </Grid>
           <Grid item xs={12}>
             <TextField
               name="price"
               fullWidth
-              label="Цена в рублях за сутки аренды, кратная 10"
+              label="Цена в рублях за сутки аренды кратная 10 или 0*"
               type="number"
               variant="outlined"
               // InputLabelProps={{
@@ -50,7 +51,7 @@ function AddItemPage(): JSX.Element {
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField name="description" fullWidth label="Описание" variant="outlined" />
+            <TextField name="description" fullWidth label="Описание*" variant="outlined" />
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -75,10 +76,41 @@ function AddItemPage(): JSX.Element {
               <MenuItem value="ordered">арендован</MenuItem>
             </TextField>
           </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="hidden"
+              fullWidth
+              label="Скрыть"
+              variant="outlined"
+              id="select"
+              value={hidden}
+              onChange={handleHidden}
+              select
+            >
+              <MenuItem value="false">показывать</MenuItem>
+              <MenuItem value="true">скрыть</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="subCategoryId"
+              fullWidth
+              label="Скрыть"
+              variant="outlined"
+              id="select"
+              value={subcat}
+              onChange={handleSubcat}
+              select
+            >
+              <MenuItem value="1">Видеоигры</MenuItem>
+              <MenuItem value="2">Музыка</MenuItem>
+              <MenuItem value="3">Подушки</MenuItem>
+            </TextField>
+          </Grid>
 
           <Grid item xs={12}>
             <Button variant="contained" color="primary" onClick={handleAddDeal}>
-              Добавить сделку
+              Добавить
             </Button>
           </Grid>
         </Grid>
