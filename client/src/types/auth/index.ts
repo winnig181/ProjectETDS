@@ -11,6 +11,8 @@ export type UserType = {
   publicPhone: string;
   isActivated: string;
   activationLink: string;
+  createdAt:Date;
+  updatedAt:Date;
 };
 
 export type UserState =

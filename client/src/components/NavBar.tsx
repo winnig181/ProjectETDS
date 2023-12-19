@@ -86,6 +86,11 @@ export default function NavBar(): JSX.Element {
             </Button>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
+            <Button color="inherit" component={NavLink} to="/add-item">
+              Добавить
+            </Button>
+          </Grid>
+          <Grid item sx={{ ml: 2, mr: 2 }}>
             <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
               Главная
             </Button>

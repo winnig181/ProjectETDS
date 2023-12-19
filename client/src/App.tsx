@@ -24,6 +24,7 @@ import Loader from './components/hocs/Loader';
 import { apiItemsService } from './services/items';
 import { apiDealsService } from './services/deals';
 import SubCatPage from './pages/SubCatPage';
+import AddItemPage from './pages/AddItemPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkItemsLoad());
+    void dispatch(thunkReviewsLoad());
   }, []);
 
   return (
@@ -71,8 +73,9 @@ function App(): JSX.Element {
             <Route path="/lk/reviews" element={<LkReviewsPage />} />
             <Route path="/lk/my-items" element={<LkMyItemsPage />} />
             <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
+            <Route path="/add-item" element={<AddItemPage />} />
               
-              </Route>
+          </Route>
         </Routes>
         </Container>
         </>
