@@ -30,7 +30,7 @@ export default function LkProfile(): JSX.Element {
     // saveEditedUserData(editedUser);
 
     // Для примера сбрасываем состояния после сохранения
-    setEditedField('');
+    setEditedField(''); 
     setIsEditing(false);
   };
 
@@ -154,6 +154,13 @@ export default function LkProfile(): JSX.Element {
               )}
             </Grid>
             
+            <Grid item xs={2} sm={6} md={6}>
+            <Typography>
+                {user.isActivated
+                  ? 'Email подтвержден'
+                  : `Email пока не подтвержден`}
+              </Typography>
+            </Grid>
 
            
             {/* Повторите этот блок для каждого поля */}
