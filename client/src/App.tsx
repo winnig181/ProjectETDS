@@ -74,30 +74,18 @@ function App(): JSX.Element {
 
           <Routes>
             <Route path="/" element={<MainPage />} />
-            
-            <Route
-          element={
-            <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
-          }
-        >
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registration" element={<RegistrationPage />} />
-        </Route>
+            <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+          </Route>
 
-        <Route
-          element={
-            <PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />
-          }
-        >
-          {/* <Route path="/notes" element={<NotesPage />} />     
-            <Route path="/:noteId" element={<OneNotePage />} /> */}
-        </Route>
-        <Route path = "/addDeal" element = {<AddDealPage/>} />
-        <Route path="/lk" element={<LkPage />} />
-        <Route path="/lk/profile" element={<LkProfile />} />
-        <Route path="/lk/reviews" element={<LkReviewsPage />} />
-        <Route path="/lk/my-items" element={<LkMyItemsPage />} />
-        <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
+            <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />}> </Route>
+            <Route path = "/addDeal" element = {<AddDealPage/>} />
+            <Route path="/lk" element={<LkPage />} />
+            <Route path="/lk/profile" element={<LkProfile />} />
+            <Route path="/lk/reviews" element={<LkReviewsPage />} />
+            <Route path="/lk/my-items" element={<LkMyItemsPage />} />
+            <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
               
           </Routes>
         </Container>
