@@ -25,7 +25,6 @@ import { apiItemsService } from './services/items';
 import { apiDealsService } from './services/deals';
 import SubCatPage from './pages/SubCatPage';import AddDealPage from './pages/AddDealPage';
 
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
@@ -40,7 +39,7 @@ function App(): JSX.Element {
   }, []);
 
   return (
-  
+
       <Loader isLoading={auth.user.status === 'pending'}>
       
           <NavBar />  
@@ -56,7 +55,6 @@ function App(): JSX.Element {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/registration" element={<RegistrationPage />} />
                   </Route>
-
               <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />}> </Route>
               <Route path = "/addDeal/:id" element = {<AddDealPage/>} />
               <Route path = "/addDeal" element = {<AddDealPage/>} />
@@ -65,11 +63,8 @@ function App(): JSX.Element {
               <Route path="/lk/reviews" element={<LkReviewsPage />} />
               <Route path="/lk/my-items" element={<LkMyItemsPage />} />
               <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
-                  
-                  
              </Routes>
          </Container>
-        
       </Loader>
   );
 }
