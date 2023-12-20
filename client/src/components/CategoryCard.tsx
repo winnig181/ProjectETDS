@@ -21,20 +21,17 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
   return (
     <Link to={`/categories/${category.id}`}>
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea style={{ cursor: 'pointer' }} 
+      <CardActionArea style={{ cursor: 'pointer' }}
       // onClick={clickHandler}
       >
         <CardMedia
           component="img"
-          height="140"
+          height="300"
           image="/public/img/vite.svg"
-          alt="Contemplative Reptile"
+          alt="moc"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {category.categoryName}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
             {category.categoryName}
           </Typography>
         </CardContent>

@@ -4,11 +4,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import type { SubcatType } from '../types/subcategory';
 import {useAppDispatch, useAppSelector} from "../redux/hook";
-import {thunkCategoriesLoad} from "../redux/slices/categories/createAsyncThunk";
-import category from "../services/category";
-import {thunkItemsLoad} from "../redux/slices/items/createAsyncThunk";
 import {useParams} from 'react-router-dom'
 
 type SubCategorProps = {
@@ -18,17 +14,17 @@ type SubCategorProps = {
   }
 };
 
-export default function SubCategoryCard({ subcat, category }: SubCategorProps): JSX.Element {
+export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Element {
   const items = useAppSelector((store)=> store.itemsSlice.items)
   const dispatch = useAppDispatch()
   const {id} = useParams()
 
-
   // useEffect(()=> {
   //   dispatch(thunkItemsLoad(id))
   // }, [])
+
   const clickHandler = () => {
-    window.location = `/categories/subcats/${subcat.id}`
+    window.location = '/subcats/items'
   };
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -37,14 +33,13 @@ export default function SubCategoryCard({ subcat, category }: SubCategorProps): 
           component="img"
           height="140"
           image="/public/img/vite.svg"
-          alt="Contemplative Reptile"
-        />
+          alt="Contemplative Reptile" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {subcat.subCategoryName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            описание
+            {subcat.subCategoryName}
           </Typography>
         </CardContent>
       </CardActionArea>

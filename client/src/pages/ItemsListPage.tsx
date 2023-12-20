@@ -1,32 +1,30 @@
-import React, {useEffect} from "react";
+/* eslint-disable react/jsx-no-useless-fragment */
+import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
-import ItemCard from "../components/ItemCard";
-import {useAppDispatch, useAppSelector} from "../redux/hook";
-import CategoryCard from "../components/CategoryCard";
+import { useAppDispatch, useAppSelector } from '../redux/hook';
+import ItemCard from '../components/ItemCard';
 import {thunkItemsLoad} from "../redux/slices/items/createAsyncThunk";
-import {useParams} from 'react-router-dom'
 
 export default function ItemsListPage(): JSX.Element {
-    const items = useAppSelector((store) => store.itemsSlice.items)
-    const dispatch = useAppDispatch()
-    const {id} = useParams()
-
-    useEffect(()=> {
-        if(id){
-            dispatch(thunkItemsLoad(id))
-
-        }
-    }, [])
+    const dispatch = useAppDispatch();
+    const items = useAppSelector((state) => state.itemsSlice.items)
+    console.log(items, '<<----------HERE')
+    React.useEffect(() => {
+            void dispatch(thunkItemsLoad());
+    }, []);
 
     return (
-        <Container>
+        <Container sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
+            <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
+                предметы здеся:
+            </Typography>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                {items.map((category) => (
-                    <Grid item xs={2} sm={4} md={4} key={category.id}>
-                        <CategoryCard category = {category} />
+                {items.map((item) => (
+                    <Grid item xs={2} sm={6} md={6} key={item.id}>
+                        <ItemCard item={item} />
                     </Grid>
                 ))}
             </Grid>
         </Container>
-    )
+    );
 }
