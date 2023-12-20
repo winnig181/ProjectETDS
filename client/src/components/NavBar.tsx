@@ -194,6 +194,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Avatar, Badge, Button, Grid, MenuItem, Tooltip } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { thunkLogout } from '../redux/slices/auth/createAsyncThunk';
 
 const drawerWidth = 240;
 
@@ -291,8 +292,10 @@ export default function NavBar(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
   const { user } = auth;
 
-  const deals = useAppSelector((store) => store.dealSlice);
-  // console.log('>>>>>>>>>>>>>>>auth', auth);
+  const mydeals = useAppSelector((state) => state.dealsSlice.deals);
+
+
+  console.log('все сделки', mydeals);
 
   const dispatch = useAppDispatch();
   const theme = useTheme();
