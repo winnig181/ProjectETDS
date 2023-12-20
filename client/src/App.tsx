@@ -12,11 +12,10 @@ import MainPage from './pages/MainPage';
 import LkPage from './pages/LkPage';
 import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
-import MyItemsList from './components/lk/MyItemsList';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
 import { Container } from '@mui/material';
-import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
+// import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
 import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
@@ -37,6 +36,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
+    void dispatch(thunkAuthRefresh());
     void dispatch(thunkItemsLoad());
     void dispatch(thunkReviewsLoad());
   }, []);
