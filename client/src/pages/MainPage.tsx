@@ -18,7 +18,7 @@ export default function MainPage(): JSX.Element {
         <Grid style={{height: '68px'}}>
         </Grid>
       <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
-        если хотите хороший сайт, позвоните:
+        КАТЕГОРИИ
       </Typography>
       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
   {categories.map((category) => (

@@ -20,7 +20,7 @@ export default function LkPage(): JSX.Element {
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
         <NavLink to="/lk/my-deals">
-          <LkCard text="Мои сделки" />
+          <LkCard text="Арендованные предметы" />
         </NavLink>
       </Grid>
       <Grid item xs={12} sm={6} md={4}>

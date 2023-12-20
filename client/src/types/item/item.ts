@@ -1,3 +1,5 @@
+import type { UserType } from "../auth";
+
 export type ItemType = {
   id: number;
   price:number;
@@ -15,15 +17,16 @@ export type ItemType = {
   updatedAt: Date;
   isActivated:boolean;
   activationLink:string;
+  ownerDetails: UserType;
 };
 
 export type AddItemFormData = {
   price:number;
   title: string;
   description: string;
-  img1: string;
-  img2: string;
-  img3: string;
+  img1?: string;
+  img2?: string;
+  img3?: string;
   condition: string;
   status: string;
   hidden: boolean;
@@ -37,5 +40,5 @@ export type ItemsState = {
 
 export type ItemSliceState = {
   items: ItemType[];
-  // currentItem: ItemType | null;
+  currentItem: ItemType | null;
 };

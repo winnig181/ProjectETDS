@@ -4,6 +4,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 type CategoryProps = {
   category: {
@@ -13,13 +14,16 @@ type CategoryProps = {
 }
 
 export default function CategoryCard({ category }: CategoryProps): JSX.Element {
-  const clickHandler = () => {
-    window.location = `/categories/${category.id}`;
-  };
+  // const clickHandler = ():void => {
+  //   window.location.href = `/categories/${category.id}`;
+  // };
 
   return (
+    <Link to={`/categories/${category.id}`}>
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea style={{ cursor: 'pointer' }} onClick={clickHandler}>
+      <CardActionArea style={{ cursor: 'pointer' }} 
+      // onClick={clickHandler}
+      >
         <CardMedia
           component="img"
           height="140"
@@ -36,5 +40,6 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
         </CardContent>
       </CardActionArea>
     </Card>
+    </Link>
   );
 }

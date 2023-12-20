@@ -7,11 +7,10 @@ apiSubcatsRouter
   .route("/:id")
   .get(async (req, res) => {
     try {
-      // const subcats = await Subcategory.findAll({
-      //   where:{categoryId: req.params.id},
-      //   order: [["createdAt", "DESC"]],
-      // });
-      const subcats = await Subcategory.findAll();
+      const subcats = await Subcategory.findAll({
+        where:{categoryId: req.params.id},
+        order: [["createdAt", "DESC"]],
+      });
       return res.json(subcats);
     } catch (error) {
       console.log(error);

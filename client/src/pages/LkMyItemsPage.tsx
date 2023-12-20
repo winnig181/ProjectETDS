@@ -2,10 +2,11 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
 import MyItemsList from '../components/lk/MyItemsList';
+import ModalUserInfo from '../components/ModalUserInfo';
 
 export default function LkMyItemsPage(): JSX.Element {
   return (
-    <Container >
+    <Container>
       <Typography
         variant="h5"
         component="div"
@@ -16,6 +17,7 @@ export default function LkMyItemsPage(): JSX.Element {
         Мои предметы
       </Typography>
       <MyItemsList />
+      <ModalUserInfo />
     </Container>
   );
 }
