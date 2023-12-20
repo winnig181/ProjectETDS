@@ -25,7 +25,6 @@ export default function LkMyDealsPage({}: Props): JSX.Element {
       variant="h5"
       component="div"
       gutterBottom
-      // color="textSecondary"
       style={{ marginTop: '40px',marginBottom: '40px' }}
     >
       Арендованные предметы
