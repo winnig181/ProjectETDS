@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Item, Deal, Userreview }) {
       User.hasMany(Item, { foreignKey: "userId" });
       User.hasMany(Deal, { foreignKey: "ownerId", as: "ownedDeals" });
-      // User.hasMany(Deal, { foreignKey: "tenantId", as: "rentedDeals" });
+      User.hasMany(Deal, { foreignKey: "tenantId", as: "rentedDeals" });
       User.hasMany(Userreview, { foreignKey: "targetId" });
     }
   }

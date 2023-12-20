@@ -1,22 +1,32 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import MyItemsList from '../components/lk/MyItemsList';
 import ModalUserInfo from '../components/ModalUserInfo';
+import MyOwnersDealsList from '../components/lk/MyOwnersDealsList';
 
 export default function LkMyItemsPage(): JSX.Element {
   return (
     <Container>
       <Typography
-        variant="h5"
-        component="div"
+        variant="h4"
         gutterBottom
-        // color="textSecondary"
-        style={{ marginTop: '40px',marginBottom: '40px' }}
+        style={{ marginTop: '40px', marginBottom: '5px' }}
       >
-        Мои предметы
+        {' '}
+        Мои предметы{' '}
       </Typography>
-      <MyItemsList />
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <Typography
+          variant="h5"
+          gutterBottom
+          style={{ marginTop: '20px', marginBottom: '5px' }}
+        >
+          Последние сделки
+        </Typography>
+        <MyOwnersDealsList />
+        <MyItemsList />
+      </Box>
       <ModalUserInfo />
     </Container>
   );

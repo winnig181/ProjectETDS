@@ -194,6 +194,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Avatar, Badge, Button, Grid, MenuItem, Tooltip } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { thunkLogout } from '../redux/slices/auth/createAsyncThunk';
 
 const drawerWidth = 240;
 

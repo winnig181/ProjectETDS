@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Card, CardActions, Container, Grid, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import type { DealType } from '../types/deal/deal';
 import LkDeal from '../components/lk/LkDeal';
 import { thunkDealsLoad } from '../redux/slices/deals/createAsyncThunk';
 
 
-export default function LkMyDealsPage({}: Props): JSX.Element {
+export default function LkMyDealsPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const mydeals = useAppSelector((state) => state.dealsSlice.deals);
   const user = useAppSelector((state) => state.authSlice.user);
