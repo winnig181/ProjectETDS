@@ -163,7 +163,7 @@ function AddItemPage(): JSX.Element {
                 </TextField>
               </Grid>
               <Grid item xs={12} sx={{ paddingLeft: '10px', paddingTop: '10px' }}>
-                {/* <input name="files" type="file" multiple /> */}
+                <input name="files" type="file" multiple />
               </Grid>
 
               {/* <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
