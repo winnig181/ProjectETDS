@@ -1,13 +1,12 @@
 import axios from 'axios';
 import type { ItemType, AddItemFormData } from '../types/item/item';
-import {SubcatType} from "../types/subcategory";
 
 export const apiItemsService = axios.create({
   baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}items`,
-});
+})
 
 class ItemsService {
-  static async getItems(id:SubcatType['id']): Promise<ItemType[]> {
+  static async getItems(): Promise<ItemType[]> {
     const response = await apiItemsService.get<ItemType[]>(`/`);
     if (response.status === 200) return response.data;
     return [];
