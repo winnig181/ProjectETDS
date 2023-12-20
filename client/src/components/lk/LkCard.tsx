@@ -12,7 +12,7 @@ type PropsLkCard = {
 
 export default function LkCard({ text }: PropsLkCard): JSX.Element {
   return (
-    <Card sx={{ minWidth: 180, minHeight: 60, marginTop: 5, padding: 4 }}>
+    <Card sx={{ width: 300, height: 180, marginTop: 5, padding: 4, display: 'flex', justifyContent:'center', alignItems:'center'}}>
       {/* <CardContent>
 
       </CardContent> */}
