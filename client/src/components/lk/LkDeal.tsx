@@ -4,15 +4,15 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import ButtonBase from '@mui/material/ButtonBase';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
+import Button from '@mui/material/Button';
 import type { DealType } from '../../types/deal/deal';
 
 // type Props = {};
 
 export default function LkDeal({ deal }: { deal: DealType }): JSX.Element {
-  const { startDate, endDate, tenantApproveDeal, tenantCloseDeal } = deal;
+  const { startDate, endDate, ownerApproveDeal, tenantApproveDeal, tenantCloseDeal,ownerCloseDeal } = deal;
   const item = deal.Item.title;
   const owner = deal.ownerDetails.nickName;
   const formattedstartDate = format(new Date(startDate), 'd MMM yyyy', { locale: ru });
@@ -28,7 +28,7 @@ export default function LkDeal({ deal }: { deal: DealType }): JSX.Element {
       }}
     >
       <Grid container spacing={1} wrap="nowrap">
-        <Grid item xs={2}>
+        <Grid item xs={3}>
           <Typography variant="body2" color="text.secondary">
             Наименование
           </Typography>
@@ -60,25 +60,38 @@ export default function LkDeal({ deal }: { deal: DealType }): JSX.Element {
             {formattedendDate}
           </Typography>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1.5}>
+          <Typography variant="body2" color="text.secondary">
+            Одобрена
+          </Typography>
+          <Checkbox checked={ownerApproveDeal} disabled />
+        </Grid>
+        <Grid item xs={1.5}>
           <Typography variant="body2" color="text.secondary">
             Получил(-а)
           </Typography>
           <Checkbox
             checked={tenantApproveDeal}
             // onChange={}
-            // inputProps={{ 'aria-label': 'controlled' }}
           />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1.5}>
           <Typography variant="body2" color="text.secondary">
             Вернул(-а)
           </Typography>
           <Checkbox
             checked={tenantCloseDeal}
             // onChange={handleChange}
-            // inputProps={{ 'aria-label': 'controlled' }}
           />
+        </Grid>
+        <Grid item xs={1.5}>
+          <Button
+            variant="outlined"
+            disabled={!tenantCloseDeal || !tenantApproveDeal || !ownerApproveDeal || !ownerCloseDeal}
+          >
+            Оставить отзыв
+          </Button>
+
         </Grid>
       </Grid>
     </Paper>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, CardActions, Container, Grid } from '@mui/material';
+import { Card, CardActions, Container, Grid, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import type { DealType } from '../types/deal/deal';
 import LkDeal from '../components/lk/LkDeal';
@@ -20,10 +20,17 @@ export default function LkMyDealsPage({}: Props): JSX.Element {
   }, []);
 
   return (
-    <>
-      <div>LkMyDealsPage</div>
+    <Container>
+    <Typography
+      variant="h5"
+      component="div"
+      gutterBottom
+      style={{ marginTop: '40px',marginBottom: '40px' }}
+    >
+      Арендованные предметы
+    </Typography>
       {mydeals.map((el)=>
       <LkDeal key={el.id} deal ={el} />)}
-    </>
+    </Container>
   );
 }
