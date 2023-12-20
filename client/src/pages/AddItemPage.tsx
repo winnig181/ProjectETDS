@@ -23,12 +23,9 @@ function AddItemPage(): JSX.Element {
     description: '',
     condition: '',
     subCategoryId: 1,
-    status: '',
+    status: 'available',
     hidden: false,
     price: 0,
-    // img1:'',
-    // img2:'',
-    // img3:'',
   });
 
   const handleChange = (e: React.ChangeEvent<{ value: unknown }>): void => {
@@ -55,9 +52,30 @@ function AddItemPage(): JSX.Element {
     console.log('formData>>>>', formData);
 
     void dispatch(thunkItemsAdd(formData));
-    e.currentTarget.reset();
+    setItemData({
+      title: '',
+      description: '',
+      condition: '',
+      subCategoryId: 1,
+      status: 'available',
+      hidden: false,
+      price: 0,
+    });
     setAdd(!add);
   };
+
+  const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+  });
+
   return (
     <Container maxWidth="md">
       {add ? (
@@ -163,13 +181,22 @@ function AddItemPage(): JSX.Element {
                 </TextField>
               </Grid>
               <Grid item xs={12} sx={{ paddingLeft: '10px', paddingTop: '10px' }}>
-                <input name="files" type="file" multiple />
-              </Grid>
+                {/* <input name="files" type="file" multiple /> */}
 
-              {/* <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
-  Upload file
-  <VisuallyHiddenInput type="file" />
-</Button> */}
+                <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}
+                // изменение цвета кнопки - по умолчанию был черный
+                sx={{
+                  color: 'white', // Set the text color
+                  backgroundColor: '#8a8a8a', // Set the background color
+                  '&:hover': {
+                    backgroundColor: '#1565C0', // Change the background color on hover
+                  },
+                }}
+              >
+                  Выбрать изображение*
+                  <VisuallyHiddenInput id="files" name="files" type="file" multiple />
+                </Button>
+              </Grid>
 
               <Typography
                 variant="body2"
@@ -178,7 +205,8 @@ function AddItemPage(): JSX.Element {
               >
                 * отмечены обязательные для заполнения поля
               </Typography>
-              <Grid item xs={12} sx={{ marginBottom: '20px' }}>
+
+              <Grid item xs={12} sx={{ marginTop: '20px' }}>
                 <Button type="submit" variant="contained" color="primary">
                   Добавить
                 </Button>
