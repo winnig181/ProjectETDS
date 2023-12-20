@@ -17,8 +17,6 @@ export default function LkReviewsPage(): JSX.Element {
       <Typography
         variant="h5"
         component="div"
-        gutterBottom
-        // color="textSecondary"
         style={{ marginTop: '40px',marginBottom: '40px'  }}
       >
         Мои отзывы на других пользователей
