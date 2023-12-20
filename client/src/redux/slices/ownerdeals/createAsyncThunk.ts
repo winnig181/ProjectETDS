@@ -1,10 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import type { DealType, AddDealFormData } from '../../../types/deal/deal';
-import DealsService from '../../../services/deals';
+import OwnerDealsService from '../../../services/ownerdeals';
 
-export const thunkOwnerDealsLoad = createAsyncThunk('dealsSlice/thunkDealsLoad', async () =>
-  DealsService.getDeals(),
+export const thunkOwnerDealsLoad = createAsyncThunk('ownerDealsSlice/thunkOwnerDealsLoad', async () =>
+  OwnerDealsService.getOwnerDeals(),
 );
 
 // export const thunkDealsAdd = createAsyncThunk(

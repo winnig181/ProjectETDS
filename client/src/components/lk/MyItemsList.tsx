@@ -21,14 +21,16 @@ export default function MyItemsList(): JSX.Element {
   const items = useAppSelector((state) => state.itemsSlice.items);
   const user = useAppSelector((state) => state.authSlice.user);
 
-  console.log('>>>>user:', user);
-  console.log('>>>>items:', items);
-  const myItems = items.filter((item) => item.userId === user.id);
-
-  
+  // console.log('>>>>user:', user);
+  // console.log('>>>>items:', items);
+  const myItems = items.filter((item) => item.userId === user.id); 
 
   return (
-    <Grid container rowSpacing={2} columnSpacing={4} justifyContent="flex-start">
+    <Grid container rowSpacing={2} columnSpacing={4} 
+    sx={{
+      marginLeft: 0.5
+      // justifyContent: "center"
+      }}>
       {/* <Grid item xs={12} sm={12} md={6}> */}
       {myItems.map((item: ItemType) => (
         <Grid key={item.id} item xs={12} sm={12} md={6}>

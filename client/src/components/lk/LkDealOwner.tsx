@@ -12,9 +12,9 @@ import type { DealType } from '../../types/deal/deal';
 // type Props = {};
 
 export default function LkDealOwner({ deal }: { deal: DealType }): JSX.Element {
-  const { startDate, endDate, ownerApproveDeal, tenantApproveDeal, tenantCloseDeal,ownerCloseDeal } = deal;
+  const { startDate, endDate, tenantDetails, ownerApproveDeal, tenantApproveDeal, tenantCloseDeal,ownerCloseDeal } = deal;
   const item = deal.Item.title;
-  const tenant = deal.ownerDetails.nickName;
+  const tenant = tenantDetails.nickName;
   const formattedstartDate = format(new Date(startDate), 'd MMM yyyy', { locale: ru });
   const formattedendDate = format(new Date(endDate), 'd MMM yyyy', { locale: ru });
   return (
