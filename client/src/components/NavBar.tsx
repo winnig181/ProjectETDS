@@ -638,7 +638,13 @@ export default function NavBar(): JSX.Element {
 
 
 
-
+  const CustomButton = styled(Button)({
+    backgroundColor: 'black', // Цвет фона по умолчанию
+    color: 'white', // Цвет текста по умолчанию
+    '&:hover': {
+      backgroundColor: '#35cdce', // Цвет фона при наведении
+    },
+  });
 
   const dispatch = useAppDispatch();
   const theme = useTheme();
@@ -678,43 +684,43 @@ export default function NavBar(): JSX.Element {
             </Typography>
           </Typography>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/lk">
+          <CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/lk">
               Личный кабинет
-            </Button>
+            </CustomButton>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/addDeal">
+          <CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/addDeal">
               Арендовать
-            </Button>
+            </CustomButton>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/add-item">
+          <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/add-item">
               Разместить
-            </Button>
+            </CustomButton>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
+          <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
               Категории
-            </Button>
+            </CustomButton>
           </Grid>
           {user.status !== 'authenticated' ? (
             <>
               <Grid item sx={{ ml: 2, mr: 2 }}>
-                <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/login">
+              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/login">
                   Авторизация
-                </Button>
+                </CustomButton>
               </Grid>
               <Grid item sx={{ ml: 2, mr: 2 }}>
-                <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/registration">
+              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/registration">
                   Регистрация
-                </Button>
+                </CustomButton>
               </Grid>
             </>
           ) : (
             <Grid item sx={{ ml: 2, mr: 2 }}>
-              <Button color="inherit" sx={{ fontWeight: 'bold' }} onClick={() => void dispatch(thunkLogout())}>
+              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} onClick={() => void dispatch(thunkLogout())}>
                 Выйти
-              </Button>
+              </CustomButton>
             </Grid>
           )}
           <Tooltip title="Open settings">
