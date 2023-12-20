@@ -20,7 +20,7 @@ export default function ReviewCard({review}: PropsReviewCard):JSX.Element {
   
 
   return (
-    <Card variant="outlined" sx={{ minWidth: 400, minHeight:200 }}>
+    <Card variant="outlined" sx={{ minWidth: 400, minHeight:200,borderRadius: '10px' }}>
     <CardContent>
     <Rating name="read-only" value={review.rating} readOnly />
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>

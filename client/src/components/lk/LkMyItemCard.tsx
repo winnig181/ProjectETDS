@@ -62,9 +62,9 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
       </Box>
       </Box>
           <CardActions sx={{ display: 'flex'}}>
-            <Button size="medium" variant="outlined">
+            {/* <Button size="medium" variant="outlined">
               Возвращен ?
-            </Button>
+            </Button> */}
             <Button size="medium" variant="outlined">
               Изменить
             </Button>
