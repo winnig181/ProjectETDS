@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { DealType } from '../types/deal/deal';
+import type { AddDealFormData, DealType } from '../types/deal/deal';
 
 export const apiDealsService = axios.create({
   // baseURL: 'http://localhost:3000/api/v1/deals',
@@ -9,6 +9,12 @@ export const apiDealsService = axios.create({
 class DealsService {
   static async getDeals(): Promise<DealType[]> {
     const response = await apiDealsService.get<DealType[]>('/');
+    if (response.status === 200) return response.data;
+    return [];
+  }
+
+  static async getOneDeals(): Promise<DealType[]> {
+    const response = await apiDealsService.get<DealType[]>('/:id');
     if (response.status === 200) return response.data;
     return [];
   }

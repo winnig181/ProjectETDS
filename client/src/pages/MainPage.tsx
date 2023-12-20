@@ -2,9 +2,7 @@
 import React, {useEffect} from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import CategoryCard from '../components/CategoryCard';
-import ItemCard from "../components/ItemCard";
 import {useAppDispatch, useAppSelector} from "../redux/hook";
-import axios from "axios";
 import {thunkCategoriesLoad} from "../redux/slices/categories/createAsyncThunk";
 
 export default function MainPage(): JSX.Element {

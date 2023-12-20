@@ -35,7 +35,7 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
             {category.categoryName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            какой-то текст
+            {category.categoryName}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { Avatar, Button, Grid, Tooltip } from '@mui/material';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { Avatar, Badge, Button, Grid, MenuItem, Tooltip } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunk';
@@ -58,6 +59,8 @@ export default function NavBar(): JSX.Element {
 
   const auth = useAppSelector((store) => store.authSlice);
   const { user } = auth;
+
+  const deals = useAppSelector((store) => store.dealSlice);
   // console.log('>>>>>>>>>>>>>>>auth', auth);
 
   const dispatch = useAppDispatch();
@@ -81,18 +84,23 @@ export default function NavBar(): JSX.Element {
             </Typography>
           </Typography>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-            <Button color="inherit" component={NavLink} to="/lk">
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/lk">
               Личный кабинет
             </Button>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
+            <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/addDeal">
+              Арендовать
+            </Button>
+          </Grid>
+          <Grid item sx={{ ml: 2, mr: 2 }}>
             <Button color="inherit" component={NavLink} to="/add-item">
-              Добавить
+              Разместить
             </Button>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
             <Button color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
-              Главная
+              Категории
             </Button>
           </Grid>
           {user.status !== 'authenticated' ? (
@@ -120,6 +128,16 @@ export default function NavBar(): JSX.Element {
               <Avatar alt="Remy Sharp" src={user.avatar} />
             </IconButton>
           </Tooltip>
+
+          <MenuItem>
+            <IconButton size="large" aria-label="show 17 new notifications" color="inherit" >
+              <Badge badgeContent={17} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+
+           </MenuItem>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

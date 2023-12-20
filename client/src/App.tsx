@@ -24,6 +24,7 @@ import Loader from './components/hocs/Loader';
 import { apiItemsService } from './services/items';
 import { apiDealsService } from './services/deals';
 import SubCatPage from './pages/SubCatPage';
+import AddDealPage from './pages/AddDealPage';
 import AddItemPage from './pages/AddItemPage';
 
 function App(): JSX.Element {
@@ -41,46 +42,35 @@ function App(): JSX.Element {
   }, []);
 
   return (
-  
+
       <Loader isLoading={auth.user.status === 'pending'}>
-      <>
+      
           <NavBar />  
           {/* <Sidebar/> */}
-        <Container style={{ marginTop: '74px' }}>
+        <Container style={{ marginTop: '84px' }}>
 
             <Routes>
-              <Route path="/" element={<MainPage />} />
-                      <Route path="/categories/:id" element={<SubCatPage />} />  
-          {/* <Route path="/subcategories/:id" element={<Размап карточек items одной категории />} />         */}
+                  <Route path="/" element={<MainPage />} />
+                  <Route path="/categories/:id" element={<SubCatPage />} />  
+              {/* <Route path="/subcategories/:id" element={<Размап карточек items одной категории />} />         */}
 
-              <Route
-            element={
-              <PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />
-            }
-          >
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/registration" element={<RegistrationPage />} />
-          </Route>
-
-          <Route
-            element={
-              <PrivateRouter
-                isAllowed={auth.user.status !== 'authenticated'}
-                redirectPath="/login"/>
-          }>
-            <Route path="/lk" element={<LkPage />} />
-            <Route path="/lk/profile" element={<LkProfile />} />
-            <Route path="/lk/reviews" element={<LkReviewsPage />} />
-            <Route path="/lk/my-items" element={<LkMyItemsPage />} />
-            <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
-            <Route path="/add-item" element={<AddItemPage />} />
-              
-          </Route>
-        </Routes>
-        </Container>
-        </>
-
-    </Loader>
+                  <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />}>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/registration" element={<RegistrationPage />} />
+                  </Route>
+              <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />}>
+                <Route path = "/addDeal/:id" element = {<AddDealPage/>} />
+                <Route path = "/addDeal" element = {<AddDealPage/>} />
+                <Route path="/lk" element={<LkPage />} />
+                <Route path="/lk/profile" element={<LkProfile />} />
+                <Route path="/lk/reviews" element={<LkReviewsPage />} />
+                <Route path="/lk/my-items" element={<LkMyItemsPage />} />
+                <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
+              <Route path="/add-item" element={<AddItemPage />} />
+              </Route>
+             </Routes>
+         </Container>
+      </Loader>
   );
 }
 

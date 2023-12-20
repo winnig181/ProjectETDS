@@ -89,6 +89,14 @@ apiItemsRouter
     }
   );
 
+apiItemsRouter.get(`/:id`, async (req, res) => {
+    const items = await Item.findAll({
+      where:{subCategoryId: req.params.id},
+      order: [["createdAt", "DESC"]],
+    });
+    return res.json(items);
+})
+
 apiItemsRouter.delete("/:id", async (req, res) => {
   await Item.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
@@ -105,18 +113,5 @@ apiItemsRouter.put("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// apiItemsRouter.put("/isFav/:id", async(req,res)=> {
-//   try{
-//     console.log('req.params>>>>>>>>>>',req.params);
-//     const item = await Item.findByPk(req.params.id);
-//     item.isFav = !item.isFav;
-//     item.save();
-//     res.status(200).json({message:'success'});
-//   }catch (error){
-//     console.log(error);
-//     res.status(500).json(error);
-//   }
-// })
 
 module.exports = apiItemsRouter;
