@@ -51,11 +51,50 @@ module.exports = {
       updatedAt: currentDate,
     },])  
 
-const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
-      categoryName,
+    await queryInterface.bulkInsert('Categories', [{
+      categoryName: 'Техника',
+      categoryIMG: 'https://cdn-icons-png.flaticon.com/512/7816/7816182.png ',
       createdAt: currentDate,
       updatedAt: currentDate,
-    }));
+    },
+    {
+      categoryName: 'Спорт',
+      categoryIMG: 'https://cdn-icons-png.flaticon.com/512/3230/3230980.png',
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Одежда',
+      categoryIMG: 'https://cdn-icons-png.flaticon.com/512/3230/3230980.png',
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Развлечения',
+      categoryIMG: 'https://cdn-icons-png.flaticon.com/512/2802/2802837.png',
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Инструменты',
+      categoryIMG: 'https://cdn-icons-png.flaticon.com/512/3230/3230980.png',
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Техника',
+      categoryIMG: 'https://cdn-icons-png.flaticon.com/512/3230/3230980.png',
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    }
+    ])
+
+// const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
+//       categoryName,
+//       categoryIMG: 
+//       createdAt: currentDate,
+//       updatedAt: currentDate,
+//     }));
 
     const subcategories = ['Гаджеты', 'Верхняя одежда', 'Футбол', 'Фрукты', 'Романы'].map(
         (subCategoryName, index) => ({
@@ -91,7 +130,7 @@ const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', '�
     }));
 
     // await queryInterface.bulkInsert('Users', users)
-    await queryInterface.bulkInsert('Categories', categories)
+  
     await queryInterface.bulkInsert('Subcategories', subcategories)
     await queryInterface.bulkInsert('Items', items)
     await queryInterface.bulkInsert('Userreviews', userReviews)

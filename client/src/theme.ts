@@ -12,7 +12,7 @@ const theme = createTheme({
         main:  '#97D779', // Третий основной цвет
     },
     background: {
-      default: '#F0F1B7', // Цвет фона
+      default: 'white', // Цвет фона
     },
   },
   typography: {
