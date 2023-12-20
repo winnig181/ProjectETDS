@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../redux/hook';
 import LkDeal from '../components/lk/LkDeal';
 import { thunkDealsLoad } from '../redux/slices/deals/createAsyncThunk';
 
-
 export default function LkMyDealsPage({}): JSX.Element {
   const dispatch = useAppDispatch();
   const mydeals = useAppSelector((state) => state.dealsSlice.deals);

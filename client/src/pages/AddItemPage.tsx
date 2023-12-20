@@ -9,6 +9,8 @@ import {
   Alert,
   Stack,
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useAppDispatch } from '../redux/hook';
 import type { AddItemFormData } from '../types/item/item';
 import { thunkItemsAdd } from '../redux/slices/items/createAsyncThunk';
@@ -29,7 +31,7 @@ function AddItemPage(): JSX.Element {
     // img3:'',
   });
 
-  const handleChange = (e:React.ChangeEvent<{ value: unknown }>): void => {
+  const handleChange = (e: React.ChangeEvent<{ value: unknown }>): void => {
     const { name, value, type, checked } = e.target;
     setItemData({
       ...itemData,
@@ -161,8 +163,13 @@ function AddItemPage(): JSX.Element {
                 </TextField>
               </Grid>
               <Grid item xs={12} sx={{ paddingLeft: '10px', paddingTop: '10px' }}>
-                <input name="files" type="file" multiple />
+                {/* <input name="files" type="file" multiple /> */}
               </Grid>
+
+              {/* <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+  Upload file
+  <VisuallyHiddenInput type="file" />
+</Button> */}
 
               <Typography
                 variant="body2"

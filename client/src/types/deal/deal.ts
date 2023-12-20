@@ -27,6 +27,11 @@ export type DealSliceState = {
   // currentDeal: DealType | null;
 };
 
+export type OwnerDealSliceState = {
+  ownerdeals: DealType[];
+  // currentDeal: DealType | null;
+};
+
 export type AddDealFormData = {
   ownerId: number,
   tenantId: number,
