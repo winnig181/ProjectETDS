@@ -2,17 +2,14 @@ const express = require("express");
 
 const { Item, User } = require("../../db/models");
 const verifyAccessToken = require("../middlewares/verifyAccessToken");
+const req = require("express/lib/request");
 
 const apiItemsRouter = express.Router();
 
 apiItemsRouter
   .route("/")
-  .get(
-    verifyAccessToken, 
-    async (req, res) => {
-      
-    try {
-      const items = await Item.findAll({
+  .get(verifyAccessToken, async (req, res) => {
+    try { const items = await Item.findAll({
         order: [["createdAt", "DESC"]],
         include: { model: User, as: 'ownerDetails' },
         // where:{userId: res.locals.user.id},
@@ -24,12 +21,10 @@ apiItemsRouter
     }
   })
   .post(
-    /* upload.single('img'), */
-    // verifyAccessToken,
     async (req, res) => {
       try {
         if (!req.body?.title||!req.body?.description || !req.body?.price || !req.body?.condition || !req.body?.subCategoryId)
-          return res.status(500).json({ message: "Empty reqbody" });
+          return res.status(500).json({ message: "Empty req.body" });
         const { price,title, description, img1,img2,img3,condition, status,hidden,subCategoryId} = req.body;
         const newItem = await Item.create({
           title,
@@ -55,6 +50,14 @@ apiItemsRouter
     }
   );
 
+apiItemsRouter.get(`/:id`, async (req, res) => {
+    const items = await Item.findAll({
+      where:{subCategoryId: req.params.id},
+      order: [["createdAt", "DESC"]],
+    });
+    return res.json(items);
+})
+
 apiItemsRouter.delete("/:id", async (req, res) => {
   await Item.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
@@ -71,18 +74,5 @@ apiItemsRouter.put("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// apiItemsRouter.put("/isFav/:id", async(req,res)=> {
-//   try{
-//     console.log('req.params>>>>>>>>>>',req.params);
-//     const item = await Item.findByPk(req.params.id);
-//     item.isFav = !item.isFav;
-//     item.save();
-//     res.status(200).json({message:'success'});
-//   }catch (error){
-//     console.log(error);
-//     res.status(500).json(error);
-//   }
-// })
 
 module.exports = apiItemsRouter;

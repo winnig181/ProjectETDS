@@ -1,11 +1,9 @@
+const { hashSync } = require('bcrypt');
+const faker = require('faker');
 
+const currentDate = new Date();
+const endDateValue = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
 
-const {hashSync} = require('bcrypt')
-
-const currentDate = new Date()
-const endDateValue = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000)
-
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Users', [{
@@ -18,11 +16,11 @@ module.exports = {
       about: 'driver, bring some milk',
       city: 'San Francisco',
       metro: null,
-      publicPhone: '+995 595 *** ***',
+      publicPhone: '+995 595 * *',
       isActivated: false,
       activationLink: 'some link should be here',
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: faker.date.past(),
+      updatedAt: currentDate,
     },{
       name: 'Пассажир метро',
       email: '2@2',
@@ -34,172 +32,89 @@ module.exports = {
       city: 'Москвэ',
       metro: 'Ленинский проспект',
       publicPhone: this.phone,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      createdAt: faker.date.past(),
+      updatedAt: currentDate,
+    },{
+      name: faker.name.findName(),
+      email: faker.internet.email(),
+      hashpass: hashSync('password', 10),
+      nickName: faker.internet.userName(),
+      phone: faker.phone.phoneNumber(),
+      avatar: faker.image.avatar(),
+      about: faker.lorem.sentence(),
+      city: faker.address.city(),
+      metro: faker.address.streetName(),
+      publicPhone: faker.phone.phoneNumber(),
+      isActivated: true,
+      activationLink: null,
+      createdAt: faker.date.past(),
+      updatedAt: currentDate,
     }])
-    await queryInterface.bulkInsert('Categories', [{
-      categoryName: 'Домашние развлечения',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryName: 'Туризм',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }, {
-      categoryName: 'Спортинвентарь',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryName: 'Оборудование и инструменты',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    ])
-    await queryInterface.bulkInsert('Subcategories', [{
-      categoryId: 1,
-      subCategoryName: 'Видеоигры',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryId: 1,
-      subCategoryName: 'Music',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryId: 1,
-      subCategoryName: 'Подушки',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },])
-    await queryInterface.bulkInsert('Items', [{
-      title: 'Playgame',
-      description: 'Heroes of Might and Magic 3',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'used',
-      status:'ordered',
-      hidden: false,
-      subCategoryId: 1,
-      userId: 1,
-      price: 35,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      title: 'WTF it is',
-      description: 'The Binding of Isaac',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'new',
-      status:'available',
-      hidden: true,
-      subCategoryId: 1,
-      userId: 1,
-      price: 666,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      title: 'And this is...',
-      description: 'Doom',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'used',
-      status:'available',
-      hidden: false,
-      subCategoryId: 1,
-      userId: 1,
-      price: 42,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      title: 'The best home quiz ever',
-      description: 'Gnomy',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'as new',
-      status:'available',
-      hidden: false,
-      subCategoryId: 1,
-      userId: 2,
-      price: 50,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },])
-    await queryInterface.bulkInsert('Deals', [{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 1,
-      startDate: currentDate,
+
+
+    const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
+      categoryName,
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    }));
+
+    const subcategories = ['Гаджеты', 'Верхняя одежда', 'Футбол', 'Фрукты', 'Романы'].map(
+        (subCategoryName, index) => ({
+          categoryId: index + 1,
+          subCategoryName,
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        })
+    );
+
+    const items = Array.from({ length: 20 }).map((_, index) => ({
+      title: faker.commerce.productName(),
+      description: faker.lorem.sentence(),
+      img1: faker.image.image(),
+      img2: faker.image.image(),
+      img3: faker.image.image(),
+      condition: faker.random.arrayElement(['новый', 'б/у']),
+      status: faker.random.arrayElement(['в наличии', 'продано']),
+      hidden: faker.random.boolean(),
+      subCategoryId: faker.random.number({ min: 1, max: 5 }),
+      userId: faker.random.number({ min: 1, max: 3 }),
+      price: faker.random.number({ min: 10, max: 1000, precision: 0.01 }),
+      createdAt: faker.date.past(),
+      updatedAt: currentDate,
+    }));
+
+    const deals = Array.from({ length: 15 }).map((_, index) => ({
+      ownerId: faker.random.number({ min: 1, max: 3 }),
+      tenantId: faker.random.number({ min: 1, max: 3 }),
+      itemId: faker.random.number({ min: 1, max: 20 }),
+      startDate: faker.date.past(),
       endDate: endDateValue,
-      ownerApproveDeal: true,
-      ownerCloseDeal: true,
-      tenantApproveDeal: true,
-      tenantCloseDeal: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 2,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: true,
-      ownerCloseDeal: false,
-      tenantApproveDeal: true,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      ownerId: 2,
-      tenantId: 1,
-      itemId: 4,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: true,
-      ownerCloseDeal: false,
-      tenantApproveDeal: true,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 3,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },])
-    await queryInterface.bulkInsert('Userreviews', [{
-      userId: 2,
-      review: 'Отличный парень, привёз всё быстро и в целости',
-      rating: 4,
-      targetId: 1,
-      createdAt: new Date(),
-      updatedAt: new Date()    },{
-      userId: 1,
-      review: 'Рыба-рыба, рыба-кит',
-      rating: 5,
-      targetId: 2,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }])
+      ownerApproveDeal: faker.random.boolean(),
+      ownerCloseDeal: faker.random.boolean(),
+      tenantApproveDeal: faker.random.boolean(),
+      tenantCloseDeal: faker.random.boolean(),
+      createdAt: faker.date.past(),
+      updatedAt: currentDate,
+    }));
+
+    const userReviews = Array.from({ length: 10 }).map((_, index) => ({
+      userId: faker.random.number({ min: 1, max: 3 }),
+      review: faker.lorem.paragraph(),
+      rating: faker.random.number({ min: 1, max: 5, precision: 0.1 }),
+      targetId: faker.random.number({ min: 1, max: 3 }),
+      createdAt: faker.date.past(),
+      updatedAt: currentDate,
+    }));
+
+    // await queryInterface.bulkInsert('Users', users)
+    await queryInterface.bulkInsert('Categories', categories)
+    await queryInterface.bulkInsert('Subcategories', subcategories)
+    await queryInterface.bulkInsert('Items', items)
+    await queryInterface.bulkInsert('Deals', deals)
+    await queryInterface.bulkInsert('Userreviews', userReviews)
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+
+  },
 };
