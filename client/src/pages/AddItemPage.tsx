@@ -31,7 +31,7 @@ function AddItemPage(): JSX.Element {
     // img3:'',
   });
 
-  const handleChange = (e:React.ChangeEvent<{ value: unknown }>): void => {
+  const handleChange = (e: React.ChangeEvent<{ value: unknown }>): void => {
     const { name, value, type, checked } = e.target;
     setItemData({
       ...itemData,
@@ -166,10 +166,10 @@ function AddItemPage(): JSX.Element {
                 {/* <input name="files" type="file" multiple /> */}
               </Grid>
 
-              <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
+              {/* <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
   Upload file
   <VisuallyHiddenInput type="file" />
-</Button>
+</Button> */}
 
               <Typography
                 variant="body2"

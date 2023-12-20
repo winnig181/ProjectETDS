@@ -9,6 +9,7 @@ const apiItemsRouter = require('./routes/apiItemsRouter');
 const apiDealsRouter = require('./routes/apiDealsRouter');
 const apiCategoriesRouter = require('./routes/apiCategoriesRoute')
 const apiSubcatsRouter = require('./routes/apiSubcatsRouter');
+const apiOwnerDealsRouter = require('./routes/apiOwnerDealsRouter');
 // const multerRouter = require("./routes/multerRouter");
 require('dotenv').config();
 
@@ -32,6 +33,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/reviews', apiReviewsRouter);
 app.use('/api/v1/items', apiItemsRouter);
 app.use('/api/v1/deals', apiDealsRouter);
+app.use('/api/v1/ownerdeals', apiOwnerDealsRouter);
 app.use('/api/v1/categories', apiCategoriesRouter);
 app.use('/api/v1/subcats', apiSubcatsRouter);
 // app.use("/api/v1/multer", multerRouter);
