@@ -36,6 +36,7 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkItemsLoad());
+    void dispatch(thunkDealsLoad());
   }, []);
 
   return (

@@ -292,10 +292,10 @@ export default function NavBar(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
   const { user } = auth;
 
-  const mydeals = useAppSelector((state) => state.dealsSlice.deals);
+  const deals = useAppSelector((state) => state.dealsSlice.deals);
 
 
-  console.log('все сделки', mydeals);
+  console.log('все сделки -------------->', deals.length);
 
   const dispatch = useAppDispatch();
   const theme = useTheme();
