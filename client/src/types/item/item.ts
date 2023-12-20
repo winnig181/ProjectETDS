@@ -24,9 +24,9 @@ export type AddItemFormData = {
   price:number;
   title: string;
   description: string;
-  img1: string;
-  img2: string;
-  img3: string;
+  img1?: string;
+  img2?: string;
+  img3?: string;
   condition: string;
   status: string;
   hidden: boolean;

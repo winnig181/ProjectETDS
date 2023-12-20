@@ -16,46 +16,64 @@ import { thunkItemsAdd } from '../redux/slices/items/createAsyncThunk';
 function AddItemPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const [add, setAdd] = useState(true);
-  const [itemData, setItemData] = useState<AddItemFormData>({
-    title: '',
-    description: '',
-    condition: '',
-    subCategoryId: 1,
-    status: '',
-    hidden: false,
-    price: 0,
-    // img1:'',
-    // img2:'',
-    // img3:'',
-  });
+  const [status, setStatus] = useState('available');
+  const [hidden, setHidden] = useState(false);
+  const [subcat, setSubcat] = useState(1);
+  // const [fileInputs, setFileInputs] = useState<(FileList | null)[]>([null, null, null]); 
 
-  const handleChange = (e:React.ChangeEvent<{ value: unknown }>): void => {
-    const { name, value, type, checked } = e.target;
-    setItemData({
-      ...itemData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+  const handleStatus = (event: React.ChangeEvent<{ value: unknown }>): void => {
+    setStatus(event.target.value as string);
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    const formData = new FormData();
+  const handleHidden = (event: React.ChangeEvent<{ value: unknown }>): void => {
+    setHidden(event.target.value === 'true');
+  };
+
+  const handleSubcat = (event: React.ChangeEvent<{ value: unknown }>): void => {
+    setSubcat(Number(event.target.value));
+  };
+
+  // const handleFileChange = (index: number, files: FileList | null): void => {
+  //   setFileInputs((prevInputs) => prevInputs.map((item, i) => (i === index ? files : item)));
+  // };
+  // const handleSubmit = (e: React.FormEvent): void => {
+  //   e.preventDefault();
+    // const formData = Object.fromEntries(
+    //   new FormData(e.currentTarget),
+    // ) as unknown as AddItemFormData;
+    // formData.status = status;
+    // formData.hidden = hidden;
+    // formData.subCategoryId = +subcat;
+    // console.log('formData>>>>', formData);
+
+    // console.log(fileInputs);
+
+    
+    const handleSubmit = (e: React.FormEvent): void => {
+      e.preventDefault();
+      console.log('e.currentTarget.files.files>>>>',e.currentTarget.files.files);
+      // const formData = new FormData();
+      const formData = Object.fromEntries(
+        new FormData(e.currentTarget),
+      ) as unknown as AddItemFormData;
+      formData.status = status;
+      formData.hidden = hidden;
+      formData.subCategoryId = +subcat;
     for (const file of e.currentTarget.files.files) {
       formData.append('files', file);
     }
-    formData.append('title', itemData.title);
-    formData.append('description', itemData.description);
-    formData.append('condition', itemData.condition);
-    formData.append('status', itemData.status);
-    formData.append('hidden', Boolean(itemData.hidden));
-    formData.append('subCategoryId', itemData.subCategoryId);
-    formData.append('price', itemData.price);
-    console.log('formData>>>>', formData);
+    // formData.append('status', status);
+    // formData.append('hidden', String(hidden));
+    // formData.append('subCategoryId', String(subcat));
+
+
+    console.log('formData>>>>',formData);
 
     void dispatch(thunkItemsAdd(formData));
     e.currentTarget.reset();
     setAdd(!add);
   };
+
   return (
     <Container maxWidth="md">
       {add ? (
@@ -66,63 +84,45 @@ function AddItemPage(): JSX.Element {
           >
             Разместить предмет на сайте
           </Typography>
-          <form encType="multipart/form-data" onSubmit={submitHandler}>
+          <form encType="multipart/form-data" onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField
-                  name="title"
-                  value={itemData.title}
-                  onChange={handleChange}
-                  fullWidth
-                  label="Название предмета"
-                  variant="outlined"
-                  required
-                />
+                <TextField name="title" fullWidth label="Название предмета*" variant="outlined" />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   name="price"
-                  value={itemData.price}
-                  onChange={handleChange}
                   fullWidth
-                  label="Цена в рублях за сутки аренды или 0"
+                  label="Цена в рублях за сутки аренды или 0*"
                   type="text"
                   variant="outlined"
-                  required
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   name="description"
-                  value={itemData.description}
-                  onChange={handleChange}
                   fullWidth
                   label="Описание предмета"
                   variant="outlined"
-                  multiline
-                  rows={2}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   name="condition"
-                  value={itemData.condition}
-                  onChange={handleChange}
                   fullWidth
-                  label="Состояние (новое / как новое / рабочее / требует ремонта)"
+                  label="Состояние* (новое / как новое / рабочее / требует ремонта) "
                   variant="outlined"
-                  required
                 />
               </Grid>
               <Grid item xs={6}>
                 <TextField
                   name="status"
-                  value={itemData.status}
-                  onChange={handleChange}
                   fullWidth
-                  label="Статус"
+                  label="Статус*"
                   variant="outlined"
                   id="select"
+                  value={status}
+                  onChange={handleStatus}
                   select
                 >
                   <MenuItem value="available">Доступен</MenuItem>
@@ -132,12 +132,12 @@ function AddItemPage(): JSX.Element {
               <Grid item xs={6}>
                 <TextField
                   name="hidden"
-                  value={itemData.hidden}
-                  onChange={handleChange}
                   fullWidth
-                  label="Скрыть"
+                  label="Скрыть*"
                   variant="outlined"
                   id="select"
+                  value={hidden}
+                  onChange={handleHidden}
                   select
                 >
                   <MenuItem value="false">Показывать</MenuItem>
@@ -147,12 +147,12 @@ function AddItemPage(): JSX.Element {
               <Grid item xs={12}>
                 <TextField
                   name="subCategoryId"
-                  value={itemData.subCategoryId}
-                  onChange={handleChange}
                   fullWidth
-                  label="Выберите подкатегорию"
+                  label="Выберите подкатегорию*"
                   variant="outlined"
                   id="select"
+                  value={subcat}
+                  onChange={handleSubcat}
                   select
                 >
                   <MenuItem value="1">Видеоигры</MenuItem>
@@ -160,10 +160,27 @@ function AddItemPage(): JSX.Element {
                   <MenuItem value="3">Подушки</MenuItem>
                 </TextField>
               </Grid>
-              <Grid item xs={12} sx={{ paddingLeft: '10px', paddingTop: '10px' }}>
-                <input name="files" type="file" multiple />
-              </Grid>
 
+              <input name="files" type="file" multiple />
+              {/* {fileInputs.map((_, index) => (
+                <Grid item xs={4} key={index}>
+                  <input
+                    type="file"
+                    name={`img${index + 1}`}
+                    accept="image/*"
+                    // style={{ display: 'none' }}
+                    onChange={(e) => handleFileChange(index, e.target.files)}
+                  /> */}
+              {/* <Button
+                    variant="contained"
+                    color="primary"
+                    component="label"
+                    htmlFor={`img${index + 1}`}
+                  > */}
+              {/* Загрузить фото* */}
+              {/* </Button> */}
+              {/* </Grid> */}
+              {/* ))} */}
               <Typography
                 variant="body2"
                 color="text.secondary"
@@ -172,7 +189,7 @@ function AddItemPage(): JSX.Element {
                 * отмечены обязательные для заполнения поля
               </Typography>
               <Grid item xs={12} sx={{ marginBottom: '20px' }}>
-                <Button type="submit" variant="contained" color="primary">
+                <Button variant="contained" color="primary" type="submit">
                   Добавить
                 </Button>
               </Grid>

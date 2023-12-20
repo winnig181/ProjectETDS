@@ -20,12 +20,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// const cpUpload = upload.fields([
-//   { name: "img1", maxCount: 1 },
-//   { name: "img2", maxCount: 1 },
-//   { name: "img3", maxCount: 1 },
-// ]);
-
 const cpUpload = upload.array("files", 3);
 
 const apiItemsRouter = express.Router();
@@ -47,8 +41,8 @@ apiItemsRouter
   })
   .post(
     // upload.single('img'),
-    cpUpload,
     verifyAccessToken,
+    cpUpload,
     async (req, res) => {
       console.log("req.file>>>>>", req.files);
       try {
@@ -77,9 +71,6 @@ apiItemsRouter
           img1: req.files[0]?.filename || "",
           img2: req.files[1]?.filename || "",
           img3: req.files[2]?.filename || "",
-          // img1: req.file?.filename || img1,
-          // img2: req.file?.filename || img2,
-          // img3: req.file?.filename || img3,
           condition,
           status,
           hidden,

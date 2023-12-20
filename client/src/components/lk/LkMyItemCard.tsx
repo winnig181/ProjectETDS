@@ -20,15 +20,14 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
   const { price, title, description, img1, img2, img3, condition, status, hidden, subCategoryId,ownerDetails } =    item;
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', minWidth: 450, padding:2 }}>
-      <CardHeader onClick={() => {dispatch(setCurrentItem(item));}}
-
+      <CardHeader 
+      onClick={() => {dispatch(setCurrentItem(item));}}
         title={ownerDetails.nickName}
         subheader="владелец"
       />
       <Box sx={{ display: 'flex',  justifyContent: 'space-between'}}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column',  }}>
         <CardContent>
-
           <Typography variant="h3">
             {title}
           </Typography>
@@ -50,8 +49,8 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <CardMedia component="img" sx={{ minWidth: 100 }} image="/public/img/vite.svg" alt="img1" />
-        <CardMedia component="img" sx={{ minWidth: 100 }} image="/public/img/vite.svg" alt="img2" />
+      {img1 &&<CardMedia component="img" sx={{ minWidth: 100 }} image={`http://localhost:3000/img/${img1}`} alt="img1" />}
+        {img2 && <CardMedia component="img" sx={{ minWidth: 100 }} image={`http://localhost:3000/img/${img2}`} alt="img2" />}
       </Box>
       </Box>
           <CardActions sx={{ display: 'flex'}}>
