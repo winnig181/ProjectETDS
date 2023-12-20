@@ -30,7 +30,7 @@ export default function LkProfile(): JSX.Element {
     // saveEditedUserData(editedUser);
 
     // Для примера сбрасываем состояния после сохранения
-    setEditedField(''); 
+    setEditedField('');
     setIsEditing(false);
   };
 
@@ -74,7 +74,7 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Имя: {user.name}</Typography>
-                  <Button onClick={() => handleEdit('name')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit()}>Редактировать</Button>
                 </>
               )}
             </Grid>
@@ -89,7 +89,7 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Никнейм: {user.nickName}</Typography>
-                  <Button onClick={() => handleEdit('nickName')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit()}>Редактировать</Button>
                 </>
               )}
             </Grid>
@@ -104,7 +104,7 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Обо мне: {user.about}</Typography>
-                  <Button onClick={() => handleEdit('about')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit()}>Редактировать</Button>
                 </>
               )}
             </Grid>
@@ -119,7 +119,7 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Телефон: {user.phone}</Typography>
-                  <Button onClick={() => handleEdit('phone')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit()}>Редактировать</Button>
                 </>
               )}
             </Grid>
@@ -134,7 +134,7 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Город: {user.city}</Typography>
-                  <Button onClick={() => handleEdit('city')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit()}>Редактировать</Button>
                 </>
               )}
             </Grid>
@@ -149,18 +149,11 @@ export default function LkProfile(): JSX.Element {
               ) : (
                 <>
                   <Typography>Метро: {user.metro}</Typography>
-                  <Button onClick={() => handleEdit('metro')}>Редактировать</Button>
+                  <Button onClick={() => handleEdit()}>Редактировать</Button>
                 </>
               )}
             </Grid>
             
-            <Grid item xs={2} sm={6} md={6}>
-            <Typography>
-                {user.isActivated
-                  ? 'Email подтвержден'
-                  : `Email пока не подтвержден`}
-              </Typography>
-            </Grid>
 
            
             {/* Повторите этот блок для каждого поля */}

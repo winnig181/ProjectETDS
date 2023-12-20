@@ -15,7 +15,7 @@ import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
 import { Container } from '@mui/material';
-// import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
+import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
 import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
