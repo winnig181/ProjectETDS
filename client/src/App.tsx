@@ -38,6 +38,7 @@ function App(): JSX.Element {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkAuthRefresh());
     void dispatch(thunkItemsLoad());
+    void dispatch(thunkDealsLoad());
     void dispatch(thunkReviewsLoad());
   }, []);
 
