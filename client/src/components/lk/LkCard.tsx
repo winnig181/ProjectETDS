@@ -12,12 +12,12 @@ type PropsLkCard = {
 
 export default function LkCard({ text }: PropsLkCard): JSX.Element {
   return (
-    <Card sx={{ width: 300, height: 180, marginTop: 5, padding: 4, display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    <Card sx={{ width: 300, height: 180, marginTop: 5, padding: 4, display: 'flex', direction:'column', justifyContent:'center', alignItems:'center'}}>
       {/* <CardContent>
 
       </CardContent> */}
       <CardActions>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
           {text}
         </Typography>
         {/* <Button size="small">Go</Button> */}
