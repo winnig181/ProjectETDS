@@ -4,20 +4,19 @@ const express = require("express");
 const { Deal, User, Item } = require("../../db/models");
 const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
-const apiDealsRouter = express.Router();
+const apiOwnerDealsRouter = express.Router();
 
-apiDealsRouter
+apiOwnerDealsRouter
   .route("/")
   .get(
-    verifyAccessToken, 
+    // verifyAccessToken, 
     async (req, res) => {
-      console.log('>>!!>**>>',res.locals.user);
+      // console.log('>>!!>**>>',res.locals.user);
     try {
       const deals = await Deal.findAll({
-        where:{tenantId: res.locals.user.id},
         order: [["createdAt", "DESC"]],
         include: [
-          { model: User, as: 'ownerDetails' },
+          // { model: User, as: 'ownerDetails' },
           { model: Item},
           { model: User, as: 'tenantDetails'},
         ],
@@ -57,12 +56,12 @@ apiDealsRouter
     }
   );
 
-// apiDealsRouter.delete("/:id", async (req, res) => {
+// apiOwnerDealsRouter.delete("/:id", async (req, res) => {
 //   await Deal.destroy({ where: { id: req.params.id } });
 //   res.sendStatus(200);
 // });
 
-// apiDealsRouter.put("/:id", async (req, res) => {
+// apiOwnerDealsRouter.put("/:id", async (req, res) => {
 //   try {
 //     const deal = await Deal.findByPk(req.params.id);
 //     await deal.update(req.body);
@@ -75,4 +74,4 @@ apiDealsRouter
 // });
 
 
-module.exports = apiDealsRouter;
+module.exports = apiOwnerDealsRouter;

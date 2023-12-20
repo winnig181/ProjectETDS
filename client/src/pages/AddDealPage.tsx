@@ -11,8 +11,8 @@ export default function AddDealPage(): JSX.Element {
   const dispatch = useAppDispatch()
   const items = useAppSelector((store) => store.itemsSlice.items)
  console.log(items, "items on front");
- 
- 
+
+
 
 
   return (

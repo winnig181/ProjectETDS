@@ -14,6 +14,7 @@ export type DealType = {
   tenantCloseDeal: boolean;
   Item: ItemType;
   ownerDetails: UserType;
+  tenantDetails:UserType;
 };
 
 
@@ -24,6 +25,11 @@ export type DealsState = {
 
 export type DealSliceState = {
   deals: DealType[];
+  // currentDeal: DealType | null;
+};
+
+export type OwnerDealSliceState = {
+  ownerdeals: DealType[];
   // currentDeal: DealType | null;
 };
 
