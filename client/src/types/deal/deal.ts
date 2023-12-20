@@ -14,6 +14,7 @@ export type DealType = {
   tenantCloseDeal: boolean;
   Item: ItemType;
   ownerDetails: UserType;
+  tenantDetails:UserType;
 };
 
 
