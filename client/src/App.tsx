@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import type { AxiosError } from 'axios';
 import { apiReviewsService } from "./services/reviewService";
 import NavBar from './components/NavBar';
 import RegistrationPage from './pages/RegistrationPage';
@@ -15,7 +14,7 @@ import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
 import { Container } from '@mui/material';
-// import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
+import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
 import useAxiosInterceptors from './customHooks/useAxiosInterceptors';
@@ -25,6 +24,7 @@ import { apiDealsService } from './services/deals';
 import SubCatPage from './pages/SubCatPage';
 import AddDealPage from './pages/AddDealPage';
 import AddItemPage from './pages/AddItemPage';
+import ItemsListPage from "./pages/ItemsListPage";
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -38,22 +38,22 @@ function App(): JSX.Element {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkAuthRefresh());
     void dispatch(thunkItemsLoad());
+    void dispatch(thunkDealsLoad());
     void dispatch(thunkReviewsLoad());
   }, []);
 
   return (
 
       <Loader isLoading={auth.user.status === 'pending'}>
-      
-          <NavBar />  
+
+          <NavBar />
           {/* <Sidebar/> */}
         <Container style={{ marginTop: '84px' }}>
 
             <Routes>
                   <Route path="/" element={<MainPage />} />
-                  <Route path="/categories/:id" element={<SubCatPage />} />  
-              {/* <Route path="/subcategories/:id" element={<Размап карточек items одной категории />} />         */}
-
+                  <Route path="/categories/:id" element={<SubCatPage />} />
+               <Route path="/subcats/items" element={<ItemsListPage />} />
                   <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />}>
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/registration" element={<RegistrationPage />} />
