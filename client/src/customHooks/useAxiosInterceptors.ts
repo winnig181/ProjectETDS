@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import type { AxiosError } from 'axios';
+import type { AxiosError, AxiosInstance } from 'axios';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 import { thunkAuthRefresh } from '../redux/slices/auth/createAsyncThunk';
 
-export default function useAxiosInterceptors(apiService:any): void {
+export default function useAxiosInterceptors(apiService: AxiosInstance): void {
   const auth = useAppSelector((store) => store.authSlice);
   const dispatch = useAppDispatch();
 

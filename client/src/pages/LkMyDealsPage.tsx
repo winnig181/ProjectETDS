@@ -16,16 +16,21 @@ export default function LkMyDealsPage({}): JSX.Element {
 
   return (
     <Container>
-    <Typography
-      variant="h5"
-      component="div"
-      gutterBottom
-      style={{ marginTop: '40px',marginBottom: '40px' }}
-    >
-      Арендованные предметы
-    </Typography>
-      {mydeals.map((el)=>
-      <LkDeal key={el.id} deal ={el} />)}
+      {/* <Typography
+        variant="h5"
+        component="div"
+        gutterBottom
+        style={{ marginTop: '40px', marginBottom: '40px' }}
+      > */}
+      <Typography
+        variant="h4"
+        sx={{ alignSelf: 'center', marginBottom: '30px', paddingTop: '30px' }}
+      >
+        Арендованные предметы
+      </Typography>
+      {mydeals.map((el) => (
+        <LkDeal key={el.id} deal={el} />
+      ))}
     </Container>
   );
 }

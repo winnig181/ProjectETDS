@@ -26,6 +26,7 @@ import AddDealPage from './pages/AddDealPage';
 import AddItemPage from './pages/AddItemPage';
 import ItemsListPage from './pages/ItemsListPage';
 import HomePage from './pages/HomePage';
+import LkMyFavouritesPage from './pages/LkMyFavouritesPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -72,7 +73,7 @@ function App(): JSX.Element {
           >
             <Route path="/main" element={<MainPage />} />
             <Route path="/categories/:id" element={<SubCatPage />} />
-            <Route path="/subcats/items" element={<ItemsListPage />} />
+            <Route path="/subcats/items/:id" element={<ItemsListPage />} />
             <Route path="/addDeal/:id" element={<AddDealPage />} />
             <Route path="/addDeal" element={<AddDealPage />} />
             <Route path="/lk" element={<LkPage />} />
@@ -81,6 +82,7 @@ function App(): JSX.Element {
             <Route path="/lk/my-items" element={<LkMyItemsPage />} />
             <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
             <Route path="/add-item" element={<AddItemPage />} />
+            <Route path="/lk/favourites" element={<LkMyFavouritesPage />} />
           </Route>
         </Routes>
       </Container>
