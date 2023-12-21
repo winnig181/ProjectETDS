@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { apiReviewsService } from "./services/reviewService";
+import { Container } from '@mui/material';
+import { apiReviewsService } from './services/reviewService';
 import NavBar from './components/NavBar';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
@@ -13,7 +14,6 @@ import LkProfile from './components/lk/LkProfile';
 import LkReviewsPage from './pages/LkReviewsPage';
 import { thunkItemsLoad } from './redux/slices/items/createAsyncThunk';
 import { thunkReviewsLoad } from './redux/slices/reviews/createAsyncThunk';
-import { Container } from '@mui/material';
 import { thunkDealsLoad } from './redux/slices/deals/createAsyncThunk';
 import LkMyDealsPage from './pages/LkMyDealsPage';
 import LkMyItemsPage from './pages/LkMyItemsPage';
@@ -24,7 +24,8 @@ import { apiDealsService } from './services/deals';
 import SubCatPage from './pages/SubCatPage';
 import AddDealPage from './pages/AddDealPage';
 import AddItemPage from './pages/AddItemPage';
-import ItemsListPage from "./pages/ItemsListPage";
+import ItemsListPage from './pages/ItemsListPage';
+import HomePage from './pages/HomePage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -43,34 +44,47 @@ function App(): JSX.Element {
   }, []);
 
   return (
+    <Loader isLoading={auth.user.status === 'pending'}>
+      <NavBar />
+      {/* <Sidebar/> */}
+      <Container style={{ marginTop: '84px' }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
 
-      <Loader isLoading={auth.user.status === 'pending'}>
-
-          <NavBar />
-          {/* <Sidebar/> */}
-        <Container style={{ marginTop: '84px' }}>
-
-            <Routes>
-                  <Route path="/" element={<MainPage />} />
-                  <Route path="/categories/:id" element={<SubCatPage />} />
-               <Route path="/subcats/items" element={<ItemsListPage />} />
-                  <Route element={<PrivateRouter isAllowed={auth.user.status === 'authenticated'} redirectPath="/" />}>
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/registration" element={<RegistrationPage />} />
-                  </Route>
-              <Route element={<PrivateRouter isAllowed={auth.user.status !== 'authenticated'} redirectPath="/login" />}>
-                <Route path = "/addDeal/:id" element = {<AddDealPage/>} />
-                <Route path = "/addDeal" element = {<AddDealPage/>} />
-                <Route path="/lk" element={<LkPage />} />
-                <Route path="/lk/profile" element={<LkProfile />} />
-                <Route path="/lk/reviews" element={<LkReviewsPage />} />
-                <Route path="/lk/my-items" element={<LkMyItemsPage />} />
-                <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
-              <Route path="/add-item" element={<AddItemPage />} />
-              </Route>
-             </Routes>
-         </Container>
-      </Loader>
+          <Route
+            element={
+              <PrivateRouter
+              isAllowed={auth.user.status === 'authenticated'}
+              redirectPath="/"
+              />
+            }
+          >
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+          </Route>
+          <Route
+            element={
+              <PrivateRouter
+              isAllowed={auth.user.status !== 'authenticated'}
+              redirectPath="/login"
+              />
+            }
+          >
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/categories/:id" element={<SubCatPage />} />
+            <Route path="/subcats/items" element={<ItemsListPage />} />
+            <Route path="/addDeal/:id" element={<AddDealPage />} />
+            <Route path="/addDeal" element={<AddDealPage />} />
+            <Route path="/lk" element={<LkPage />} />
+            <Route path="/lk/profile" element={<LkProfile />} />
+            <Route path="/lk/reviews" element={<LkReviewsPage />} />
+            <Route path="/lk/my-items" element={<LkMyItemsPage />} />
+            <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
+            <Route path="/add-item" element={<AddItemPage />} />
+          </Route>
+        </Routes>
+      </Container>
+    </Loader>
   );
 }
 
