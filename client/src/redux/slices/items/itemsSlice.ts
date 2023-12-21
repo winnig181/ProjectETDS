@@ -5,11 +5,12 @@ import {
   thunkItemsAdd,
   thunkItemsLoad,
 } from './createAsyncThunk';
-import type { ItemSliceState } from '../../../types/item/item';
+import type { ItemSliceState, ItemType } from '../../../types/item/item';
 
 const initialState: ItemSliceState = {
   items: [],
   currentItem: null,
+  favItems:[],
 };
 
 export const itemsSlice = createSlice({
@@ -22,6 +23,15 @@ export const itemsSlice = createSlice({
     clearCurrentItem: (state) => {
       state.currentItem = null;
     },
+    addFavItem:(state,action:PayloadAction<ItemType>)=>{
+      state.favItems.push(action.payload);
+    },
+    delFavItem:(state, action:PayloadAction<ItemType['id']>)=>{
+      const favItemIndex = state.favItems.findIndex((el)=>el.id === action.payload);
+      if(favItemIndex !== -1){
+        state.favItems.splice(favItemIndex, 1);
+      }      
+    }
     // addProducts: (state, action: PayloadAction<ProductType>) => {
     //   state.products.unshift(action.payload);
     // },
@@ -67,6 +77,6 @@ export const itemsSlice = createSlice({
   },
 });
 
-export const { setCurrentItem, clearCurrentItem } = itemsSlice.actions;
+export const { setCurrentItem, clearCurrentItem, addFavItem,delFavItem  } = itemsSlice.actions;
 
 export default itemsSlice.reducer;

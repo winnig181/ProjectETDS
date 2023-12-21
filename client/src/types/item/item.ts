@@ -41,4 +41,5 @@ export type AddItemFormData = {
 export type ItemSliceState = {
   items: ItemType[];
   currentItem: ItemType | null;
+  favItems:ItemType [];
 };
