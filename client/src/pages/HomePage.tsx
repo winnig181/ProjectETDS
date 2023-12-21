@@ -88,20 +88,10 @@ export default function HomePage(): JSX.Element {
             repeat: 'no-repeat',
           },
         }}
-    // sx={{
-        //   marginTop:'50px',
-        //   background: {
-        //     image: 'url("https://cdn-icons-png.flaticon.com/512/8793/8793286.png")',
-        //     position: '50% 50%',
-        //     size: 'fit',
-        //     repeat: 'no-repeat',
-        //   },
-      // }}
       >
         <source src="https://cdn-icons-mp4.flaticon.com/512/8793/8793286.mp4" type="video/mp4" />
 
       </Box>
     </Container>
-  );
+  )
 }
-// background: transparent,

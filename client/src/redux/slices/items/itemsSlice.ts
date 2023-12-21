@@ -4,9 +4,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   thunkItemsAdd,
   thunkItemsLoad,
-  // thunkNotesDelete,
-  // thunkNotesEdit,
-  // thunkNotesEditIsFav,
 } from './createAsyncThunk';
 import type { ItemSliceState, ItemType } from '../../../types/item/item';
 

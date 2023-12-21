@@ -51,11 +51,50 @@ module.exports = {
             updatedAt: currentDate,
         },])
 
-        const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
-            categoryName,
-            createdAt: currentDate,
-            updatedAt: currentDate,
-        }));
+    await queryInterface.bulkInsert('Categories', [{
+      categoryName: 'Техника',
+      
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Спорт',
+      
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Одежда',
+      
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Развлечения',
+      
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Инструменты',
+      
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    },
+    {
+      categoryName: 'Творчество',
+      
+      createdAt: currentDate,
+      updatedAt: currentDate,
+    }
+    ])
+
+// const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
+//       categoryName,
+
+//       createdAt: currentDate,
+//       updatedAt: currentDate,
+//     }));
 
         const subcategories = ['Гаджеты', 'Верхняя одежда', 'Футбол', 'Фрукты', 'Романы'].map(
             (subCategoryName, index) => ({
@@ -90,74 +129,74 @@ module.exports = {
             updatedAt: currentDate,
         }));
 
-        // await queryInterface.bulkInsert('Users', users)
-        await queryInterface.bulkInsert('Categories', categories)
-        await queryInterface.bulkInsert('Subcategories', subcategories)
-        await queryInterface.bulkInsert('Items', items)
-        await queryInterface.bulkInsert('Userreviews', userReviews)
-        await queryInterface.bulkInsert('Deals', [{
-            ownerId: 1,
-            tenantId: 2,
-            itemId: 1,
-            startDate: currentDate,
-            endDate: endDateValue,
-            ownerApproveDeal: false,
-            ownerCloseDeal: false,
-            tenantApproveDeal: false,
-            tenantCloseDeal: false,
-            createdAt: new Date(),
-            updatedAt: new Date()
-        }, {
-            ownerId: 1,
-            tenantId: 2,
-            itemId: 2,
-            startDate: currentDate,
-            endDate: endDateValue,
-            ownerApproveDeal: false,
-            ownerCloseDeal: false,
-            tenantApproveDeal: false,
-            tenantCloseDeal: false,
-            createdAt: new Date(),
-            updatedAt: new Date()
-        }, {
-            ownerId: 2,
-            tenantId: 1,
-            itemId: 5,
-            startDate: currentDate,
-            endDate: endDateValue,
-            ownerApproveDeal: false,
-            ownerCloseDeal: false,
-            tenantApproveDeal: false,
-            tenantCloseDeal: false,
-            createdAt: new Date(),
-            updatedAt: new Date()
-        },
-            {
-                ownerId: 2,
-                tenantId: 3,
-                itemId: 13,
-                startDate: currentDate,
-                endDate: endDateValue,
-                ownerApproveDeal: false,
-                ownerCloseDeal: false,
-                tenantApproveDeal: false,
-                tenantCloseDeal: false,
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }, {
-                ownerId: 1,
-                tenantId: 2,
-                itemId: 3,
-                startDate: currentDate,
-                endDate: endDateValue,
-                ownerApproveDeal: false,
-                ownerCloseDeal: false,
-                tenantApproveDeal: false,
-                tenantCloseDeal: false,
-                createdAt: new Date(),
-                updatedAt: new Date()
-            },])
-    },
+    // await queryInterface.bulkInsert('Users', users)
+  
+    await queryInterface.bulkInsert('Subcategories', subcategories)
+    await queryInterface.bulkInsert('Items', items)
+    await queryInterface.bulkInsert('Userreviews', userReviews)
+    await queryInterface.bulkInsert('Deals', [{
+      ownerId: 1,
+      tenantId: 2,
+      itemId: 1,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: false,
+      ownerCloseDeal: false,
+      tenantApproveDeal: false,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },{
+      ownerId: 1,
+      tenantId: 2,
+      itemId: 2,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: false,
+      ownerCloseDeal: false,
+      tenantApproveDeal: false,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },{
+    ownerId: 2,
+    tenantId: 1,
+    itemId: 5,
+    startDate: currentDate,
+    endDate: endDateValue,
+    ownerApproveDeal: false,
+    ownerCloseDeal: false,
+    tenantApproveDeal: false,
+    tenantCloseDeal: false,
+    createdAt: new Date(),
+    updatedAt: new Date()
+},
+{
+  ownerId: 2,
+  tenantId: 3,
+  itemId: 13,
+  startDate: currentDate,
+  endDate: endDateValue,
+  ownerApproveDeal: false,
+  ownerCloseDeal: false,
+  tenantApproveDeal: false,
+  tenantCloseDeal: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
+},{
+      ownerId: 1,
+      tenantId: 2,
+      itemId: 3,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: false,
+      ownerCloseDeal: false,
+      tenantApproveDeal: false,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },])
+  },
 
     async down(queryInterface, Sequelize) {
 
