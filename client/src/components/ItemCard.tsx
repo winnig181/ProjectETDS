@@ -42,6 +42,7 @@ function ItemCard({ item }: { item: any }): JSX.Element {
         window.location = `/addDeal/${item.id}`
     }
     // const handlerAddToFavorite = () => {
+        // setIsFavorite[!isFavorite)
     // } // handler for Add to Favorite Button
 
     return (
