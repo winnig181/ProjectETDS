@@ -5,10 +5,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { Box } from '@mui/material';
 
 type CategoryProps = {
   category: {
     categoryName: string
+
     id: number
   }
 }
@@ -24,12 +26,21 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
       <CardActionArea style={{ cursor: 'pointer' }}
       // onClick={clickHandler}
       >
-        <CardMedia
-          component="img"
-          height="300"
-          image="/public/img/vite.svg"
-          alt="moc"
-        />
+       <Box
+        component="video"
+        width={256}
+        height={256}
+        preload="none"
+        autoPlay
+        loop
+        muted
+        playsInline
+        sx={{
+          background: `transparent url('https://cdn-icons-png.flaticon.com/512/6451/6451064.png') 50% 50% / cover no-repeat`,
+        }}
+      >
+        <source src="https://cdn-icons-mp4.flaticon.com/512/6451/6451064.mp4" type="video/mp4" />
+      </Box>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {category.categoryName}
@@ -40,3 +51,9 @@ export default function CategoryCard({ category }: CategoryProps): JSX.Element {
     </Link>
   );
 }
+
+
+
+// <video width="256" height="256" preload="none" style="background: transparent  url('https://cdn-icons-png.flaticon.com/512/6451/6451064.png') 50% 50% / fit no-repeat;" autoplay="autoplay" loop="true" muted="muted" playsinline="">
+//         <source src="https://cdn-icons-mp4.flaticon.com/512/6451/6451064.mp4" type="video/mp4">
+//     </video>

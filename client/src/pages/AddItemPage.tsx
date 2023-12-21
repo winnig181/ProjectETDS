@@ -8,10 +8,13 @@ import {
   Typography,
   Alert,
   Stack,
+  styled,
 } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useAppDispatch } from '../redux/hook';
 import type { AddItemFormData } from '../types/item/item';
 import { thunkItemsAdd } from '../redux/slices/items/createAsyncThunk';
+
 
 function AddItemPage(): JSX.Element {
   const dispatch = useAppDispatch();

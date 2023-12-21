@@ -4,11 +4,11 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import {Link, useParams} from 'react-router-dom'
 import {useAppDispatch, useAppSelector} from "../redux/hook";
-import {useParams} from 'react-router-dom'
 
 type SubCategorProps = {
-  category: {
+  subcat: {
     subCategoryName: string
     id: number
   }
@@ -23,12 +23,15 @@ export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Elemen
   //   dispatch(thunkItemsLoad(id))
   // }, [])
 
-  const clickHandler = () => {
-    window.location = '/subcats/items'
-  };
+  // const clickHandler = () => {
+  //   window.location = '/subcats/items'
+  // };
   return (
+    <Link to="/subcats/items">
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea style={{ cursor: 'pointer' }} onClick={clickHandler}>
+      <CardActionArea style={{ cursor: 'pointer' }} 
+      // onClick={clickHandler}
+      >
         <CardMedia
           component="img"
           height="140"
@@ -44,5 +47,6 @@ export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Elemen
         </CardContent>
       </CardActionArea>
     </Card>
+    </Link>
   );
 }
