@@ -7,8 +7,8 @@ function ItemCard3({ item }: { item: any }): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleAddDeal = () => {
-    window.location = `/addDeal/${item.id - 1}`;
-    
+    window.location = `/addDeal/${item.id}`;
+
 
     const formData = {
       title: item.title,

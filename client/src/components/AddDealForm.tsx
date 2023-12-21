@@ -14,7 +14,7 @@ function AddDealForm(): JSX.Element {
   });
 
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     void dispatch(thunkDealsAdd())
 
@@ -25,13 +25,13 @@ function AddDealForm(): JSX.Element {
   const item = useAppSelector((store => store.itemsSlice.items))
 
   console.log(item, 'item na fronte', id);
-  
+
   const user = useAppSelector((store) => store.authSlice.user);
-  
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-  
+
     if (name === 'startDate' && formData.endDate && value > formData.endDate) {
       setFormData({
         ...formData,
@@ -48,7 +48,7 @@ function AddDealForm(): JSX.Element {
       });
     }
   };
- 
+
   console.log('вот она родима формадата:', formData)
 
       const handleAddDeal = () => {
@@ -56,7 +56,7 @@ function AddDealForm(): JSX.Element {
           if (!formData.startDate || !formData.endDate) {
             throw new Error('Выберите дату начала и окончания аренды');
           }
-      
+
           setFormData({
             ...formData,
             ownerId: item[id].userId,
@@ -84,7 +84,7 @@ function AddDealForm(): JSX.Element {
       {item[id] && <ItemCard3  item = {item[id]} />}
 
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{margin: '10px'}}>
           <TextField
             fullWidth
             label="Текст сделки"
@@ -92,9 +92,10 @@ function AddDealForm(): JSX.Element {
             name="dealText"
             value={formData.dealText}
             onChange={handleInputChange}
+            style={{margin: '10px'}}
           />
         </Grid>
-        
+
 
         <Grid item xs={12}>
           <TextField
