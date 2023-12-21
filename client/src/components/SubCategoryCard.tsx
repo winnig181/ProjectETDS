@@ -22,10 +22,10 @@ export default function SubCategoryCard({subcat}): JSX.Element {
   // };
 
   return (
-    <Link to={`/categories/${subcat.id}`}>
+    <Link to={`/subcats/items/${subcat.id}`}>
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea style={{ cursor: 'pointer' }}
-      // onClick={() => clickHandler(subcat.id)}
+
       >
         <CardMedia
           component="img"

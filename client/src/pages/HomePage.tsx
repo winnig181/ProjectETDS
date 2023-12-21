@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect } from 'react';
-import {Box, Button, Container, Grid, styled, Typography} from '@mui/material';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../redux/hook';
 
 export default function HomePage(): JSX.Element {
+
   const auth = useAppSelector((store) => store.authSlice);
 
   return (
@@ -25,16 +26,11 @@ export default function HomePage(): JSX.Element {
 
       {auth.user.status !== 'authenticated' ? (
         <Typography variant="body1" gutterBottom>
-          Чтобы воспользоваться всеми возможностями сайта, необходимо <br />
-          <Button
-              variant="body1"
-              gutterBottom
-              component={NavLink}
-              to="/login"
-              style={{color: 'black', ':hover': { color: '#35cdce'}}} >
+          Чтобы воспользовать всеми возможностями сайта, необходимо <br />
+          <Typography variant="body1" gutterBottom component={NavLink} to="/login">
             {' '}
             пройти авторизацию{' '}
-          </Button>
+          </Typography>
         </Typography>
       ) : (
         <Button component={NavLink} to="/main" variant="outlined">

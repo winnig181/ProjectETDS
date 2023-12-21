@@ -15,7 +15,7 @@ export default function LkReviewsPage(): JSX.Element {
   return (
     <Container sx={{ margin: 'auto' }}>
       <Typography
-        variant="h5"
+        variant="h4"
         component="div"
         style={{ marginTop: '40px',marginBottom: '40px'  }}
       >

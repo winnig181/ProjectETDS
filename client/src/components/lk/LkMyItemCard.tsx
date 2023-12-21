@@ -17,12 +17,11 @@ type PropsLkMyItemCard = {
 
 export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
   const dispatch = useAppDispatch();
-  const { price, title, description, img1, img2, img3, condition, status, hidden, subCategoryId,ownerDetails } =    item;
+  const { price, title, description, img1, img2, img3, condition, status, hidden, subCategoryId,ownerDetails } = item;
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column',padding:2, 
     width: '48%',
     height: 300,
-
     minWidth: 450,  
      }}>
       {/* <CardHeader 

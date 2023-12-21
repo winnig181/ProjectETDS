@@ -41,4 +41,5 @@ export type ItemsState = {
 export type ItemSliceState = {
   items: ItemType[];
   currentItem: ItemType | null;
+  favItems:ItemType [];
 };

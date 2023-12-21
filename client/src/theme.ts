@@ -6,7 +6,7 @@ const theme = createTheme({
       main: '#000000', // Первый основной цвет
     },
     secondary: {
-      main: '#fec701', // Второй основной цвет
+      main: '#fec701', // Бирюзовый цвет
     },
     success: {
         main:  '#97D779', // Третий основной цвет
