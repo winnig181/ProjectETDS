@@ -51,31 +51,31 @@ function AddDealForm(): JSX.Element {
 
   console.log('вот она родима формадата:', formData)
 
-      const handleAddDeal = () => {
-        try {
-          if (!formData.startDate || !formData.endDate) {
-            throw new Error('Выберите дату начала и окончания аренды');
-          }
-
-          setFormData({
-            ...formData,
-            ownerId: item[id].userId,
-            tenantId: user.id,
-            itemId: item[id].id,
-          });
-         void dispatch(thunkDealsAdd(formData))
-          console.log('Добавлена новая сделка:', formData);
-        } catch (error) {
-          console.log('Ошибка:', error.message);
-        }
-
-    // Отправка formData
-    // Очистка полей после добавления сделки
-    // setFormData({
-    //   dealText: '',
-    //   startDate: '',
-    //   endDate: '',
-    // });
+  const handleAddDeal = () => {
+    try {
+      // Создаем копию formData
+      const updatedFormData = {
+        ...formData,
+        ownerId: item[id].userId,
+        tenantId: user.id,
+        itemId: item[id].id,
+      };
+  
+      if (!updatedFormData.startDate || !updatedFormData.endDate) {
+        throw new Error('Выберите дату начала и окончания аренды');
+      }
+  
+      // Обновляем formData с помощью колбэка
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        ...updatedFormData,
+      }));
+  
+      void dispatch(thunkDealsAdd(updatedFormData));
+      console.log('Добавлена новая сделка:', updatedFormData);
+    } catch (error) {
+      console.log('Ошибка:', error.message);
+    }
   };
 
   return (
@@ -84,7 +84,7 @@ function AddDealForm(): JSX.Element {
       {item[id] && <ItemCard3  item = {item[id]} />}
 
       <Grid container spacing={2}>
-        <Grid item xs={12} style={{margin: '10px'}}>
+        <Grid item xs={12} >
           <TextField
             fullWidth
             label="Текст сделки"
@@ -92,7 +92,7 @@ function AddDealForm(): JSX.Element {
             name="dealText"
             value={formData.dealText}
             onChange={handleInputChange}
-            style={{margin: '10px'}}
+          
           />
         </Grid>
 
