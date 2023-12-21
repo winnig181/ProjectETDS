@@ -7,10 +7,10 @@ import {
   MenuItem,
   Typography,
   Alert,
-  Stack,
-  styled,
+  Stack
 } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { styled } from '@mui/material/styles';
 import { useAppDispatch } from '../redux/hook';
 import type { AddItemFormData } from '../types/item/item';
 import { thunkItemsAdd } from '../redux/slices/items/createAsyncThunk';

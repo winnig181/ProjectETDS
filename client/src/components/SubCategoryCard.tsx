@@ -15,9 +15,9 @@ type SubCategorProps = {
 };
 
 export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Element {
-  const items = useAppSelector((store)=> store.itemsSlice.items)
-  const dispatch = useAppDispatch()
-  const {id} = useParams()
+
+  // const dispatch = useAppDispatch();
+  // const {id} = useParams()
 
   // useEffect(()=> {
   //   dispatch(thunkItemsLoad(id))
@@ -27,10 +27,10 @@ export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Elemen
   //   window.location = '/subcats/items'
   // };
   return (
-    <Link to="/subcats/items">
+    <Link to={`/subcats/items/${subcat.id}`}>
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea style={{ cursor: 'pointer' }} 
-      // onClick={clickHandler}
+
       >
         <CardMedia
           component="img"
