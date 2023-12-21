@@ -25,7 +25,7 @@ export default function useAxiosInterceptors(apiService:any): void {
         if (err.response?.status === 403 && !prevRequest.sent) {
           prevRequest.sent = true;
           const newAccessToken = await dispatch(thunkAuthRefresh()).unwrap();
-          console.log('----->newAccessToken', newAccessToken);
+          // console.log('----->newAccessToken', newAccessToken);
           prevRequest.headers.Authorization = `Bearer ${newAccessToken.accessToken}`;
           return apiService(prevRequest);
         }

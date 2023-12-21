@@ -51,75 +51,93 @@ module.exports = {
             updatedAt: currentDate,
         },])
 
-    await queryInterface.bulkInsert('Categories', [{
-      categoryName: 'Техника',
-      
-      createdAt: currentDate,
-      updatedAt: currentDate,
-    },
-    {
-      categoryName: 'Спорт',
-      
-      createdAt: currentDate,
-      updatedAt: currentDate,
-    },
-    {
-      categoryName: 'Одежда',
-      
-      createdAt: currentDate,
-      updatedAt: currentDate,
-    },
-    {
-      categoryName: 'Развлечения',
-      
-      createdAt: currentDate,
-      updatedAt: currentDate,
-    },
-    {
-      categoryName: 'Инструменты',
-      
-      createdAt: currentDate,
-      updatedAt: currentDate,
-    },
-    {
-      categoryName: 'Творчество',
-      
-      createdAt: currentDate,
-      updatedAt: currentDate,
-    }
-    ])
-
-// const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
-//       categoryName,
-
-//       createdAt: currentDate,
-//       updatedAt: currentDate,
-//     }));
-
-        const subcategories = ['Гаджеты', 'Верхняя одежда', 'Футбол', 'Фрукты', 'Романы'].map(
-            (subCategoryName, index) => ({
-                categoryId: index + 1,
+        await queryInterface.bulkInsert('Categories', [{
+            categoryName: 'Техника',
+            createdAt: currentDate,
+            updatedAt: currentDate,
+        },
+            {
+                categoryName: 'Спорт',
+                createdAt: currentDate,
+                updatedAt: currentDate,
+            },
+            {
+                categoryName: 'Одежда',
+                createdAt: currentDate,
+                updatedAt: currentDate,
+            },
+            {
+                categoryName: 'Развлечения',
+                createdAt: currentDate,
+                updatedAt: currentDate,
+            },
+            {
+                categoryName: 'Инструменты',
+                createdAt: currentDate,
+                updatedAt: currentDate,
+            },
+            {
+                categoryName: 'Творчество',
+                createdAt: currentDate,
+                updatedAt: currentDate,
+            }
+        ])
+        const subCategories = ['Гаджеты', 'Верхняя одежда', 'Футбол', 'Фрукты', 'Романы'].map(
+            (subCategoryName, index = 1) => ({
+                categoryId: index,
                 subCategoryName,
                 createdAt: currentDate,
                 updatedAt: currentDate,
             })
-        );
+        )
 
-        const items = Array.from({length: 20}).map((_, index) => ({
-            title: faker.commerce.productName(),
-            description: faker.lorem.sentence(),
-            img1: faker.image.imageUrl(),
-            img2: faker.image.imageUrl(),
-            img3: faker.image.imageUrl(),
+        await queryInterface.bulkInsert('Subcategories', subCategories)
+        await queryInterface.bulkInsert('Items', [{
+            title: 'Cluedo',
+            description: 'Хорошая детективная игра на компанию',
+            img1: '/seeds_img/cluedo.jpeg',
+            img2: '/seeds_img/cluedo2.jpeg',
+            img3: '/seeds_img/cluedo3.jpeg',
             condition: faker.random.arrayElement(['новый', 'б/у']),
             status: faker.random.arrayElement(['в наличии', 'продано']),
             hidden: faker.random.boolean(),
-            subCategoryId: faker.random.number({min: 1, max: 5}),
+            subCategoryId: 1,
             userId: faker.random.number({min: 1, max: 3}),
             price: faker.random.number({min: 10, max: 1000, precision: 0.01}),
             createdAt: faker.date.past(),
             updatedAt: currentDate,
-        }));
+        }, {
+            title: 'Cluedo',
+            description: 'Хорошая детективная игра на компанию',
+            img1: `./item_images/item_server/public/seeds_img/cluedo.jpeg`,
+            img2: `./item_images/item_server/public/seeds_img/cluedo2.jpeg`,
+            img3: `./item_images/item_server/public/seeds_img/cluedo3.jpeg`,
+            condition: faker.random.arrayElement(['новый', 'б/у']),
+            status: faker.random.arrayElement(['в наличии', 'продано']),
+            hidden: faker.random.boolean(),
+            subCategoryId: 1,
+            userId: faker.random.number({min: 1, max: 3}),
+            price: faker.random.number({min: 10, max: 1000, precision: 0.01}),
+            createdAt: faker.date.past(),
+            updatedAt: currentDate,
+        }, {
+            title: 'Cluedo',
+            description: 'Хорошая детективная игра на компанию',
+            img1: `./item_images/item_server/public/seeds_img/cluedo.jpeg`,
+            img2: `./item_images/item_server/public/seeds_img/cluedo2.jpeg`,
+            img3: `./item_images/item_server/public/seeds_img/cluedo3.jpeg`,
+            condition: faker.random.arrayElement(['новый', 'б/у']),
+            status: faker.random.arrayElement(['в наличии', 'продано']),
+            hidden: faker.random.boolean(),
+            subCategoryId: 1,
+            userId: faker.random.number({min: 1, max: 3}),
+            price: faker.random.number({min: 10, max: 1000, precision: 0.01}),
+            createdAt: faker.date.past(),
+            updatedAt: currentDate,
+        }])
+
+
+
         const userReviews = Array.from({length: 10}).map((_, index) => ({
             userId: faker.random.number({min: 1, max: 3}),
             review: faker.lorem.paragraph(),
@@ -129,74 +147,72 @@ module.exports = {
             updatedAt: currentDate,
         }));
 
-    // await queryInterface.bulkInsert('Users', users)
-  
-    await queryInterface.bulkInsert('Subcategories', subcategories)
-    await queryInterface.bulkInsert('Items', items)
-    await queryInterface.bulkInsert('Userreviews', userReviews)
-    await queryInterface.bulkInsert('Deals', [{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 1,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-  },{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 2,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-  },{
-    ownerId: 2,
-    tenantId: 1,
-    itemId: 5,
-    startDate: currentDate,
-    endDate: endDateValue,
-    ownerApproveDeal: false,
-    ownerCloseDeal: false,
-    tenantApproveDeal: false,
-    tenantCloseDeal: false,
-    createdAt: new Date(),
-    updatedAt: new Date()
-},
-{
-  ownerId: 2,
-  tenantId: 3,
-  itemId: 13,
-  startDate: currentDate,
-  endDate: endDateValue,
-  ownerApproveDeal: false,
-  ownerCloseDeal: false,
-  tenantApproveDeal: false,
-  tenantCloseDeal: false,
-  createdAt: new Date(),
-  updatedAt: new Date()
-},{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 3,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-  },])
-  },
+
+        // await queryInterface.bulkInsert('Items', items)
+        await queryInterface.bulkInsert('Userreviews', userReviews)
+        await queryInterface.bulkInsert('Deals', [{
+            ownerId: 1,
+            tenantId: 2,
+            itemId: 1,
+            startDate: currentDate,
+            endDate: endDateValue,
+            ownerApproveDeal: false,
+            ownerCloseDeal: false,
+            tenantApproveDeal: false,
+            tenantCloseDeal: false,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            ownerId: 1,
+            tenantId: 2,
+            itemId: 2,
+            startDate: currentDate,
+            endDate: endDateValue,
+            ownerApproveDeal: false,
+            ownerCloseDeal: false,
+            tenantApproveDeal: false,
+            tenantCloseDeal: false,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            ownerId: 2,
+            tenantId: 1,
+            itemId: 1,
+            startDate: currentDate,
+            endDate: endDateValue,
+            ownerApproveDeal: false,
+            ownerCloseDeal: false,
+            tenantApproveDeal: false,
+            tenantCloseDeal: false,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        },
+            {
+                ownerId: 2,
+                tenantId: 3,
+                itemId: 3,
+                startDate: currentDate,
+                endDate: endDateValue,
+                ownerApproveDeal: false,
+                ownerCloseDeal: false,
+                tenantApproveDeal: false,
+                tenantCloseDeal: false,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }, {
+                ownerId: 1,
+                tenantId: 2,
+                itemId: 3,
+                startDate: currentDate,
+                endDate: endDateValue,
+                ownerApproveDeal: false,
+                ownerCloseDeal: false,
+                tenantApproveDeal: false,
+                tenantCloseDeal: false,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },])
+    },
 
     async down(queryInterface, Sequelize) {
 

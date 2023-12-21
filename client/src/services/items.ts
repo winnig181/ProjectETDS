@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { ItemType, AddItemFormData } from '../types/item/item';
+import type { ItemType, AddItemFormData } from '../types/item';
 
 export const apiItemsService = axios.create({
   baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}items`,

@@ -1,20 +1,19 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect } from 'react';
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import {Box, Button, Container, Grid, styled, Typography} from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../redux/hook';
 
 export default function HomePage(): JSX.Element {
-
   const auth = useAppSelector((store) => store.authSlice);
 
   return (
     <Container
-      sx={{ backgroundColor: 'background.default', minHeight: '100vh', textAlign: 'center', alignItems:'center', 
+      sx={{ backgroundColor: 'background.default', minHeight: '100vh', textAlign: 'center', alignItems:'center',
       display:'flex',flexDirection:'column' }}
     >
       <Grid style={{ height: '68px' }} />
-      <Box> 
+      <Box>
       <Typography variant="h4" gutterBottom sx={{ lineHeight: '1.5', marginBottom: '25px' }}>
         Добро пожаловать на сайт ДоброЁж !
       </Typography>
@@ -26,11 +25,16 @@ export default function HomePage(): JSX.Element {
 
       {auth.user.status !== 'authenticated' ? (
         <Typography variant="body1" gutterBottom>
-          Чтобы воспользовать всеми возможностями сайта, необходимо <br />
-          <Typography variant="body1" gutterBottom component={NavLink} to="/login">
+          Чтобы воспользоваться всеми возможностями сайта, необходимо <br />
+          <Button
+              variant="body1"
+              gutterBottom
+              component={NavLink}
+              to="/login"
+              style={{color: 'black', ':hover': { color: '#35cdce'}}} >
             {' '}
             пройти авторизацию{' '}
-          </Typography>
+          </Button>
         </Typography>
       ) : (
         <Button component={NavLink} to="/main" variant="outlined">
@@ -38,7 +42,7 @@ export default function HomePage(): JSX.Element {
         </Button>
       )}
       </Box>
-      <Box 
+      <Box
         component="video"
         width={256}
         height={256}

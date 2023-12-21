@@ -33,9 +33,9 @@ export type AddItemFormData = {
   subCategoryId:number;
 };
 
-// export type ItemsState = {
-//   items: ItemType[];
-// };
+export type ItemsState = {
+  items: ItemType[];
+};
 
 
 export type ItemSliceState = {

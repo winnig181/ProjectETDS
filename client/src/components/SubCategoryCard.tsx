@@ -4,33 +4,28 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {useAppDispatch, useAppSelector} from "../redux/hook";
+import {thunkSubcatsLoad} from "../redux/slices/subcats/createAsyncThunk";
 
-type SubCategorProps = {
-  subcat: {
-    subCategoryName: string
-    id: number
-  }
-};
 
-export default function SubCategoryCard({ subcat }: SubCategorProps): JSX.Element {
-  const items = useAppSelector((store)=> store.itemsSlice.items)
+export default function SubCategoryCard({subcat}): JSX.Element {
+  const subcats = useAppSelector((store)=> store.subcatsSlice.subcats)
   const dispatch = useAppDispatch()
-  const {id} = useParams()
 
-  // useEffect(()=> {
-  //   dispatch(thunkItemsLoad(id))
-  // }, [])
+  useEffect(()=> {
+    dispatch(thunkSubcatsLoad())
+  }, [])
 
-  // const clickHandler = () => {
-  //   window.location = '/subcats/items'
+  // const clickHandler = (id) => {
+  //   window.location = '/subcats/items/'
   // };
+
   return (
-    <Link to="/subcats/items">
+    <Link to={`/categories/${subcat.id}`}>
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea style={{ cursor: 'pointer' }} 
-      // onClick={clickHandler}
+      <CardActionArea style={{ cursor: 'pointer' }}
+      // onClick={() => clickHandler(subcat.id)}
       >
         <CardMedia
           component="img"

@@ -568,7 +568,7 @@ export default function NavBar(): JSX.Element {
 
   const notificationsCounter = deals.length
 
-  console.log('все сделки -------------->', deals);
+  // console.log('все сделки -------------->', deals);
   // console.log('юзер-->', user.id)
 
 
@@ -608,7 +608,7 @@ export default function NavBar(): JSX.Element {
       onClose={handleMenuClose}
     >
 
-   
+
 <MenuItem onClick={handleMenuClose1}>
         <NavLink to="/lk/my-items" style={{ textDecoration: 'none', color: 'inherit' }}>
           Мои вещи
@@ -629,12 +629,12 @@ export default function NavBar(): JSX.Element {
           </Badge>
         </NavLink>
       </MenuItem>
-    </Menu> 
+    </Menu>
   );
 
 
 
- 
+
 
 
 
@@ -719,7 +719,7 @@ export default function NavBar(): JSX.Element {
             </>
           ) : (
             <Grid item sx={{ ml: 2, mr: 2 }}>
-              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} onClick={() => 
+              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} onClick={() =>
               void dispatch(thunkLogout())
                 // navigate('/login');}
               }

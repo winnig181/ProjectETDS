@@ -57,7 +57,7 @@ apiItemsRouter
         console.log("req.file>>>>>", req.files);
         const {
           price,
-          title,  
+          title,
           description,
           condition,
           status,

@@ -13,7 +13,6 @@ import {
 } from '@mui/material';
 import { useAppDispatch } from '../redux/hook';
 import styled from "styled-components"
-import Carousel from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -54,17 +53,7 @@ function ItemCard({ item }: { item: any }): JSX.Element {
                         <FavoriteIcon />
                     </IconButton>
                 </Typography>
-                <Carousel>
-                    <div>
-                        <CardMedia component="img" height="176" image={item.img1} alt="cover" />
-                    </div>
-                    <div>
-                        <CardMedia component="img" height="176" image={item.img2} alt="cover" />
-                    </div>
-                    <div>
-                        <CardMedia component="img" height="176" image={item.img3} alt="cover" />
-                    </div>
-                </Carousel>
+                <CardMedia component="img" height="176" image={item.img1} alt="cover" />
                 <Typography color="text.secondary">Описание: {item.description}</Typography>
                 <Divider />
                 <Typography color="text.secondary">Состояние: {item.condition}</Typography>
