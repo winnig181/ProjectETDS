@@ -12,19 +12,19 @@ export const thunkItemsAdd = createAsyncThunk(
   async (formData: AddItemFormData) => ItemsService.addItem(formData),
 );
 
-export const thunkItemsDelete = createAsyncThunk(
-  'itemsSlice/thunkItemsDelete',
-  async (id: ItemType['id']) => ItemsService.deleteItem(id),
-);
-
-export const thunkItemsEdit = createAsyncThunk(
-  'itemsSlice/thunkItemsEdit',
-  async ({ id, formData }: { id: ItemType['id']; formData: AddItemFormData }) =>
-    ItemsService.editItem(id, formData),
-);
-
-export const thunkItemsEditIsFav = createAsyncThunk(
-  'itemsSlice/thunkItemsEditIsFav',
-  async (id: ItemType['id']) =>
-    ItemsService.editIsFavItem(id),
-);
+// export const thunkItemsDelete = createAsyncThunk(
+//   'itemsSlice/thunkItemsDelete',
+//   async (id: ItemType['id']) => ItemsService.deleteItem(id),
+// );
+//
+// export const thunkItemsEdit = createAsyncThunk(
+//   'itemsSlice/thunkItemsEdit',
+//   async ({ id, formData }: { id: ItemType['id']; formData: AddItemFormData }) =>
+//     ItemsService.editItem(id, formData),
+// );
+//
+// export const thunkItemsEditIsFav = createAsyncThunk(
+//   'itemsSlice/thunkItemsEditIsFav',
+//   async (id: ItemType['id']) =>
+//     ItemsService.editIsFavItem(id),
+// );

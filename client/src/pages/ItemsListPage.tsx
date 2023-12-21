@@ -8,11 +8,10 @@ import {thunkItemsLoad} from "../redux/slices/items/createAsyncThunk";
 export default function ItemsListPage(): JSX.Element {
     const dispatch = useAppDispatch();
     const items = useAppSelector((state) => state.itemsSlice.items)
-    console.log(items, '<<----------HERE')
+    console.log(items, '<--------------oops')
     React.useEffect(() => {
             void dispatch(thunkItemsLoad());
     }, []);
-
     return (
         <Container sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
             <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
