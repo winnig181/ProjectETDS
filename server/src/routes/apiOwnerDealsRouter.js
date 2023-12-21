@@ -48,7 +48,7 @@ apiOwnerDealsRouter
           tenantCloseDeal: false
         });
         
-        console.log("сделка зашла на в базу", newDeal);
+        console.log("сделка зашла в базу", newDeal);
         return res.status(201).json(newDeal);
       } catch (error) {
         return res.status(500).json(error);
@@ -56,22 +56,20 @@ apiOwnerDealsRouter
     }
   );
 
-// apiOwnerDealsRouter.delete("/:id", async (req, res) => {
-//   await Deal.destroy({ where: { id: req.params.id } });
-//   res.sendStatus(200);
-// });
+apiOwnerDealsRouter.put("/owner-approve/:id", async (req, res) => {
+  try {
+    const deal = await Deal.findByPk(req.params.id);
+    deal.ownerApproveDeal = true;
+    deal.save();
+    res.status(200).json({message:'success'});
+  }catch (error){
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
 
-// apiOwnerDealsRouter.put("/:id", async (req, res) => {
-//   try {
-//     const deal = await Deal.findByPk(req.params.id);
-//     await deal.update(req.body);
-//     const newDeal = await Deal.findByPk(deal.id);
-//     res.status(200).json(newDeal);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json(error);
-//   }
-// });
+
+
 
 
 module.exports = apiOwnerDealsRouter;

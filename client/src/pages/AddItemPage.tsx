@@ -109,6 +109,7 @@ function AddItemPage(): JSX.Element {
                   type="text"
                   variant="outlined"
                   required
+                  
                 />
               </Grid>
               <Grid item xs={12}>
