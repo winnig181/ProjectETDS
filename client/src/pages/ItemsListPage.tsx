@@ -11,7 +11,7 @@ export default function ItemsListPage(): JSX.Element {
     console.log(items, '<--------------oops')
     React.useEffect(() => {
             void dispatch(thunkItemsLoad());
-    }, []);
+    }, [dispatch]);
     return (
         <Container sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
             <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
