@@ -22,10 +22,10 @@ module.exports = {
             createdAt: faker.date.past(),
             updatedAt: currentDate,
         }, {
-            name: 'Пассажир метро',
+            name: 'Виктор',
             email: '2@2',
             hashpass: hashSync('2', 10),
-            nickName: 'MetroMan',
+            nickName: 'Liquidator777',
             phone: '+7 928 *** 01 91',
             avatar: 'johndoe.jpeg',
             about: 'катаюсь на метро в час пик, радуюсь жести',
@@ -34,22 +34,7 @@ module.exports = {
             publicPhone: this.phone,
             createdAt: faker.date.past(),
             updatedAt: currentDate,
-        }, {
-            name: faker.name.findName(),
-            email: faker.internet.email(),
-            hashpass: hashSync('password', 10),
-            nickName: faker.internet.userName(),
-            phone: faker.phone.phoneNumber(),
-            avatar: faker.image.avatar(),
-            about: faker.lorem.sentence(),
-            city: faker.address.city(),
-            metro: faker.address.streetName(),
-            publicPhone: faker.phone.phoneNumber(),
-            isActivated: true,
-            activationLink: null,
-            createdAt: faker.date.past(),
-            updatedAt: currentDate,
-        },])
+        }])
 
     await queryInterface.bulkInsert('Categories', [{
       categoryName: 'Техника',
@@ -89,51 +74,128 @@ module.exports = {
     }
     ])
 
-// const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
-//       categoryName,
 
-//       createdAt: currentDate,
-//       updatedAt: currentDate,
-//     }));
-
-        const subcategories = ['Гаджеты', 'Верхняя одежда', 'Футбол', 'Фрукты', 'Романы'].map(
-            (subCategoryName, index) => ({
-                categoryId: index + 1,
+       const subcategories = ['Настольные игры', 'Книги', 'Музыка', 'Компьютерные игры'].map(
+            (subCategoryName) => ({
+                categoryId: 4,
                 subCategoryName,
                 createdAt: currentDate,
                 updatedAt: currentDate,
             })
         );
 
-        const items = Array.from({length: 20}).map((_, index) => ({
-            title: faker.commerce.productName(),
-            description: faker.lorem.sentence(),
-            img1: faker.image.imageUrl(),
-            img2: faker.image.imageUrl(),
-            img3: faker.image.imageUrl(),
-            condition: faker.random.arrayElement(['новый', 'б/у']),
-            status: faker.random.arrayElement(['в наличии', 'продано']),
-            hidden: faker.random.boolean(),
-            subCategoryId: faker.random.number({min: 1, max: 5}),
-            userId: faker.random.number({min: 1, max: 3}),
-            price: faker.random.number({min: 10, max: 1000, precision: 0.01}),
-            createdAt: faker.date.past(),
+    await queryInterface.bulkInsert('Subcategories', subcategories)
+    await queryInterface.bulkInsert('Items', [{
+
+        title: 'Почта',
+        description: 'Я почему вредный был?',
+        img1: 'https://www.mosigra.ru/image/cache/data/tovari/hobby-world/pochta/pochta-00-1024x1024-wm.jpg',
+        condition: 'Новое',
+        status: 'Доступен',
+        hidden: false,
+        subCategoryId: 1,
+        userId: 1,
+        price: 150,        
+        createdAt: currentDate,
+        updatedAt: currentDate,
+        }, 
+        {
+          title: 'Имаджинариум',
+          description: 'Много историй в одной коробке',
+          img1: 'https://www.mosigra.ru/image/cache/data/%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D1%8B/Cosmodrome%20Games/%D0%98%D0%BC%D0%B0%D0%B4%D0%B6%D0%B8%D0%BD%D0%B0%D1%80%D0%B8%D1%83%D0%BC%20(2021)/DSC_6856-1024x1024-wm.webp',
+          condition: 'Как новое',
+          status: 'Доступен',
+          hidden: false,
+          subCategoryId: 1,
+          userId: 1,
+          price: 200,        
+          createdAt: currentDate,
+          updatedAt: currentDate,
+          },
+
+          {
+
+            title: 'Колонизаторы',
+            description: 'Про колонизацию, удачу и дипломатию...',
+            img1: 'https://www.mosigra.ru/image/cache/data/mosigra.market/554/071/DSC_2202_600x600-1024x1024-wm.webp',
+            condition: 'Как новое',
+            status: 'Доступен',
+            hidden: false,
+            subCategoryId: 1,
+            userId: 1,
+            price: 200,        
+            createdAt: currentDate,
             updatedAt: currentDate,
-        }));
-        const userReviews = Array.from({length: 10}).map((_, index) => ({
-            userId: faker.random.number({min: 1, max: 3}),
-            review: faker.lorem.paragraph(),
-            rating: faker.random.number({min: 1, max: 5, precision: 0.1}),
-            targetId: faker.random.number({min: 1, max: 3}),
-            createdAt: faker.date.past(),
-            updatedAt: currentDate,
-        }));
+            },
+            // {
+            //   title: DataTypes.TEXT,
+            //   description: DataTypes.TEXT,
+            //   img1: DataTypes.TEXT,
+            //   condition: DataTypes.TEXT,
+            //   status: DataTypes.TEXT,
+            //   hidden: DataTypes.BOOLEAN,
+            //   subCategoryId: DataTypes.INTEGER,
+            //   userId: DataTypes.INTEGER,
+            //   price: DataTypes.INTEGER,        
+            //   createdAt: currentDate,
+            //   updatedAt: currentDate,
+            //   },
+            //   {
+            //     title: DataTypes.TEXT,
+            //     description: DataTypes.TEXT,
+            //     img1: DataTypes.TEXT,
+            //     condition: DataTypes.TEXT,
+            //     status: DataTypes.TEXT,
+            //     hidden: DataTypes.BOOLEAN,
+            //     subCategoryId: DataTypes.INTEGER,
+            //     userId: DataTypes.INTEGER,
+            //     price: DataTypes.INTEGER,        
+            //     createdAt: currentDate,
+            //     updatedAt: currentDate,
+            //     },
+            //     {
+            //       title: DataTypes.TEXT,
+            //       description: DataTypes.TEXT,
+            //       img1: DataTypes.TEXT,
+            //       condition: DataTypes.TEXT,
+            //       status: DataTypes.TEXT,
+            //       hidden: DataTypes.BOOLEAN,
+            //       subCategoryId: DataTypes.INTEGER,
+            //       userId: DataTypes.INTEGER,
+            //       price: DataTypes.INTEGER,        
+            //       createdAt: currentDate,
+            //       updatedAt: currentDate,
+            //       },
+        ])
 
     // await queryInterface.bulkInsert('Users', users)
   
-    await queryInterface.bulkInsert('Subcategories', subcategories)
-    await queryInterface.bulkInsert('Items', items)
-    await queryInterface.bulkInsert('Userreviews', userReviews)
+    
+    
+    await queryInterface.bulkInsert('Userreviews', [
+      {
+        userId: 1,
+        review: 'Замечательный арендодатель. Игры были в отличном состоянии, а он предоставил полезные рекомендации для выбора.',
+        rating: 5,
+        targetId: 2,
+      },
+      {
+        userId: 1,
+        review: 'Прекрасный опыт взаимодействия с Виктором. Все вещи возвращены в исходном состоянии, и общение было легким и приятным',
+        rating: 5,
+        targetId: 2,
+      },
+      {
+        userId: 1,
+        review: 'Владелец был дружелюбным и внимательным к деталям, и игры были в хорошем состоянии.',
+        rating: 5,
+        targetId: 2,
+      },
+
+
+
+    ])
+
     await queryInterface.bulkInsert('Deals', [{
       ownerId: 1,
       tenantId: 2,
@@ -146,55 +208,55 @@ module.exports = {
       tenantCloseDeal: false,
       createdAt: new Date(),
       updatedAt: new Date()
-  },{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 2,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-  },{
-    ownerId: 2,
-    tenantId: 1,
-    itemId: 5,
-    startDate: currentDate,
-    endDate: endDateValue,
-    ownerApproveDeal: false,
-    ownerCloseDeal: false,
-    tenantApproveDeal: false,
-    tenantCloseDeal: false,
-    createdAt: new Date(),
-    updatedAt: new Date()
-},
-{
-  ownerId: 2,
-  tenantId: 3,
-  itemId: 13,
-  startDate: currentDate,
-  endDate: endDateValue,
-  ownerApproveDeal: false,
-  ownerCloseDeal: false,
-  tenantApproveDeal: false,
-  tenantCloseDeal: false,
-  createdAt: new Date(),
-  updatedAt: new Date()
-},{
-      ownerId: 1,
-      tenantId: 2,
-      itemId: 3,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
+//   },{
+//       ownerId: 1,
+//       tenantId: 2,
+//       itemId: 2,
+//       startDate: currentDate,
+//       endDate: endDateValue,
+//       ownerApproveDeal: false,
+//       ownerCloseDeal: false,
+//       tenantApproveDeal: false,
+//       tenantCloseDeal: false,
+//       createdAt: new Date(),
+//       updatedAt: new Date()
+//   },{
+//     ownerId: 2,
+//     tenantId: 1,
+//     itemId: 5,
+//     startDate: currentDate,
+//     endDate: endDateValue,
+//     ownerApproveDeal: false,
+//     ownerCloseDeal: false,
+//     tenantApproveDeal: false,
+//     tenantCloseDeal: false,
+//     createdAt: new Date(),
+//     updatedAt: new Date()
+// },
+// {
+//   ownerId: 2,
+//   tenantId: 3,
+//   itemId: 13,
+//   startDate: currentDate,
+//   endDate: endDateValue,
+//   ownerApproveDeal: false,
+//   ownerCloseDeal: false,
+//   tenantApproveDeal: false,
+//   tenantCloseDeal: false,
+//   createdAt: new Date(),
+//   updatedAt: new Date()
+// },{
+//       ownerId: 1,
+//       tenantId: 2,
+//       itemId: 3,
+//       startDate: currentDate,
+//       endDate: endDateValue,
+//       ownerApproveDeal: false,
+//       ownerCloseDeal: false,
+//       tenantApproveDeal: false,
+//       tenantCloseDeal: false,
+//       createdAt: new Date(),
+//       updatedAt: new Date()
   },])
   },
 
