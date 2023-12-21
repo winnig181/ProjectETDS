@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardActions, Button, Typography, Divider } from '@mui/material';
+import { Card, CardContent, Typography, Divider } from '@mui/material';
 import { useAppDispatch } from '../redux/hook';
 import { thunkDealsAdd } from '../redux/slices/deals/createAsyncThunk';
 
@@ -8,7 +8,7 @@ function ItemCard2({ item }: { item: any }): JSX.Element {
 
 //   const handleAddDeal = () => {
 //     window.location = `/addDeal/${item.id}`;
-    
+
 
 //     const formData = {
 //       title: item.title,
@@ -34,6 +34,7 @@ function ItemCard2({ item }: { item: any }): JSX.Element {
         <Typography color="text.secondary">Condition: {item.condition}</Typography>
         <Typography color="text.secondary">Status: {item.status}</Typography>
         <Typography color="text.secondary">Price: {item.price}</Typography>
+        <Typography color="text.secondary">{item.id}</Typography>
         {/* Остальные данные из вашей модели Item */}
       </CardContent>
     </Card>

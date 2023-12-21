@@ -454,13 +454,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme , alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { NavLink } from 'react-router-dom';
-import { alpha } from '@mui/material/styles';
+import type { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import MuiAppBar from '@mui/material/AppBar';
+import { NavLink , useNavigate } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
 import List from '@mui/material/List';
@@ -526,9 +526,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-interface AppBarProps extends MuiAppBarProps {
+type AppBarProps = {
   open?: boolean;
-}
+} & MuiAppBarProps
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -647,6 +647,7 @@ export default function NavBar(): JSX.Element {
   });
 
   const dispatch = useAppDispatch();
+  // const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -718,7 +719,11 @@ export default function NavBar(): JSX.Element {
             </>
           ) : (
             <Grid item sx={{ ml: 2, mr: 2 }}>
-              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} onClick={() => void dispatch(thunkLogout())}>
+              <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} onClick={() => 
+              void dispatch(thunkLogout())
+                // navigate('/login');}
+              }
+                >
                 Выйти
               </CustomButton>
             </Grid>

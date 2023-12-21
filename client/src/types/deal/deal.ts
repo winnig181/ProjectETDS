@@ -30,7 +30,7 @@ export type DealSliceState = {
 
 export type OwnerDealSliceState = {
   ownerdeals: DealType[];
-  // currentDeal: DealType | null;
+  currentOwnerDeal: DealType | null;
 };
 
 export type AddDealFormData = {

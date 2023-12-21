@@ -9,8 +9,6 @@ import {
   Alert,
   Stack,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useAppDispatch } from '../redux/hook';
 import type { AddItemFormData } from '../types/item/item';
 import { thunkItemsAdd } from '../redux/slices/items/createAsyncThunk';
@@ -109,6 +107,7 @@ function AddItemPage(): JSX.Element {
                   type="text"
                   variant="outlined"
                   required
+                  
                 />
               </Grid>
               <Grid item xs={12}>

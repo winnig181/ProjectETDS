@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import {
   thunkOwnerDealsLoad,
+  thunkOwnerApproveDeal,
   // thunkDealsAdd,
   // thunkDealsDelete,
   // thunkDealsEdit,
@@ -11,20 +12,22 @@ import type { OwnerDealSliceState } from '../../../types/deal/deal';
 
 const initialState: OwnerDealSliceState = {
   ownerdeals: [],
-  // currentItem: null,
+  currentOwnerDeal: null,
 };
 
 export const ownerDealsSlice = createSlice({
   name: 'ownerdeals',
   initialState,
   reducers: {
-    // setCurrentDeal: (state, action: PayloadAction<DealSliceState['currentDeal']>) => {
-    //   state.currentDeal = action.payload;
-    // },
-    // clearCurrentDeal: (state) => {
-    //   state.currentDeal = null;
-    // },
-
+    setCurrentOwnerDeal: (
+      state,
+      action: PayloadAction<OwnerDealSliceState['currentOwnerDeal']>,
+    ) => {
+      state.currentOwnerDeal = action.payload;
+    },
+    clearCurrentOwnerDeal: (state) => {
+      state.currentOwnerDeal = null;
+    },
   },
   extraReducers(builder) {
     builder.addCase(thunkOwnerDealsLoad.fulfilled, (state, action) => {
@@ -32,6 +35,12 @@ export const ownerDealsSlice = createSlice({
     });
     builder.addCase(thunkOwnerDealsLoad.rejected, (state, action) => {
       console.log(action.error);
+    });
+    builder.addCase(thunkOwnerApproveDeal.fulfilled, (state, action) => {
+      const dealIndex = state.ownerdeals.findIndex((deal) => deal.id === action.payload);
+      if (dealIndex !== -1) {
+        state.ownerdeals[dealIndex].ownerApproveDeal = true;
+      }
     });
 
     // builder.addCase(thunkDealsAdd.fulfilled, (state, action) => {
@@ -54,6 +63,6 @@ export const ownerDealsSlice = createSlice({
   },
 });
 
-// export const { setCurrentDeal, clearCurrentDeal } = dealsSlice.actions;
+export const { setCurrentOwnerDeal, clearCurrentOwnerDeal } = ownerDealsSlice.actions;
 
 export default ownerDealsSlice.reducer;

@@ -24,7 +24,7 @@ export type AddItemFormData = {
   price:number;
   title: string;
   description: string;
-  img1?: string;
+  img1: string;
   img2?: string;
   img3?: string;
   condition: string;
@@ -33,9 +33,9 @@ export type AddItemFormData = {
   subCategoryId:number;
 };
 
-export type ItemsState = {
-  items: ItemType[];
-};
+// export type ItemsState = {
+//   items: ItemType[];
+// };
 
 
 export type ItemSliceState = {
