@@ -18,12 +18,11 @@ export default function ItemsListPage(): JSX.Element {
             <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
                 предметы здеся:
             </Typography>
-            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                {items.map((item) => (
-                    <Grid item xs={2} sm={6} md={6} key={item.id}>
-                        <ItemCard item={item} />
-                    </Grid>
-                ))}
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }}>
+                { items.map((item) => ( !item.hidden && (
+                        <Grid item xs={2} sm={6} md={6} key={item.id}>
+                            <ItemCard item={item} />
+                        </Grid> )))}
             </Grid>
         </Container>
     );
