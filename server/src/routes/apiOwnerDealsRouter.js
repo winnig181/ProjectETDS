@@ -9,15 +9,14 @@ const apiOwnerDealsRouter = express.Router();
 apiOwnerDealsRouter
   .route("/")
   .get(
-    verifyAccessToken, 
+    // verifyAccessToken, 
     async (req, res) => {
-      console.log('>>!!>**>>',res.locals.user);
+      // console.log('>>!!>**>>',res.locals.user);
     try {
       const deals = await Deal.findAll({
-        // where:{tenantId: res.locals.user.id},
         order: [["createdAt", "DESC"]],
         include: [
-          { model: User, as: 'ownerDetails' },
+          // { model: User, as: 'ownerDetails' },
           { model: Item},
           { model: User, as: 'tenantDetails'},
         ],

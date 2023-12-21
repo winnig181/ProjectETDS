@@ -49,10 +49,9 @@ module.exports = {
       activationLink: null,
       createdAt: faker.date.past(),
       updatedAt: currentDate,
-    }])
+    },])  
 
-
-    const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
+const categories = ['Техника', 'Одежда', 'Спорт', 'Еда', 'Книги'].map((categoryName) => ({
       categoryName,
       createdAt: currentDate,
       updatedAt: currentDate,
@@ -82,21 +81,6 @@ module.exports = {
       createdAt: faker.date.past(),
       updatedAt: currentDate,
     }));
-
-    const deals = Array.from({ length: 15 }).map((_, index) => ({
-      ownerId: faker.random.number({ min: 1, max: 3 }),
-      tenantId: faker.random.number({ min: 1, max: 3 }),
-      itemId: faker.random.number({ min: 1, max: 20 }),
-      startDate: faker.date.past(),
-      endDate: endDateValue,
-      ownerApproveDeal: faker.random.boolean(),
-      ownerCloseDeal: faker.random.boolean(),
-      tenantApproveDeal: faker.random.boolean(),
-      tenantCloseDeal: faker.random.boolean(),
-      createdAt: faker.date.past(),
-      updatedAt: currentDate,
-    }));
-
     const userReviews = Array.from({ length: 10 }).map((_, index) => ({
       userId: faker.random.number({ min: 1, max: 3 }),
       review: faker.lorem.paragraph(),
@@ -110,8 +94,69 @@ module.exports = {
     await queryInterface.bulkInsert('Categories', categories)
     await queryInterface.bulkInsert('Subcategories', subcategories)
     await queryInterface.bulkInsert('Items', items)
-    await queryInterface.bulkInsert('Deals', deals)
     await queryInterface.bulkInsert('Userreviews', userReviews)
+    await queryInterface.bulkInsert('Deals', [{
+      ownerId: 1,
+      tenantId: 2,
+      itemId: 1,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: false,
+      ownerCloseDeal: false,
+      tenantApproveDeal: false,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },{
+      ownerId: 1,
+      tenantId: 2,
+      itemId: 2,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: false,
+      ownerCloseDeal: false,
+      tenantApproveDeal: false,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },{
+    ownerId: 2,
+    tenantId: 1,
+    itemId: 5,
+    startDate: currentDate,
+    endDate: endDateValue,
+    ownerApproveDeal: false,
+    ownerCloseDeal: false,
+    tenantApproveDeal: false,
+    tenantCloseDeal: false,
+    createdAt: new Date(),
+    updatedAt: new Date()
+},
+{
+  ownerId: 2,
+  tenantId: 3,
+  itemId: 13,
+  startDate: currentDate,
+  endDate: endDateValue,
+  ownerApproveDeal: false,
+  ownerCloseDeal: false,
+  tenantApproveDeal: false,
+  tenantCloseDeal: false,
+  createdAt: new Date(),
+  updatedAt: new Date()
+},{
+      ownerId: 1,
+      tenantId: 2,
+      itemId: 3,
+      startDate: currentDate,
+      endDate: endDateValue,
+      ownerApproveDeal: false,
+      ownerCloseDeal: false,
+      tenantApproveDeal: false,
+      tenantCloseDeal: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },])
   },
 
   async down(queryInterface, Sequelize) {
