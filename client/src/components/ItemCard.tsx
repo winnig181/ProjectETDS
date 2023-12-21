@@ -9,7 +9,7 @@ import {
     Divider,
     IconButtonProps,
     IconButton,
-    CardMedia, Container
+    CardMedia
 } from '@mui/material';
 import { useAppDispatch } from '../redux/hook';
 import styled from "styled-components"
