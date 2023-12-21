@@ -700,7 +700,7 @@ export default function NavBar(): JSX.Element {
             </CustomButton>
           </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
-          <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/">
+          <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/main">
               Категории
             </CustomButton>
           </Grid>

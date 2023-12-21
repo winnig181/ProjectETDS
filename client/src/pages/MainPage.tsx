@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, {useEffect} from 'react';
 import { Box, Card, CardActionArea, CardContent, Container, Grid, Typography } from '@mui/material';
-import CategoryCard from '../components/CategoryCard';
 import {useAppDispatch, useAppSelector} from "../redux/hook";
 import {thunkCategoriesLoad} from "../redux/slices/categories/createAsyncThunk";
 import { Link } from 'react-router-dom';
@@ -15,7 +14,7 @@ export default function MainPage(): JSX.Element {
     useEffect(()=> {
         dispatch(thunkCategoriesLoad())
     }, [])
-console.log(categories);
+
 
 
   return (

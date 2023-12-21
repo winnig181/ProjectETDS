@@ -10,7 +10,7 @@ import { Box } from '@mui/material';
 type CategoryProps = {
   category: {
     categoryName: string
-    categoryIMG: string
+
     id: number
   }
 }

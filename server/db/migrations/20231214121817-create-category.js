@@ -12,9 +12,7 @@ module.exports = {
       categoryName: {
         type: Sequelize.TEXT
       },
-      categoryIMG: {
-        type: Sequelize.TEXT
-      },
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Subcategory.init({
     categoryId: DataTypes.INTEGER,
-    categoryIMG: DataTypes.TEXT,
+
     subCategoryName: DataTypes.TEXT
   }, {
     sequelize,
