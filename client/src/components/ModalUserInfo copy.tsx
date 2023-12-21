@@ -3,7 +3,7 @@ import Modal from '@mui/material/Modal';
 import { Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import UserInfoCard from './UserInfoCard';
-import { clearCurrentOwnerDeal } from '../redux/slices/ownerdeals/ownerDealsSlice';
+import { clearCurrentItem } from '../redux/slices/items/itemsSlice';
 
 const style = {
   position: 'absolute' as const,
@@ -18,13 +18,12 @@ const style = {
 
 export default function ModalUserInfo(): JSX.Element {
   const dispatch = useAppDispatch();
-  const show = useAppSelector((state) => state.ownerDealsSlice.currentOwnerDeal);
-  // const show = useAppSelector((state) => state.itemsSlice.currentItem);
+  const show = useAppSelector((state) => state.itemsSlice.currentItem);
   return (
     <div>
       <Modal
         open={!!show}
-        onClose={() => dispatch(clearCurrentOwnerDeal())}
+        onClose={() => dispatch(clearCurrentItem())}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

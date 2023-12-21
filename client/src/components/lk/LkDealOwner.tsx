@@ -1,4 +1,4 @@
-import { Checkbox } from '@mui/material';
+import { Checkbox, FormControlLabel } from '@mui/material';
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
@@ -8,15 +8,35 @@ import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import Button from '@mui/material/Button';
 import type { DealType } from '../../types/deal/deal';
+import { useAppDispatch } from '../../redux/hook';
+import { thunkOwnerApproveDeal } from '../../redux/slices/ownerdeals/createAsyncThunk';
+import { setCurrentOwnerDeal } from '../../redux/slices/ownerdeals/ownerDealsSlice';
 
-// type Props = {};
 
 export default function LkDealOwner({ deal }: { deal: DealType }): JSX.Element {
-  const { startDate, endDate, tenantDetails, ownerApproveDeal, tenantApproveDeal, tenantCloseDeal,ownerCloseDeal } = deal;
+  const dispatch = useAppDispatch();
+  const {
+    startDate,
+    endDate,
+    tenantDetails,
+    ownerApproveDeal,
+    tenantApproveDeal,
+    tenantCloseDeal,
+    ownerCloseDeal,
+  } = deal;
   const item = deal.Item.title;
+  // console.log(">>>>>>>>>>deal",deal);
+  
   const tenant = tenantDetails.nickName;
   const formattedstartDate = format(new Date(startDate), 'd MMM yyyy', { locale: ru });
   const formattedendDate = format(new Date(endDate), 'd MMM yyyy', { locale: ru });
+
+      //   {/* <CardHeader 
+      // onClick={() => {dispatch(setCurrentOwnerDeal(item));}}
+      //   title={ownerDetails.nickName}
+      //   subheader="владелец"
+      // /> */}
+
   return (
     <Paper
       sx={{
@@ -37,11 +57,17 @@ export default function LkDealOwner({ deal }: { deal: DealType }): JSX.Element {
             {item}
           </Typography>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={3} 
+        onClick={() => {dispatch(setCurrentOwnerDeal(deal));}}
+        sx={{
+          cursor: 'pointer',
+        }}
+        >
           <Typography variant="body2" color="text.secondary">
             Запрос от
           </Typography>
-          <Typography gutterBottom variant="subtitle1">
+          <Typography gutterBottom variant="subtitle1"
+          >
             {tenant}
           </Typography>
         </Grid>
@@ -65,9 +91,16 @@ export default function LkDealOwner({ deal }: { deal: DealType }): JSX.Element {
           <Typography variant="body2" color="text.secondary">
             Одобрить
           </Typography>
-          <Checkbox checked={ownerApproveDeal} 
-          // onChange={} 
+          <FormControlLabel
+            label=""
+            control={<Checkbox checked={ownerApproveDeal} />}
+            onChange={() => void dispatch(thunkOwnerApproveDeal(deal.id))}
+            color="secondary"
           />
+          {/* <Checkbox
+            checked={ownerApproveDeal}
+            // onChange={()=>void dispatch(thunkOwnerApproveDeal(deal.id))}
+          /> */}
         </Grid>
         <Grid item xs={1.5}>
           <Typography variant="body2" color="text.secondary">
@@ -90,11 +123,12 @@ export default function LkDealOwner({ deal }: { deal: DealType }): JSX.Element {
         <Grid item xs={2}>
           <Button
             variant="outlined"
-            disabled={!tenantCloseDeal || !tenantApproveDeal || !ownerApproveDeal || !ownerCloseDeal}
+            disabled={
+              !tenantCloseDeal || !tenantApproveDeal || !ownerApproveDeal || !ownerCloseDeal
+            }
           >
             Оставить отзыв
           </Button>
-
         </Grid>
       </Grid>
     </Paper>
