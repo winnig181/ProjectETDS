@@ -27,7 +27,7 @@ module.exports = {
             nickName: 'Liquidator777',
             phone: '+7 928 514 0191',
             avatar: 'https://avatars.mds.yandex.net/i?id=5c55dc82707935b02b01116c65f64c31f8e059e5-4112653-images-thumbs&n=13',
-            about: 'катаюсь на метро в час пик, радуюсь жести',
+            about: 'люблю IT, детей и кальян',
             city: 'Москва',
             metro: 'Ленинский проспект',
             publicPhone: '+7 928 514 0191',

@@ -46,7 +46,7 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
             Состояние: {condition}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            Статус: {status}
+            Статус: {status? 'Доступен':'Арендован'}
           </Typography>
         </CardContent>
       </Box>

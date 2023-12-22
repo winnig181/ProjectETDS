@@ -17,7 +17,7 @@ export default function UserInfoCard(): JSX.Element {
   const currentOwnerDeal = useAppSelector((state) => state.ownerDealsSlice.currentOwnerDeal);
   
 
-  console.log('___>>>>>currentOwnerDeal',currentOwnerDeal);
+  // console.log('___>>>>>currentOwnerDeal',currentOwnerDeal);
   const tenant = currentOwnerDeal?.tenantDetails;
   // const currentReviews = reviews.filter((el) => el.userId === tenant?.id);
   // console.log('___>>>>>currentReviews',currentReviews);
@@ -26,7 +26,8 @@ export default function UserInfoCard(): JSX.Element {
   //   sum += el.rating;
   // });
   // // console.log('___>>>>>sum',sum);
-  // const rating = currentReviews.length > 0 ? sum / currentReviews.length : 3;
+  // const rating = currentReviews.length > 0 ? sum / currentReviews.length : 4;
+  const rating = 4;
 
   const registerDate = format(new Date(tenant.createdAt), 'd MMM yyyy', { locale: ru });
 
@@ -56,16 +57,17 @@ export default function UserInfoCard(): JSX.Element {
             На сайте с:{' '}
           </Typography>
           <Typography variant="h6">{registerDate}</Typography>
-          {/* <Typography variant="body2" color="text.secondary" sx={{ paddingTop: '10px' }}>
+          <Typography variant="body2" color="text.secondary" sx={{ paddingTop: '10px' }}>
             Рейтинг на основе оценок пользователей
           </Typography>
-          <Rating name="read-only" value={rating} readOnly /> */}
+          <Rating name="read-only" value={rating} readOnly />
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', paddingTop:'20px', paddingRight:'20px' }}>
         <Avatar alt="Аватар" src={tenant?.avatar} sx={{ width: 75, height: 75 }} />
       </Box>
       </Box>
+      <Button color="success"> Связаться </Button>
         <Button color="inherit" onClick={() => dispatch(clearCurrentOwnerDeal())}>
           Закрыть
         </Button>
