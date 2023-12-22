@@ -54,7 +54,7 @@ function ItemCard({ item }: { item: ItemType }): JSX.Element {
   };
 
   return (
-    <Link to={`/addDeal/${item?.id}`}>
+    
     <Card style={{ marginTop: '30px', borderRadius: '17px', padding: '9px' }}>
       <CardContent>
         <Typography
@@ -67,7 +67,7 @@ function ItemCard({ item }: { item: ItemType }): JSX.Element {
           {/* //   Изменила Для добавления favorites */}
           <IconButton
             aria-label="add to favorites"
-            style={{ color: isFavorite ? 'red' : 'white' }}
+            style={{ color: isFavorite ? 'red' : 'grey' }}
             onClick={handleAddToFavorites}
           >
             <FavoriteIcon />
@@ -93,6 +93,7 @@ function ItemCard({ item }: { item: ItemType }): JSX.Element {
         <Typography variant = "h6" color="text.secondary">Цена: {item.price}</Typography>
         {/* <Typography color="text.secondary">{item.id}</Typography> */}
       </CardContent>
+      <Link to={`/addDeal/${item?.id}`}>
       <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
         <Button 
         // onClick={handleAddDeal} 
@@ -100,8 +101,9 @@ function ItemCard({ item }: { item: ItemType }): JSX.Element {
           На сделку
         </Button>
       </CardActions>
+      </Link>
     </Card>
-    </Link>
+ 
   );
 }
 
