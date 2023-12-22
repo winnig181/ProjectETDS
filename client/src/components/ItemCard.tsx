@@ -12,11 +12,10 @@ import {
   CardMedia,
 } from '@mui/material';
 import styled from 'styled-components';
-import Carousel from 'react-slick';
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../redux/hook';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import { addFavItem } from '../redux/slices/items/itemsSlice';
+import type { ItemType } from '../types/item/item';
 
 type ExpandMoreProps = {
   expand: boolean;
@@ -33,7 +32,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-function ItemCard({ item }: { item: any }): JSX.Element {
+function ItemCard({ item }: { item: ItemType }): JSX.Element {
   const [expanded, setExpanded] = React.useState(false);
 
 //   Для добавления favorites
@@ -43,9 +42,9 @@ function ItemCard({ item }: { item: any }): JSX.Element {
     setExpanded(!expanded);
   };
   const dispatch = useAppDispatch();
-  const handleAddDeal = () => {
-    window.location = `/addDeal/${item.id}`;
-  };
+  // const handleAddDeal = () => {
+  //   window.location = `/addDeal/${item.id}`;
+  // };
 
 
   //   Для добавления favorites
@@ -55,12 +54,13 @@ function ItemCard({ item }: { item: any }): JSX.Element {
   };
 
   return (
+    <Link to={`/addDeal/${item?.id}`}>
     <Card style={{ marginTop: '30px', borderRadius: '17px', padding: '9px' }}>
       <CardContent>
         <Typography
-          variant="h5"
+          variant="h4"
           component="div"
-          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+          style={{ textAlign: 'center' }}
         >
           {item.title}
 
@@ -75,30 +75,33 @@ function ItemCard({ item }: { item: any }): JSX.Element {
 
 
         </Typography>
-        <Carousel>
+        {/* <Carousel> */}
           <div>
-            <CardMedia component="img" height="176" image={item.img1} alt="cover" />
+            <CardMedia component="img" height="350" width="350"image={`http://localhost:3000/img/${item.img1}`} alt="cover" />
           </div>
-          <div>
+          {/* <div>
             <CardMedia component="img" height="176" image={item.img2} alt="cover" />
           </div>
           <div>
             <CardMedia component="img" height="176" image={item.img3} alt="cover" />
-          </div>
-        </Carousel>
-        <Typography color="text.secondary">Описание: {item.description}</Typography>
+          </div> */}
+        {/* </Carousel> */}
+        <Typography variant = "h6" color="text.secondary" sx = {{ marginTop: '30px' }}>Описание: {item.description}</Typography>
         <Divider />
-        <Typography color="text.secondary">Состояние: {item.condition}</Typography>
-        <Typography color="text.secondary">Статус: {item.status}</Typography>
-        <Typography color="text.secondary">Цена: {item.price}</Typography>
-        <Typography color="text.secondary">{item.id}</Typography>
+        <Typography variant = "h6"color="text.secondary">Состояние: {item.condition}</Typography>
+        <Typography variant = "h6" color="text.secondary">Статус: {item.status}</Typography>
+        <Typography variant = "h6" color="text.secondary">Цена: {item.price}</Typography>
+        {/* <Typography color="text.secondary">{item.id}</Typography> */}
       </CardContent>
       <CardActions style={{ display: 'flex', justifyContent: 'center' }}>
-        <Button onClick={handleAddDeal} size="medium" color="success" variant="contained">
+        <Button 
+        // onClick={handleAddDeal} 
+        size="medium" color="success" variant="contained">
           На сделку
         </Button>
       </CardActions>
     </Card>
+    </Link>
   );
 }
 

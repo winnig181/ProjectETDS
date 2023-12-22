@@ -27,6 +27,7 @@ import AddItemPage from './pages/AddItemPage';
 import ItemsListPage from './pages/ItemsListPage';
 import HomePage from './pages/HomePage';
 import LkMyFavouritesPage from './pages/LkMyFavouritesPage';
+import NotFound from './pages/NotFound';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -83,6 +84,7 @@ function App(): JSX.Element {
             <Route path="/lk/my-deals" element={<LkMyDealsPage />} />
             <Route path="/add-item" element={<AddItemPage />} />
             <Route path="/lk/favourites" element={<LkMyFavouritesPage />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>
       </Container>

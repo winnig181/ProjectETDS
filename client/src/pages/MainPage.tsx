@@ -19,29 +19,10 @@ export default function MainPage(): JSX.Element {
 
   return (
 
-//     <Container sx={{ backgroundColor: 'background.default' , minHeight: '100vh' }}>
-//         <Grid style={{height: '68px'}}>
-//         </Grid>
-//       <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
-//         КАТЕГОРИИ
-//       </Typography>
-//       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-//   {categories.map((category) => (
-//     <Grid item xs={2} sm={4} md={4} key={category.id}>
-//       <CategoryCard category = {category} />
-//     </Grid>
-//   ))}
-// </Grid>
-//     </Container>
-//   );
-// }
-
-
-
 <Container sx={{ backgroundColor: 'background.default' , minHeight: '100vh' }}>
-<Grid style={{height: '68px'}}>
+<Grid style={{height: '48px'}}>
 </Grid>
-<Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
+<Typography variant="h3" gutterBottom sx={{ textAlign: 'center', paddingBottom: '30px'  }}>
 КАТЕГОРИИ
 </Typography>
 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -50,7 +31,7 @@ export default function MainPage(): JSX.Element {
   <Link to={`/categories/1`}> 
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea style={{ cursor: 'pointer' }}
-      // onClick={clickHandler}
+      
       >
        <Box
         component="video"     

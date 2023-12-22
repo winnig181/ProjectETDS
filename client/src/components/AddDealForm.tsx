@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Container, TextField, Button, Grid } from '@mui/material';
+import { Container, TextField, Button, Grid, Alert, Stack } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import ItemCard3 from './ItemCard3';
 import { thunkDealsAdd } from '../redux/slices/deals/createAsyncThunk';
+import ItemCard from './ItemCard';
 
 
 function AddDealForm(): JSX.Element {
+  const [add, setAdd] = useState(true);
   const [formData, setFormData] = useState({
     dealText: '',
     startDate: '',
@@ -75,12 +77,19 @@ function AddDealForm(): JSX.Element {
       console.log('Добавлена новая сделка:', updatedFormData);
     } catch (error) {
       console.log('Ошибка:', error.message);
-    }
+    };
+    setFormData({
+      dealText: '',
+      startDate: '',
+      endDate: '',
+    });
+    setAdd(!add);
   };
 
   return (
     <Container maxWidth="md">
-
+      {add ? (
+<> 
       {item[id] && <ItemCard3  item = {item[id]} />}
 
       <Grid container spacing={2}>
@@ -131,6 +140,18 @@ function AddDealForm(): JSX.Element {
           </Button>
         </Grid>
       </Grid>
+      </>
+      ) : (
+        <Stack sx={{ width: '100%' }} spacing={2}>
+          <Alert
+            onClose={() => {
+              setAdd(!add);
+            }}
+          >
+            Добавление прошло успешно!
+          </Alert>
+        </Stack>
+      )}
     </Container>
   );
 }

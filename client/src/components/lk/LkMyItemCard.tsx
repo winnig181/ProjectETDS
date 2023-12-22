@@ -20,22 +20,20 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
   const { price, title, description, img1, img2, img3, condition, status, hidden, subCategoryId,ownerDetails } = item;
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column',padding:2, 
-    width: '48%',
+    width: 520,
     height: 300,
     minWidth: 450,  
      }}>
-      {/* <CardHeader 
-      onClick={() => {dispatch(setCurrentItem(item));}}
-        title={ownerDetails.nickName}
-        subheader="владелец"
-      /> */}
+
       <Box sx={{ display: 'flex',  justifyContent: 'space-between', width:'80%'  }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column',overflow: 'hidden' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column',
+      overflow: 'hidden'
+       }}>
         <CardContent>
-          <Typography variant="h4" noWrap>
+          <Typography variant="h5" noWrap>
             {title}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div" noWrap>
+          <Typography variant="subtitle1" color="text.secondary" component="div" >
             {description}
           </Typography>
           <Typography component="div" variant="h6">
@@ -48,7 +46,7 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
             Состояние: {condition}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            Статус: {status}
+            Статус: {status? 'Доступен':'Арендован'}
           </Typography>
         </CardContent>
       </Box>

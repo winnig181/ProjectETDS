@@ -39,7 +39,7 @@ export const ownerDealsSlice = createSlice({
     builder.addCase(thunkOwnerApproveDeal.fulfilled, (state, action) => {
       const dealIndex = state.ownerdeals.findIndex((deal) => deal.id === action.payload);
       if (dealIndex !== -1) {
-        state.ownerdeals[dealIndex].ownerApproveDeal = true;
+        state.ownerdeals[dealIndex].ownerApproveDeal = !state.ownerdeals[dealIndex].ownerApproveDeal;
       }
     });
 

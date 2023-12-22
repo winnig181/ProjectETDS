@@ -177,9 +177,10 @@ function AddItemPage(): JSX.Element {
                   id="select"
                   select
                 >
-                  <MenuItem value="1">Видеоигры</MenuItem>
+                  <MenuItem value="1">Настольные игры</MenuItem>
                   <MenuItem value="2">Музыка</MenuItem>
-                  <MenuItem value="3">Подушки</MenuItem>
+                  <MenuItem value="3">Книги</MenuItem>
+                  <MenuItem value="4">Компьютерные игры</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} sx={{ paddingLeft: '10px', paddingTop: '10px' }}>

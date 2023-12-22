@@ -59,7 +59,7 @@ apiOwnerDealsRouter
 apiOwnerDealsRouter.put("/owner-approve/:id", async (req, res) => {
   try {
     const deal = await Deal.findByPk(req.params.id);
-    deal.ownerApproveDeal = true;
+    deal.ownerApproveDeal = !deal.ownerApproveDeal;
     deal.save();
     res.status(200).json({message:'success'});
   }catch (error){

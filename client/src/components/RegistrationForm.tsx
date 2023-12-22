@@ -22,7 +22,7 @@ export default function RegistrationForm(): JSX.Element {
             height: '400px',
             justifyContent: 'space-around',
             borderRadius: '12px',
-            border: '2px solid #800080',
+            border: '3px solid #35CDCE',
           }}
         >
           <CustomTextField name="name" label="Имя" type="text" />
