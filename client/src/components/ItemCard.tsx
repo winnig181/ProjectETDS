@@ -77,14 +77,14 @@ function ItemCard({ item }: { item: any }): JSX.Element {
         </Typography>
         <Carousel>
           <div>
-            <CardMedia component="img" height="176" image={item.img1} alt="cover" />
+            <CardMedia component="img" height="176" image={`http://localhost:3000/img/${item.img1}`} alt="cover" />
           </div>
-          <div>
+          {/* <div>
             <CardMedia component="img" height="176" image={item.img2} alt="cover" />
           </div>
           <div>
             <CardMedia component="img" height="176" image={item.img3} alt="cover" />
-          </div>
+          </div> */}
         </Carousel>
         <Typography color="text.secondary">Описание: {item.description}</Typography>
         <Divider />
