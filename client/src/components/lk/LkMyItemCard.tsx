@@ -24,11 +24,7 @@ export default function LkMyItemCard({ item }: PropsLkMyItemCard): JSX.Element {
     height: 300,
     minWidth: 450,  
      }}>
-      {/* <CardHeader 
-      onClick={() => {dispatch(setCurrentItem(item));}}
-        title={ownerDetails.nickName}
-        subheader="владелец"
-      /> */}
+
       <Box sx={{ display: 'flex',  justifyContent: 'space-between', width:'80%'  }}>
       <Box sx={{ display: 'flex', flexDirection: 'column',
       overflow: 'hidden'

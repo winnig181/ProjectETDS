@@ -15,7 +15,7 @@ export default function ItemsListPage(): JSX.Element {
     return (
         <Container sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
             <Typography variant="h3" gutterBottom sx={{ textAlign: 'center' }}>
-                предметы здеся:
+                Настольные игры
             </Typography>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 3, sm: 8, md: 12 }}>
                 { items.map((item) => ( !item.hidden && (
