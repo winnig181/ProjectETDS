@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { createSlice } from '@reduxjs/toolkit';
-import type { AuthSliceState } from '../../../types/auth/index';
+import type { AuthSliceState } from '../../../types/auth';
 import { thunkLogin , thunkSignUp , thunkLogout , thunkAuthRefresh, thunkCheckAuth } from './createAsyncThunk';
 
 const initialState: AuthSliceState = { user: { status: 'pending' }, accessToken: '' };
@@ -21,7 +21,7 @@ export const authSlice = createSlice({
 
     builder.addCase(thunkAuthRefresh.fulfilled, (state, action) => action.payload);
     builder.addCase(thunkAuthRefresh.rejected, (state, action) => guestState);
-    
+
     builder.addCase(thunkCheckAuth.fulfilled, (state, action) => action.payload);
      // Можно сделать гостя, если отвалилось
     builder.addCase(thunkCheckAuth.rejected, (state, action) => guestState);

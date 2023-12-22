@@ -1,11 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
-import noteReducer from './slices/notes/notesSlice';
 import authReducer from './slices/auth/authSlice';
+import reviewReducer from './slices/reviews/reviewSlice';
+import itemReducer from './slices/items/itemsSlice';
+import dealReducer from './slices/deals/dealsSlice';
+import categoriesReducer from './slices/categories/categoriesSlice'
+import subcatReducer from './slices/subcats/subcatsSlice';
+import ownerDealReducer from './slices/ownerdeals/ownerDealsSlice';
 
 export const store = configureStore({
   reducer: {
-    notesSlice: noteReducer,
     authSlice: authReducer,
+    categoriesSlice: categoriesReducer,
+    itemsSlice: itemReducer,
+    reviewsSlice: reviewReducer,
+    dealsSlice: dealReducer,
+    ownerDealsSlice: ownerDealReducer,
+    subcatsSlice: subcatReducer,
+
   },
 });
 

@@ -24,7 +24,7 @@ export default function LoginForm(): JSX.Element {
             height: '200px',
             justifyContent: 'space-around',
             borderRadius: '12px',
-            border: '2px solid #800080',
+            border: '3px solid #35CDCE',
           }}
         >
           <CustomTextField name="email" label="Почта" type="text" />

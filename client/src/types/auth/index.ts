@@ -2,6 +2,17 @@ export type UserType = {
   id: number;
   name: string;
   email: string;
+  nickName: string;
+  phone: string;
+  about:string;
+  avatar: string;
+  city: string;
+  metro: string;
+  publicPhone: string;
+  isActivated: string;
+  activationLink: string;
+  createdAt:Date;
+  updatedAt:Date;
 };
 
 export type UserState =
@@ -14,10 +25,6 @@ export type AuthState = {
   accessToken: string;
 };
 
-// export type AuthActions =
-//   | { type: 'LOGIN'; payload: AuthState }
-//   | { type: 'LOGOUT' }
-//   | { type: 'LOGIN_GUEST' };
 
 export type LoginFormData = {
   email: string;
