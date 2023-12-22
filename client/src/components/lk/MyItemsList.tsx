@@ -26,7 +26,7 @@ export default function MyItemsList(): JSX.Element {
   const myItems = items.filter((item) => item.userId === user.id); 
 
   return (
-    <Grid container rowSpacing={2} columnSpacing={4} 
+    <Grid container rowSpacing={2} columnSpacing={2} 
     sx={{
       marginLeft: 0.5
       // justifyContent: "center"
