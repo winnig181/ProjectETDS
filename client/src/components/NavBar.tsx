@@ -452,7 +452,7 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////////////////////////////////////
 import * as React from 'react';
 import { styled, useTheme , alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -499,6 +499,7 @@ const Search = styled('div')(({ theme }) => ({
     width: 'auto',
   },
 }));
+
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -674,16 +675,30 @@ export default function NavBar(): JSX.Element {
             <MenuIcon />
           </IconButton>
 
+          <img
+  src="/img/002--1.png"
+  alt="Hedgehog"
+  width="55"
+  height="55"
+  style={{ borderRadius: '0%', marginRight: '20px', marginLeft: '20px' }}
+/>
+
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
+
             <Typography variant="h6" fontWeight="bold">
-              {user.status === 'authenticated' ? `Welcome, ${user.name} !` : 'Hello'}
+              {user.status === 'authenticated' ? `Привет, ${user.name} !` : 'Hello'}
             </Typography>
           </Typography>
+          <Grid item sx={{ ml: 2, mr: 2 }}>
+          <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/main">
+              Категории
+            </CustomButton>
+          </Grid>
           <Grid item sx={{ ml: 2, mr: 2 }}>
           <CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold' }} component={NavLink} to="/lk">
               Личный кабинет
@@ -697,11 +712,6 @@ export default function NavBar(): JSX.Element {
           <Grid item sx={{ ml: 2, mr: 2 }}>
           <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/add-item">
               Разместить
-            </CustomButton>
-          </Grid>
-          <Grid item sx={{ ml: 2, mr: 2 }}>
-          <CustomButton variant="contained" sx={{ fontWeight: 'bold' }} component={NavLink} to="/main">
-              Категории
             </CustomButton>
           </Grid>
           {user.status !== 'authenticated' ? (
@@ -760,46 +770,58 @@ export default function NavBar(): JSX.Element {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            backgroundColor: '#2e2e2e'
           },
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-        <Typography variant="h6" noWrap component="div" sx={{ textAlign: 'center' }}>
-            ETDS
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
+        open={open}>
+
+<DrawerHeader>
+  <Typography
+    variant="h6"
+    noWrap
+    component="div"
+    sx={{
+      color: '#35cdce',
+      textAlign: 'center',
+      fontWeight: 'bold',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '28px', // добавим небольшой отступ между иконкой и текстом
+    }}
+  >
+    ДоброЁж
+    <IconButton onClick={handleDrawerClose}>
+      {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+    </IconButton>
+  </Typography>
+</DrawerHeader>
+
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+    
+<CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold', height: '60px' }} component={NavLink} to="/lk/profile" fullWidth>
+      Личный профиль
+    </CustomButton>
+    
+<CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold', height: '60px' }} component={NavLink} to="/lk/my-items" fullWidth>
+      Мои предметы
+    </CustomButton>
+    
+<CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold', height: '60px' }} component={NavLink} to="/lk/my-deals" fullWidth>
+      Арендованные предметы
+    </CustomButton>
+
+    <CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold', height: '60px' }} component={NavLink} to="/lk/reviews" fullWidth>
+      Мои отзывы
+    </CustomButton>
+
+    <CustomButton variant="contained" color="inherit" sx={{ fontWeight: 'bold', height: '60px' }} component={NavLink} to="/lk/favourites" fullWidth>
+      Избранное
+    </CustomButton>
+    {/* Добавьте остальные кнопки по аналогии */}
+  </List>
       </Drawer>
     </Box>
   );

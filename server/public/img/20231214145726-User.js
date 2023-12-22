@@ -38,37 +38,37 @@ module.exports = {
 
     await queryInterface.bulkInsert('Categories', [{
       categoryName: 'Техника',
-
+      
       createdAt: currentDate,
       updatedAt: currentDate,
     },
     {
       categoryName: 'Спорт',
-
+      
       createdAt: currentDate,
       updatedAt: currentDate,
     },
     {
       categoryName: 'Одежда',
-
+      
       createdAt: currentDate,
       updatedAt: currentDate,
     },
     {
       categoryName: 'Развлечения',
-
+      
       createdAt: currentDate,
       updatedAt: currentDate,
     },
     {
       categoryName: 'Инструменты',
-
+      
       createdAt: currentDate,
       updatedAt: currentDate,
     },
     {
       categoryName: 'Творчество',
-
+      
       createdAt: currentDate,
       updatedAt: currentDate,
     }
@@ -82,33 +82,33 @@ module.exports = {
                 createdAt: currentDate,
                 updatedAt: currentDate,
             })
-        )
+        );
 
     await queryInterface.bulkInsert('Subcategories', subcategories)
     await queryInterface.bulkInsert('Items', [{
 
         title: 'Почта',
         description: 'Я почему вредный был?',
-        img1: 'https://www.mosigra.ru/image/cache/data/tovari/hobby-world/pochta/pochta-00-1024x1024-wm.jpg',
+        img1: 'pochta.jpg',
         condition: 'Новое',
         status: 'Доступен',
         hidden: false,
         subCategoryId: 1,
         userId: 1,
-        price: 150,
+        price: 150,        
         createdAt: currentDate,
         updatedAt: currentDate,
-        },
+        }, 
         {
           title: 'Имаджинариум',
           description: 'Много историй в одной коробке',
-          img1: 'https://www.mosigra.ru/image/cache/data/%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D1%8B/Cosmodrome%20Games/%D0%98%D0%BC%D0%B0%D0%B4%D0%B6%D0%B8%D0%BD%D0%B0%D1%80%D0%B8%D1%83%D0%BC%20(2021)/DSC_6856-1024x1024-wm.webp',
+          img1: 'image.webp',
           condition: 'Как новое',
           status: 'Доступен',
           hidden: false,
           subCategoryId: 1,
           userId: 1,
-          price: 200,
+          price: 200,        
           createdAt: currentDate,
           updatedAt: currentDate,
           },
@@ -117,13 +117,13 @@ module.exports = {
 
             title: 'Колонизаторы',
             description: 'Про колонизацию, удачу и дипломатию...',
-            img1: 'https://www.mosigra.ru/image/cache/data/mosigra.market/554/071/DSC_2202_600x600-1024x1024-wm.webp',
+            img1: 'cat.webp',
             condition: 'Как новое',
             status: 'Доступен',
             hidden: false,
             subCategoryId: 1,
             userId: 1,
-            price: 200,
+            price: 200,        
             createdAt: currentDate,
             updatedAt: currentDate,
             },
@@ -136,7 +136,7 @@ module.exports = {
             //   hidden: DataTypes.BOOLEAN,
             //   subCategoryId: DataTypes.INTEGER,
             //   userId: DataTypes.INTEGER,
-            //   price: DataTypes.INTEGER,
+            //   price: DataTypes.INTEGER,        
             //   createdAt: currentDate,
             //   updatedAt: currentDate,
             //   },
@@ -149,7 +149,7 @@ module.exports = {
             //     hidden: DataTypes.BOOLEAN,
             //     subCategoryId: DataTypes.INTEGER,
             //     userId: DataTypes.INTEGER,
-            //     price: DataTypes.INTEGER,
+            //     price: DataTypes.INTEGER,        
             //     createdAt: currentDate,
             //     updatedAt: currentDate,
             //     },
@@ -162,16 +162,16 @@ module.exports = {
             //       hidden: DataTypes.BOOLEAN,
             //       subCategoryId: DataTypes.INTEGER,
             //       userId: DataTypes.INTEGER,
-            //       price: DataTypes.INTEGER,
+            //       price: DataTypes.INTEGER,        
             //       createdAt: currentDate,
             //       updatedAt: currentDate,
             //       },
         ])
 
     // await queryInterface.bulkInsert('Users', users)
-
-
-
+  
+    
+    
     await queryInterface.bulkInsert('Userreviews', [
       {
         userId: 1,
