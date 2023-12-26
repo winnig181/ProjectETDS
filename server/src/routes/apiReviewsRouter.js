@@ -1,16 +1,20 @@
 const express = require("express");
 
 const { Userreview, User } = require("../../db/models");
-// const verifyAccessToken = require("../middlewares/verifyAccessToken");
+const verifyAccessToken = require("../middlewares/verifyAccessToken");
 
 const apiReviewsRouter = express.Router();
 
 apiReviewsRouter
   .route("/")
-  .get(async (req, res) => {
+  .get(
+    verifyAccessToken, 
+    async (req, res) => {
+    
     try {
       const reviews = await Userreview.findAll({
         include: User,
+        where:{userId: res.locals.user.id},
         order: [["createdAt", "DESC"]],
       });
       return res.json(reviews);
@@ -26,10 +30,12 @@ apiReviewsRouter
       try {
         if (!req.body?.review || !req.body?.rating)
           return res.status(500).json({ message: "Empty reqbody" });
-        const { review, rating,
+        const {
+          review,
+          rating,
           // при клике на Оставить отзыв в хэндлер нужно передать targetId
-        targetId
-       } = req.body;
+          targetId,
+        } = req.body;
         const newReview = await Userreview.create({
           review,
           rating,
@@ -44,7 +50,7 @@ apiReviewsRouter
     }
   );
 
-  apiReviewsRouter.delete("/:id", async (req, res) => {
+apiReviewsRouter.delete("/:id", async (req, res) => {
   await Userreview.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
 });
@@ -60,6 +66,5 @@ apiReviewsRouter.put("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
-
 
 module.exports = apiReviewsRouter;

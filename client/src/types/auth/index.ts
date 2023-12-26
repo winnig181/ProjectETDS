@@ -4,12 +4,15 @@ export type UserType = {
   email: string;
   nickName: string;
   phone: string;
+  about:string;
   avatar: string;
   city: string;
   metro: string;
   publicPhone: string;
   isActivated: string;
   activationLink: string;
+  createdAt:Date;
+  updatedAt:Date;
 };
 
 export type UserState =
@@ -21,6 +24,7 @@ export type AuthState = {
   user: UserState;
   accessToken: string;
 };
+
 
 export type LoginFormData = {
   email: string;

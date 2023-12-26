@@ -2,13 +2,12 @@ import axios from 'axios';
 import type { ItemType, AddItemFormData } from '../types/item/item';
 
 export const apiItemsService = axios.create({
-  // baseURL: 'http://localhost:3000/api/v1/products',
   baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}items`,
-});
+})
 
 class ItemsService {
   static async getItems(): Promise<ItemType[]> {
-    const response = await apiItemsService.get<ItemType[]>('/');
+    const response = await apiItemsService.get<ItemType[]>(`/`);
     if (response.status === 200) return response.data;
     return [];
   }
@@ -40,7 +39,6 @@ class ItemsService {
   static async editIsFavItem(id: ItemType['id']): Promise<ItemType['id']> {
     try {
       const response = await apiItemsService.put(`/isFav/${id}`);
-      // eslint-disable-next-line no-useless-return
       console.log('response  IsFav >>>>>>>>>>', response);
       if (response.status === 200) return id;
     } catch (error) {

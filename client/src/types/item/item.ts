@@ -1,3 +1,5 @@
+import type { UserType } from "../auth";
+
 export type ItemType = {
   id: number;
   price:number;
@@ -15,6 +17,7 @@ export type ItemType = {
   updatedAt: Date;
   isActivated:boolean;
   activationLink:string;
+  ownerDetails: UserType;
 };
 
 export type AddItemFormData = {
@@ -22,20 +25,21 @@ export type AddItemFormData = {
   title: string;
   description: string;
   img1: string;
-  img2: string;
-  img3: string;
+  img2?: string;
+  img3?: string;
   condition: string;
   status: string;
   hidden: boolean;
   subCategoryId:number;
 };
 
-export type ItemsState = {
-  items: ItemType[];
-};
+// export type ItemsState = {
+//   items: ItemType[];
+// };
 
 
 export type ItemSliceState = {
   items: ItemType[];
-  // currentNote: ItemType | null;
+  currentItem: ItemType | null;
+  favItems:ItemType [];
 };

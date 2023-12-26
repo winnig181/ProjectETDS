@@ -1,108 +1,141 @@
 import * as React from 'react';
-
-import Typography from '@mui/material/Typography';
-import { Box, Button, Card, CardMedia, Container, Grid } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardMedia,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hook';
 import type { UserType } from '../../types/auth';
 
-// type PropsLkCard = {
-//   text: string;
-// }
-
 export default function LkProfile(): JSX.Element {
-  const user:UserType = useAppSelector((state) => state.authSlice.user);
-  console.log('user', user);
-  const {
-    name,
-    nickName,
-    email,
-    phone,
-    avatar,
-    city,
-    metro,
-    publicPhone,
-    isActivated,
-    activationLink,
-  } = user;
+  const user: UserType = useAppSelector((state) => state.authSlice.user);
+
   return (
-    <Container>
-      <Card sx={{ display: 'flex' }}>
-        {/* Надо сделать ширину 30% контейнера на 70% */}
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <CardMedia
-            component="img"
-            sx={{ width: 100 }}
-            image="/img/vite.svg"
-            alt="avatar"
-          />
-          <Button size="small" color="primary">
-            Загрузить фото
-          </Button>
-        </Box>
+    <Container
+      sx={{
+        width: 900,
+        padding: '20px',
+      }}
+      maxWidth="md"
+    >
+      <Typography
+        variant="h4"
+        sx={{ alignSelf: 'center', marginBottom: '30px', paddingTop: '30px' }}
+      >
+        Учетные данные
+      </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <Typography
-            variant="h6"
-            component="div"
-            gutterBottom
-            color="textSecondary"
-            style={{ marginTop: '40px' }}
-          >
-            Учетные данные
-          </Typography>
-          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Имя: {name}</p>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '30px',
+          paddingTop: '20px',
+          paddingBottom: '40px',
+          marginRight: '80px',
+        }}
+      >
+        <CardMedia component="img" sx={{ width: 125 }} image="/img/vite.svg" alt="avatar" />
+        <Button type="submit" variant="contained" color="primary">
+          Загрузить фото
+        </Button>
+      </Box>
+
+      {/* Блок отображения данных пользователя */}
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <form>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                name="name"
+                value={user.name}
+                // onChange={handleChange}
+                fullWidth
+                label="Имя"
+                variant="outlined"
+                required
+                disabled
+              />
             </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Email: {email}</p>
+            <Grid item xs={12}>
+              <TextField
+                name="nickName"
+                value={user.nickName}
+                // onChange={handleChange}
+                fullWidth
+                label="Ник"
+                variant="outlined"
+                required
+                disabled
+              />
             </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>
-                {isActivated
-                  ? 'Email подтвержден'
-                  : `Ссылка для подтверждения имейла:<p>${activationLink}</p>`}
-              </p>
+            <Grid item xs={12}>
+              <TextField
+                name="about"
+                value={user.about}
+                // onChange={handleChange}
+                fullWidth
+                label="Обо мне:"
+                variant="outlined"
+                multiline
+                rows={2}
+                required
+                disabled
+              />
             </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Тел.: {phone}</p>
+
+            <Grid item xs={12}>
+              <TextField
+                name="phone"
+                value={user.phone}
+                // onChange={handleChange}
+                fullWidth
+                label="Телефон:"
+                variant="outlined"
+                required
+                disabled
+              />
             </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <NavLink to="#">
-                <p>Изменить пароль </p>
-              </NavLink>
+
+            <Grid item xs={12}>
+              <TextField
+                name="city"
+                value={user.city}
+                // onChange={handleChange}
+                fullWidth
+                label="Город:"
+                variant="outlined"
+                required
+                disabled
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                name="metro"
+                value={user.metro}
+                // onChange={handleChange}
+                fullWidth
+                label="Метро:"
+                variant="outlined"
+                required
+                disabled
+              />
+            </Grid>
+            <Grid item xs={12} sx={{ marginTop: '20px' }}>
+              <Button type="submit" variant="contained" color="primary">
+                Редактировать
+              </Button>
             </Grid>
           </Grid>
-
-          <Typography
-            variant="h6"
-            component="div"
-            gutterBottom
-            color="textSecondary"
-            style={{ marginTop: '40px' }}
-          >
-            Публичные данные
-          </Typography>
-          <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Ник: {nickName}</p>
-            </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Email: {email}</p>
-            </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Тел.: {publicPhone || phone}</p>
-            </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Город: {city}</p>
-            </Grid>
-            <Grid item xs={2} sm={6} md={6}>
-              <p>Станция метро: {metro}</p>
-            </Grid>
-          </Grid>
-        </Box>
-      </Card>
+        </form>
+      </Box>
     </Container>
   );
 }

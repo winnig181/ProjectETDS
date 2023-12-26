@@ -20,6 +20,7 @@ authRouter.post("/login", async (req, res) => {
     if (!isValid) return res.status(400).json({ message: "Invalid password" });
 
     const plainUser = user.get();
+    // console.log(">>>>>>>>>>>>>>>>>>>>", plainUser);
     delete plainUser.hashpass;
     const { accessToken, refreshToken } = generateTokens({
       user: plainUser,
@@ -29,7 +30,7 @@ authRouter.post("/login", async (req, res) => {
       .status(200)
       .json({ accessToken, user: plainUser });
   } catch (error) {
-    console.log('registration error',error);
+    console.log("registration error", error);
     res.status(500).json(error);
   }
 });
@@ -63,13 +64,13 @@ authRouter.post("/signup", async (req, res) => {
   }
 });
 
-
 // authRouter.get("activate/:link", (req, res) => {
 // })
 
 authRouter.get("/logout", (req, res) => {
- 
-  res.clearCookie(jwtConfig.refresh.name, cookiesConfig.refresh).sendStatus(200);
+  res
+    .clearCookie(jwtConfig.refresh.name, cookiesConfig.refresh)
+    .sendStatus(200);
 });
 
 authRouter.get("/check", verifyRefreshToken, (req, res) => {

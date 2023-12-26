@@ -25,7 +25,8 @@ export default function MyReviewsList(): JSX.Element {
   return (
     <Grid container spacing={1}>
       {myReviews.map((review: ReviewType) => (
-        <Grid key={review.id} item xs={1}>
+      
+        <Grid key={review.id} item xs={12} sm={12} md={6}>
           <ReviewCard review={review} />
         </Grid>
       ))}

@@ -1,179 +1,173 @@
+const {hashSync} = require('bcrypt');
 
+const currentDate = new Date();
+const endDateValue = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
 
-const {hashSync} = require('bcrypt')
-
-const currentDate = new Date()
-const endDateValue = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000)
-
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Users', [{
-      name: 'John Doe',
-      email: '1@1',
-      hashpass: hashSync('1', 10),
-      nickName: 'milkman',
-      phone: '+1 911 112 6969',
-      avatar: 'johndoe.jpeg',
-      about: 'driver, bring some milk',
-      city: 'San Francisco',
-      metro: null,
-      publicPhone: '+995 595 *** ***',
-      isActivated: false,
-      activationLink: 'some link should be here',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      name: 'Пассажир метро',
-      email: '2@2',
-      hashpass: hashSync('2', 10),
-      nickName: 'MetroMan',
-      phone: '+7 928 *** 01 91',
-      avatar: 'johndoe.jpeg',
-      about: 'катаюсь на метро в час пик, радуюсь жести',
-      city: 'Москвэ',
-      metro: 'Ленинский проспект',
-      publicPhone: this.phone,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }])
-    await queryInterface.bulkInsert('Categories', [{
-      categoryName: 'Домашние развлечения',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryName: 'Туризм',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }, {
-      categoryName: 'Спортинвентарь',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryName: 'Оборудование и инструменты',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    ])
-    await queryInterface.bulkInsert('Subсategories', [{
-      categoryId: 1,
-      subCategoryName: 'Видеоигры',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryId: 1,
-      subCategoryName: 'Music',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      categoryId: 1,
-      subCategoryName: 'Подушки',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },])
-    await queryInterface.bulkInsert('Items', [{
-      title: 1,
-      description: 'Heroes of Might and Magic 3',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'used',
-      status:'ordered',
-      hidden: false,
-      subCategoryId: 1,
-      userId: 1,
-      price: 35,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      title: 1,
-      description: 'The Binding of Isaac',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'new',
-      status:'available',
-      hidden: true,
-      subCategoryId: 1,
-      userId: 1,
-      price: 666,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      title: 1,
-      description: 'Doom',
-      img1:'aaa',
-      img2:'bbb',
-      img3:'ccc',
-      condition:'used',
-      status:'available',
-      hidden: false,
-      subCategoryId: 1,
-      userId: 1,
-      price: 42,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },])
-    await queryInterface.bulkInsert('Deals', [{
-      owner: 1,
-      tenant: 2,
-      itemId: 1,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: true,
-      ownerCloseDeal: true,
-      tenantApproveDeal: true,
-      tenantCloseDeal: true,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      owner: 1,
-      tenant: 2,
-      itemId: 2,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: true,
-      ownerCloseDeal: false,
-      tenantApproveDeal: true,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      owner: 1,
-      tenant: 2,
-      itemId: 3,
-      startDate: currentDate,
-      endDate: endDateValue,
-      ownerApproveDeal: false,
-      ownerCloseDeal: false,
-      tenantApproveDeal: false,
-      tenantCloseDeal: false,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },])
-    await queryInterface.bulkInsert('Userreviews', [{
-      userId: 2,
-      review: 'Отличный парень, привёз всё быстро и в целости',
-      rating: 4,
-      targetId: 1,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      userId: 1,
-      review: 'Рыба-рыба, рыба-кит',
-      rating: 5,
-      targetId: 2,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }])
+    async up(queryInterface, Sequelize) {
+        await queryInterface.bulkInsert('Users', [{
+            name: 'Анна',
+            email: '1@1',
+            hashpass: hashSync('1', 10),
+            nickName: 'Nicee',
+            phone: '+7 911 112 6969',
+            avatar: 'https://fikiwiki.com/uploads/posts/2022-02/1644913307_8-fikiwiki-com-p-kartinki-devushki-v-shlyape-9.jpg',
+            about: 'Люблю качественную инструментальную музыку и рубиться в Дота2',
+            city: 'Москва',
+            metro: 'Чистые пруды',
+            publicPhone: '+7 911 112 6969',
+            isActivated: false,
+            activationLink: 'some link should be here',
+            createdAt: currentDate,
+            updatedAt: currentDate,
+        }, {
+            name: 'Виктор',
+            email: '2@2',
+            hashpass: hashSync('2', 10),
+            nickName: 'Liquidator777',
+            phone: '+7 928 514 0191',
+            avatar: 'https://avatars.mds.yandex.net/i?id=5c55dc82707935b02b01116c65f64c31f8e059e5-4112653-images-thumbs&n=13',
+            about: 'люблю IT, детей и кальян',
+            city: 'Москва',
+            metro: 'Ленинский проспект',
+            publicPhone: '+7 928 514 0191',
+            createdAt: currentDate,
+            updatedAt: currentDate,
+        }])
+
+        await queryInterface.bulkInsert('Categories', [{
+          categoryName: 'Техника',
+    
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        },
+        {
+          categoryName: 'Спорт',
+    
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        },
+        {
+          categoryName: 'Одежда',
+    
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        },
+        {
+          categoryName: 'Развлечения',
+    
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        },
+        {
+          categoryName: 'Инструменты',
+    
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        },
+        {
+          categoryName: 'Творчество',
+    
+          createdAt: currentDate,
+          updatedAt: currentDate,
+        }
+        ])
+    
+    
+           const subcategories = ['Настольные игры', 'Книги', 'Музыка', 'Компьютерные игры'].map(
+                (subCategoryName) => ({
+                    categoryId: 4,
+                    subCategoryName,
+                    createdAt: currentDate,
+                    updatedAt: currentDate,
+                })
+            );
+    
+        await queryInterface.bulkInsert('Subcategories', subcategories)
+        
+        await queryInterface.bulkInsert('Items', [{
+
+          title: 'Почта',
+          description: 'Я почему вредный был?',
+          img1: 'pochta.jpg',
+          condition: 'Новое',
+          status: 'Доступен',
+          hidden: false,
+          subCategoryId: 1,
+          userId: 1,
+          price: 150,        
+          createdAt: currentDate,
+          updatedAt: currentDate,
+          }, 
+          {
+            title: 'Имаджинариум',
+            description: 'Много историй в одной коробке',
+            img1: 'image.jpg',
+            condition: 'Как новое',
+            status: 'Доступен',
+            hidden: false,
+            subCategoryId: 1,
+            userId: 1,
+            price: 200,        
+            createdAt: currentDate,
+            updatedAt: currentDate,
+            },
+  
+            {
+  
+              title: 'Колонизаторы',
+              description: 'Про колонизацию, удачу и дипломатию...',
+              img1: 'cat.jpg',
+              condition: 'Как новое',
+              status: 'Доступен',
+              hidden: false,
+              subCategoryId: 1,
+              userId: 1,
+              price: 200,        
+              createdAt: currentDate,
+              updatedAt: currentDate,
+              },
+          ])
+    
+              await queryInterface.bulkInsert('Userreviews', [
+                {
+                  userId: 1,
+                  review: 'Замечательный арендодатель. Игры были в отличном состоянии, а он предоставил полезные рекомендации для выбора.',
+                  rating: 5,
+                  targetId: 2,
+                },
+                {
+                  userId: 1,
+                  review: 'Прекрасный опыт взаимодействия с Виктором. Все вещи возвращены в исходном состоянии, и общение было легким и приятным',
+                  rating: 5,
+                  targetId: 2,
+                },
+                {
+                  userId: 1,
+                  review: 'Владелец был дружелюбным и внимательным к деталям, и игры были в хорошем состоянии.',
+                  rating: 5,
+                  targetId: 2,
+                },       
+          
+          
+              ])
+          
+              await queryInterface.bulkInsert('Deals', [{
+                ownerId: 1,
+                tenantId: 2,
+                itemId: 1,
+                startDate: currentDate,
+                endDate: endDateValue,
+                ownerApproveDeal: false,
+                ownerCloseDeal: false,
+                tenantApproveDeal: false,
+                tenantCloseDeal: false,
+                createdAt: new Date(),
+                updatedAt: new Date()
+  },])
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+    async down(queryInterface, Sequelize) {
+
+    },
 };

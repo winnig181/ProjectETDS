@@ -13,21 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       Item.hasMany(Deal, { foreignKey: "itemId" });
     }
   }
-  Item.init(
-    {
-      title: DataTypes.TEXT,
-      description: DataTypes.TEXT,
-      img1: DataTypes.TEXT,
-      img2: DataTypes.TEXT,
-      img3: DataTypes.TEXT,
-      condition: DataTypes.TEXT,
-      status: DataTypes.TEXT,
-      hidden: DataTypes.BOOLEAN,
-      subCategoryId: DataTypes.INTEGER,
-      userId: DataTypes.INTEGER,
-      price: DataTypes.INTEGER,
-    },
-    {
+  Item.init({
+    title: DataTypes.TEXT,
+    description: DataTypes.TEXT,
+    img1: DataTypes.TEXT,
+    condition: DataTypes.TEXT,
+    status: DataTypes.TEXT,
+    hidden: DataTypes.BOOLEAN,
+    subCategoryId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
+    price: DataTypes.INTEGER
+  },{
       sequelize,
       modelName: "Item",
     }

@@ -36,7 +36,7 @@ module.exports = {
       subCategoryId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Subсategories',
+          model: 'Subcategories',
           key: 'id',
         },
         onDelete: 'CASCADE',
@@ -56,11 +56,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       }
     });
   },
