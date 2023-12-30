@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { FormEvent, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
-import { Box, Button, Input } from '@mui/material';
+import {Button,TextField } from '@mui/material';
+import { thunkPostsAdd, thunkPostsLoad } from '../../redux/slices/posts/createAsyncThunk';
+import type { AddPostFormData } from '../../types/post/post';
+import { useAppDispatch } from '../../redux/hook';
+import { thunkCheckAuth } from '../../redux/slices/auth/createAsyncThunk';
 
 type PostFormProps = {
   // submitPostHandler:()=>void;
-  wsPostSubmitHandler:() =>void;
+  wsPostSubmitHandler:(e:FormEvent<HTMLFormElement>) =>void;
 }
 
 export default function PostForm({ wsPostSubmitHandler }:PostFormProps ):JSX.Element {
+  const dispatch = useAppDispatch();
+
+  // useEffect(() => {
+  //   // void dispatch(thunkCheckAuth());
+  //   void dispatch(thunkPostsLoad());
+  // }, []);
+
   return (
-    <FormControl onSubmit={wsPostSubmitHandler} style={{ width: '100%' }}>
-      <Box
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1 },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-      <Input name="body" defaultValue="Введите сообщение"  />
-      </Box>
-      <Button variant="outlined">Отправить </Button>
+    <form 
+    onSubmit={(e) => {
+      e.preventDefault();
+      // const formData = Object.fromEntries(
+      //   new FormData(e.currentTarget),
+      // ) as unknown as AddPostFormData;
+      // void dispatch(thunkPostsAdd(formData));
+      // void dispatch(thunkPostsLoad());
+      wsPostSubmitHandler(e);
+      e.currentTarget.reset();
+    }}>
+    <FormControl sx={{ width: '100%' }}>
+    <TextField name="body" label="Текст сообщения" type="text" /> 
+      <Button type="submit" variant="contained">Отправить </Button>
     </FormControl>
+    </form>
   );
 }

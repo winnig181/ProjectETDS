@@ -11,7 +11,7 @@ apiDealsRouter
   .get(
     verifyAccessToken, 
     async (req, res) => {
-      console.log('>>!!>**>>',res.locals.user);
+      // console.log('>>!!>**>>',res.locals.user);
     try {
       const deals = await Deal.findAll({
         where:{tenantId: res.locals.user.id},

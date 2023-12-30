@@ -1,6 +1,4 @@
 const express = require("express");
-
-
 const { Deal, User, Item } = require("../../db/models");
 const verifyAccessToken = require("../middlewares/verifyAccessToken");
 

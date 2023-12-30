@@ -18,7 +18,7 @@ export default function useWs(currentUser, setWsConnect, setCurrentPosts) {
         switch (type) {
           case 'ADD_POST_FROM_BACKEND':
             console.log('ADD_POST_FROM_BACKEND --->>>');
-            setCurrentPosts((prev) => [...prev, payload]);
+            setCurrentPosts((prev) => [payload, ...prev ]);
             break;
 
           default:
@@ -51,9 +51,24 @@ export default function useWs(currentUser, setWsConnect, setCurrentPosts) {
       type: 'ADD_NEW_POST',
       payload: data,
     }));
+    console.log('ADD_NEW_POST>>>');
+  };
+
+  const wsPostDeleteHandler = ( id:number) => {
+    const socket = socketRef.current;
+    if (!socket) return;
+
+    socket.send(JSON.stringify({
+      type: 'DELETE_POST',
+      payload: id,
+    }));
+
+    setCurrentPosts((prev) => prev.filter((el)=>el.id !== id))
+    console.log('DELETE_POST>>>');
   };
 
   return {
     wsPostSubmitHandler,
+    wsPostDeleteHandler,
   };
 }

@@ -1,24 +1,46 @@
 import React from 'react';
-import { Button, Card, Container, Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import type { UserType } from '../../types/auth';
 import type { PostType } from '../../types/post/post';
+import OnePost from './OnePost';
 
-type PostsWrapperProps={
-  posts:PostType[];
-  deletePostHandler:(id:number)=>void;
+type PostsWrapperProps = {
+  posts: PostType[];
   currentUser: UserType;
-}
-export default function PostsWrapper({ posts, deletePostHandler, currentUser }:PostsWrapperProps ):JSX.Element {
+  wsPostDeleteHandler:(id:number)=>void;
+};
+export default function PostsWrapper({
+  posts,
+  currentUser,
+  wsPostDeleteHandler,
+}: PostsWrapperProps): JSX.Element {
+  // const posts = useAppSelector((state)=>state.postSlice.posts);
+  // console.log('posts>>>>>>', posts);
+
   return (
-    <Grid container spacing={1}>
-      {posts.map((post) => (
-        <Grid key={post.id} item xs={1} >
-            <div>{post.body}</div>
-            {currentUser && currentUser.id === post.userId && (
-            <Button variant="outlined" onClick={() => deletePostHandler(post.id)}>Удалить</Button>
-            )}
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Typography
+        variant="h6"
+        sx={{ alignSelf: 'center', marginBottom: '0px', paddingTop: '30px' }}
+      >
+        История сообщений
+      </Typography>
+      <Grid
+        container
+        spacing={0.5}
+        sx={{
+          marginTop: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+        }}
+      >
+        {posts.map((post) => (
+          <Grid key={post.id} item xs={12}>
+            <OnePost currentUser={currentUser} post={post} wsPostDeleteHandler={wsPostDeleteHandler} />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 }

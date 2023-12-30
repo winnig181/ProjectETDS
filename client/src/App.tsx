@@ -28,6 +28,9 @@ import ItemsListPage from './pages/ItemsListPage';
 import HomePage from './pages/HomePage';
 import LkMyFavouritesPage from './pages/LkMyFavouritesPage';
 import NotFound from './pages/NotFound';
+import ChatPage from './pages/ChatPage';
+import { thunkPostsLoad } from './redux/slices/posts/createAsyncThunk';
+import { apiPostsService } from './services/posts';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,6 +39,7 @@ function App(): JSX.Element {
   useAxiosInterceptors(apiReviewsService);
   useAxiosInterceptors(apiItemsService);
   useAxiosInterceptors(apiDealsService);
+  // useAxiosInterceptors(apiPostsService);
 
   useEffect(() => {
     void dispatch(thunkCheckAuth());
@@ -43,6 +47,7 @@ function App(): JSX.Element {
     void dispatch(thunkItemsLoad());
     void dispatch(thunkDealsLoad());
     void dispatch(thunkReviewsLoad());
+    // void dispatch(thunkPostsLoad());
   }, []);
 
   return (
@@ -73,6 +78,7 @@ function App(): JSX.Element {
             }
           >
             <Route path="/main" element={<MainPage />} />
+            <Route path="/goChat" element={<ChatPage />} />
             <Route path="/categories/:id" element={<SubCatPage />} />
             <Route path="/subcats/items/:id" element={<ItemsListPage />} />
             <Route path="/addDeal/:id" element={<AddDealPage />} />

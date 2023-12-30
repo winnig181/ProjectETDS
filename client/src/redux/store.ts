@@ -6,6 +6,7 @@ import dealReducer from './slices/deals/dealsSlice';
 import categoriesReducer from './slices/categories/categoriesSlice'
 import subcatReducer from './slices/subcats/subcatsSlice';
 import ownerDealReducer from './slices/ownerdeals/ownerDealsSlice';
+import postReducer from './slices/posts/postSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,7 +17,7 @@ export const store = configureStore({
     dealsSlice: dealReducer,
     ownerDealsSlice: ownerDealReducer,
     subcatsSlice: subcatReducer,
-
+    postSlice: postReducer,
   },
 });
 
